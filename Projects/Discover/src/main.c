@@ -220,7 +220,6 @@ void main(void)
 	I2C_GenerateSTOP(ENABLE);
 	
 	// I2C general call
-	//I2C_GeneralCallCmd(ENABLE);
 	while ( I2C_CheckEvent(I2C_EVENT_SLAVE_GENERALCALLADDRESS_MATCHED)!= SUCCESS );
 	received = I2C_ReceiveData();
 	while ( I2C_CheckEvent(I2C_EVENT_SLAVE_BYTE_RECEIVED)!= SUCCESS);
@@ -247,7 +246,7 @@ void main(void)
 void I2C_Configuration(void) {
 	I2C_DeInit();
   I2C_Init(I2C_MAX_STANDARD_FREQ,
-     received2,// Self address 
+     (received2<<1),// Self address 
      I2C_DUTYCYCLE_2, 
      I2C_ACK_CURR,
      I2C_ADDMODE_7BIT, 

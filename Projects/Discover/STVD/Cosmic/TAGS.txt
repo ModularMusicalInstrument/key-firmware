@@ -241,7 +241,7 @@ BitClr	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2706;"	macro
 BitSet	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2707;"	macro
 BitStatus	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	221;"	typedef	typeref:enum:__anon22
 BitVal	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2708;"	macro
-Blinking_StateMachine	..\..\src\main.c	58;"	prototype	file:	signature:(void)
+Blinking_StateMachine	..\..\src\main.c	59;"	prototype	file:	signature:(void)
 CAN	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2505;"	macro
 CAN_BTR1_RESET_VALUE	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2390;"	macro
 CAN_BTR2_RESET_VALUE	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2391;"	macro
@@ -1076,8 +1076,8 @@ I2C_ClearITPendingBit	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_i2c
 I2C_ClearITPendingBit	..\..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_i2c.c	873;"	function	signature:(I2C_ITPendingBit_TypeDef I2C_ITPendingBit)
 I2C_Cmd	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_i2c.h	503;"	prototype	signature:(FunctionalState NewState)
 I2C_Cmd	..\..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_i2c.c	196;"	function	signature:(FunctionalState NewState)
-I2C_Configuration	..\..\src\main.c	239;"	function	signature:(void)
-I2C_Configuration	..\..\src\main.c	56;"	prototype	file:	signature:(void)
+I2C_Configuration	..\..\src\main.c	250;"	function	signature:(void)
+I2C_Configuration	..\..\src\main.c	57;"	prototype	file:	signature:(void)
 I2C_DIRECTION_RX	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_i2c.h	81;"	enumerator	enum:__anon5
 I2C_DIRECTION_TX	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_i2c.h	80;"	enumerator	enum:__anon5
 I2C_DR_DR	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1377;"	macro
@@ -1199,7 +1199,7 @@ I2C_Send7bitAddress	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_i2c.h
 I2C_Send7bitAddress	..\..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_i2c.c	441;"	function	signature:(uint8_t Address, I2C_Direction_TypeDef Direction)
 I2C_SendData	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_i2c.h	514;"	prototype	signature:(uint8_t Data)
 I2C_SendData	..\..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_i2c.c	459;"	function	signature:(uint8_t Data)
-I2C_SendPacket	..\..\src\main.c	301;"	function	signature:(u8 data)
+I2C_SendPacket	..\..\src\main.c	307;"	function	signature:(u8 data)
 I2C_SendPacket	..\..\src\stm8s_it.c	47;"	prototype	file:	signature:(u8 data)
 I2C_SoftwareResetCmd	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_i2c.h	507;"	prototype	signature:(FunctionalState NewState)
 I2C_SoftwareResetCmd	..\..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_i2c.c	294;"	function	signature:(FunctionalState NewState)
@@ -1492,12 +1492,12 @@ LED_ONE_PW	..\..\inc\main.h	48;"	macro
 LED_PIN	..\..\inc\main.h	44;"	macro
 LED_PORT	..\..\inc\main.h	43;"	macro
 LED_PW	..\..\inc\main.h	49;"	macro
-LED_SendByte	..\..\src\main.c	109;"	function	signature:(u8 data)
-LED_SendReset	..\..\src\main.c	258;"	function	signature:(void)
-LED_SetColor	..\..\src\main.c	123;"	prototype	file:	signature:(u8 r, u8 g, u8 b)
-LED_SetColor	..\..\src\main.c	267;"	function	signature:(u8 r, u8 g, u8 b)
-LED_SetColor_Int	..\..\src\main.c	122;"	prototype	file:	signature:(u8 r, u8 g, u8 b, bool changeInterrupts)
-LED_SetColor_Int	..\..\src\main.c	272;"	function	signature:(u8 r, u8 g, u8 b, bool changeInterrupts)
+LED_SendByte	..\..\src\main.c	110;"	function	signature:(u8 data)
+LED_SendReset	..\..\src\main.c	265;"	function	signature:(void)
+LED_SetColor	..\..\src\main.c	124;"	prototype	file:	signature:(u8 r, u8 g, u8 b)
+LED_SetColor	..\..\src\main.c	274;"	function	signature:(u8 r, u8 g, u8 b)
+LED_SetColor_Int	..\..\src\main.c	123;"	prototype	file:	signature:(u8 r, u8 g, u8 b, bool changeInterrupts)
+LED_SetColor_Int	..\..\src\main.c	279;"	function	signature:(u8 r, u8 g, u8 b, bool changeInterrupts)
 LED_T0H	..\..\inc\main.h	90;"	macro
 LED_T0L	..\..\inc\main.h	92;"	macro
 LED_T1H	..\..\inc\main.h	91;"	macro
@@ -2590,8 +2590,8 @@ TIM6_SR1_UIF	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1294;"	mac
 TIM6_TypeDef	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1256;"	typedef	typeref:struct:TIM6_struct
 TIM6_UPD_OVF_TRG_IRQHandler	..\..\inc\stm8s_it.h	103;"	prototype	signature:(void)
 TIM6_struct	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1244;"	struct
-TIMER_Configuration	..\..\src\main.c	290;"	function	signature:(void)
-TIMER_Configuration	..\..\src\main.c	57;"	prototype	file:	signature:(void)
+TIMER_Configuration	..\..\src\main.c	296;"	function	signature:(void)
+TIMER_Configuration	..\..\src\main.c	58;"	prototype	file:	signature:(void)
 TINY	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	114;"	macro
 TINY	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	120;"	macro
 TINY	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	134;"	macro
@@ -2890,15 +2890,15 @@ WWDG_WR_MSB	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1643;"	macr
 WWDG_WR_RESET_VALUE	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1629;"	macro
 WWDG_WR_W	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1644;"	macro
 WWDG_struct	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1617;"	struct
-WriteHigh	..\..\src\main.c	62;"	function	signature:(void)
-WriteLow	..\..\src\main.c	85;"	function	signature:(void)
+WriteHigh	..\..\src\main.c	63;"	function	signature:(void)
+WriteLow	..\..\src\main.c	86;"	function	signature:(void)
 _COSMIC_	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	73;"	macro
 _IAR_	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	77;"	macro
 _RAISONANCE_	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	75;"	macro
 __I	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	194;"	macro
 __IO	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	196;"	macro
 __MAIN_H	..\..\inc\main.h	25;"	macro
-__MODS0__	..\..\..\..\..\..\..\..\program files (x86)\cosmic\cxstm8_eval\hstm8\mods0.h	11;"	macro
+__MODS0__	..\..\..\..\..\..\program files (x86)\cosmic\cxstm8_eval\hstm8\mods0.h	11;"	macro
 __O	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	195;"	macro
 __STM8S_ADC1_H	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_adc1.h	23;"	macro
 __STM8S_AWU_H	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_awu.h	24;"	macro
@@ -2928,7 +2928,7 @@ __STM8S_WWDG_H	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_wwdg.h	24;
 _stext	..\..\inc\stm8s_it.h	36;"	prototype	signature:(void)
 _vectab	..\..\src\stm8_interrupt_vector.c	15;"	variable
 assert_failed	..\..\inc\stm8s_conf.h	101;"	prototype	signature:(uint8_t* file, uint32_t line)
-assert_failed	..\..\src\main.c	331;"	function	signature:(u8* file, u32 line)
+assert_failed	..\..\src\main.c	335;"	function	signature:(u8* file, u32 line)
 assert_param	..\..\inc\stm8s_conf.h	103;"	macro
 assert_param	..\..\inc\stm8s_conf.h	99;"	macro
 bool	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	219;"	typedef	typeref:enum:__anon21
@@ -2950,11 +2950,12 @@ interrupt_handler	..\..\src\stm8_interrupt_vector.c	12;"	member	struct:interrupt
 interrupt_handler_t	..\..\src\stm8_interrupt_vector.c	7;"	typedef	file:
 interrupt_instruction	..\..\src\stm8_interrupt_vector.c	11;"	member	struct:interrupt_vector	file:
 interrupt_vector	..\..\src\stm8_interrupt_vector.c	9;"	struct	file:
-main	..\..\src\main.c	154;"	function	signature:(void)
+main	..\..\src\main.c	155;"	function	signature:(void)
 next_case	..\..\src\main.c	48;"	variable
 nop	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2605;"	macro
 nop	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2614;"	macro
 nop	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2624;"	macro
+ping_received	..\..\src\main.c	53;"	variable
 previous_button_state	..\..\src\main.c	41;"	variable
 received	..\..\src\main.c	51;"	variable
 received2	..\..\src\main.c	52;"	variable
