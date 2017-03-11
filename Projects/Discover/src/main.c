@@ -49,7 +49,7 @@ u8 next_case = 0;
 volatile u8 TxBuffer[7];
 volatile u8 velocity = 0;
 volatile uint8_t received = 14;
-volatile uint8_t received2 = 10;
+volatile uint8_t received2 = 0x7c;
 volatile uint8_t ping_received = 0;
 //int _recieveddata;
 /* Private function prototypes -----------------------------------------------*/
@@ -234,13 +234,14 @@ void main(void)
 	GPIO_Init(TRIGGER_PORT,  TRIGGER_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
 	LED_SetColor_Int(0, 0, 0, FALSE);
 	
-  enableInterrupts();	
-	while (1) {
+  enableInterrupts();
+	wfi();
+	/*while (1) {
 	  //halt();
 		while ( I2C_CheckEvent(I2C_EVENT_SLAVE_TRANSMITTER_ADDRESS_MATCHED)!= SUCCESS );
 		I2C_SendData(received2);
 		while ( I2C_CheckEvent(I2C_EVENT_SLAVE_BYTE_TRANSMITTED)!= SUCCESS);
-  }
+  }*/
 }
 
 void I2C_Configuration(void) {
@@ -308,11 +309,11 @@ void I2C_SendPacket(u8 data) {
 	
 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) ) {}
 
-	I2C_SendData(12);
+	I2C_SendData(received2);
 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS ) {}
 	I2C_SendData(0x01);
 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED)!= SUCCESS ) {}
-	I2C_SendData(20);
+	I2C_SendData(data);
 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS) {}
 	I2C_GenerateSTOP(ENABLE);
 }

@@ -21,863 +21,854 @@
   33  0008               _received:
   34  0008 0e            	dc.b	14
   35  0009               _received2:
-  36  0009 0a            	dc.b	10
+  36  0009 7c            	dc.b	124
   37  000a               _ping_received:
   38  000a 00            	dc.b	0
-  92                     ; 155 void main(void)
-  92                     ; 156 {
-  94                     	switch	.text
-  95  0000               _main:
-  99                     ; 158 	GPIO_Init(TRIGGER_PORT, TRIGGER_PIN, GPIO_MODE_OUT_PP_HIGH_SLOW);
- 101  0000 4bd0          	push	#208
- 102  0002 4b04          	push	#4
- 103  0004 ae5000        	ldw	x,#20480
- 104  0007 cd0000        	call	_GPIO_Init
- 106  000a 85            	popw	x
- 107                     ; 159 	GPIO_WriteHigh(TRIGGER_PORT,TRIGGER_PIN);
- 109  000b 4b04          	push	#4
- 110  000d ae5000        	ldw	x,#20480
- 111  0010 cd0000        	call	_GPIO_WriteHigh
- 113  0013 84            	pop	a
- 114                     ; 160 	GPIO_WriteLow(TRIGGER_PORT,TRIGGER_PIN);
- 116  0014 4b04          	push	#4
- 117  0016 ae5000        	ldw	x,#20480
- 118  0019 cd0000        	call	_GPIO_WriteLow
- 120  001c 84            	pop	a
- 121                     ; 161 	GPIO_WriteHigh(TRIGGER_PORT,TRIGGER_PIN);
- 123  001d 4b04          	push	#4
- 124  001f ae5000        	ldw	x,#20480
- 125  0022 cd0000        	call	_GPIO_WriteHigh
- 127  0025 84            	pop	a
- 128                     ; 164 	CLK_DeInit();  
- 130  0026 cd0000        	call	_CLK_DeInit
- 132                     ; 165   CLK_HSICmd(ENABLE);
- 134  0029 a601          	ld	a,#1
- 135  002b cd0000        	call	_CLK_HSICmd
- 137                     ; 166   CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
- 139  002e 4f            	clr	a
- 140  002f cd0000        	call	_CLK_HSIPrescalerConfig
- 142                     ; 167   CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
- 144  0032 a680          	ld	a,#128
- 145  0034 cd0000        	call	_CLK_SYSCLKConfig
- 147                     ; 170 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, DISABLE);
- 149  0037 ae0100        	ldw	x,#256
- 150  003a cd0000        	call	_CLK_PeripheralClockConfig
- 152                     ; 171 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART1, DISABLE);
- 154  003d ae0300        	ldw	x,#768
- 155  0040 cd0000        	call	_CLK_PeripheralClockConfig
- 157                     ; 172 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART2, DISABLE);
- 159  0043 ae0300        	ldw	x,#768
- 160  0046 cd0000        	call	_CLK_PeripheralClockConfig
- 162                     ; 173 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART3, DISABLE);
- 164  0049 ae0300        	ldw	x,#768
- 165  004c cd0000        	call	_CLK_PeripheralClockConfig
- 167                     ; 174 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER6, DISABLE);
- 169  004f ae0400        	ldw	x,#1024
- 170  0052 cd0000        	call	_CLK_PeripheralClockConfig
- 172                     ; 175 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER5, DISABLE);
- 174  0055 ae0500        	ldw	x,#1280
- 175  0058 cd0000        	call	_CLK_PeripheralClockConfig
- 177                     ; 176 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER3, DISABLE);
- 179  005b ae0600        	ldw	x,#1536
- 180  005e cd0000        	call	_CLK_PeripheralClockConfig
- 182                     ; 177 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER2, DISABLE);
- 184  0061 ae0500        	ldw	x,#1280
- 185  0064 cd0000        	call	_CLK_PeripheralClockConfig
- 187                     ; 178 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, DISABLE);
- 189  0067 ae0700        	ldw	x,#1792
- 190  006a cd0000        	call	_CLK_PeripheralClockConfig
- 192                     ; 179 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_ADC, DISABLE);
- 194  006d ae1300        	ldw	x,#4864
- 195  0070 cd0000        	call	_CLK_PeripheralClockConfig
- 197                     ; 180 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, DISABLE);
- 199  0073 ae1200        	ldw	x,#4608
- 200  0076 cd0000        	call	_CLK_PeripheralClockConfig
- 202                     ; 181 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_CAN, DISABLE);
- 204  0079 ae1700        	ldw	x,#5888
- 205  007c cd0000        	call	_CLK_PeripheralClockConfig
- 207                     ; 182 	CLK_FastHaltWakeUpCmd(DISABLE);
- 209  007f 4f            	clr	a
- 210  0080 cd0000        	call	_CLK_FastHaltWakeUpCmd
- 212                     ; 188 	GPIO_Init(BUTTON_PORT, TOP_BUTTON, GPIO_MODE_IN_PU_IT);
- 214  0083 4b60          	push	#96
- 215  0085 4b20          	push	#32
- 216  0087 ae500a        	ldw	x,#20490
- 217  008a cd0000        	call	_GPIO_Init
- 219  008d 85            	popw	x
- 220                     ; 189 	GPIO_Init(BUTTON_PORT, BOTTOM_BUTTON, GPIO_MODE_IN_PU_IT);
- 222  008e 4b60          	push	#96
- 223  0090 4b08          	push	#8
- 224  0092 ae500a        	ldw	x,#20490
- 225  0095 cd0000        	call	_GPIO_Init
- 227  0098 85            	popw	x
- 228                     ; 195 	EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOC, EXTI_SENSITIVITY_FALL_ONLY);
- 230  0099 ae0202        	ldw	x,#514
- 231  009c cd0000        	call	_EXTI_SetExtIntSensitivity
- 233                     ; 198   GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_LOW_FAST);
- 235  009f 4be0          	push	#224
- 236  00a1 4b02          	push	#2
- 237  00a3 ae5000        	ldw	x,#20480
- 238  00a6 cd0000        	call	_GPIO_Init
- 240  00a9 85            	popw	x
- 241                     ; 200 	LED_SetColor_Int(100, 0, 0, FALSE);
- 243  00aa 4b00          	push	#0
- 244  00ac 4b00          	push	#0
- 245  00ae ae6400        	ldw	x,#25600
- 246  00b1 cd01b8        	call	_LED_SetColor_Int
- 248  00b4 85            	popw	x
- 249                     ; 201   TIMER_Configuration();
- 251  00b5 cd0368        	call	_TIMER_Configuration
- 253                     ; 202 	I2C_Configuration();
- 255  00b8 cd0183        	call	_I2C_Configuration
- 257                     ; 203 	LED_SetColor_Int(100, 100, 0, FALSE);
- 259  00bb 4b00          	push	#0
- 260  00bd 4b00          	push	#0
- 261  00bf ae6464        	ldw	x,#25700
- 262  00c2 cd01b8        	call	_LED_SetColor_Int
- 264  00c5 85            	popw	x
- 265                     ; 206 	I2C_GenerateSTART(ENABLE);
- 267  00c6 a601          	ld	a,#1
- 268  00c8 cd0000        	call	_I2C_GenerateSTART
- 271  00cb               L32:
- 272                     ; 207 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT) ) {}
- 274  00cb ae0301        	ldw	x,#769
- 275  00ce cd0000        	call	_I2C_CheckEvent
- 277  00d1 4d            	tnz	a
- 278  00d2 27f7          	jreq	L32
- 279                     ; 208 	LED_SetColor_Int(80, 80, 20, FALSE);
- 281  00d4 4b00          	push	#0
- 282  00d6 4b14          	push	#20
- 283  00d8 ae5050        	ldw	x,#20560
- 284  00db cd01b8        	call	_LED_SetColor_Int
- 286  00de 85            	popw	x
- 287                     ; 210 	I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
- 289  00df ae1000        	ldw	x,#4096
- 290  00e2 cd0000        	call	_I2C_Send7bitAddress
- 293  00e5               L13:
- 294                     ; 211 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED)!= SUCCESS ) {}
- 296  00e5 ae0782        	ldw	x,#1922
- 297  00e8 cd0000        	call	_I2C_CheckEvent
- 299  00eb a101          	cp	a,#1
- 300  00ed 26f6          	jrne	L13
- 301                     ; 212 	LED_SetColor_Int(60, 60, 40, FALSE);
- 303  00ef 4b00          	push	#0
- 304  00f1 4b28          	push	#40
- 305  00f3 ae3c3c        	ldw	x,#15420
- 306  00f6 cd01b8        	call	_LED_SetColor_Int
- 308  00f9 85            	popw	x
- 309                     ; 215 	I2C_SendData(0x01);
- 311  00fa a601          	ld	a,#1
- 312  00fc cd0000        	call	_I2C_SendData
- 315  00ff               L73:
- 316                     ; 216 	while (I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED)!= SUCCESS);
- 318  00ff ae0784        	ldw	x,#1924
- 319  0102 cd0000        	call	_I2C_CheckEvent
- 321  0105 a101          	cp	a,#1
- 322  0107 26f6          	jrne	L73
- 323                     ; 217 	LED_SetColor_Int(40, 40, 60, FALSE);
- 325  0109 4b00          	push	#0
- 326  010b 4b3c          	push	#60
- 327  010d ae2828        	ldw	x,#10280
- 328  0110 cd01b8        	call	_LED_SetColor_Int
- 330  0113 85            	popw	x
- 331                     ; 219 	I2C_GeneralCallCmd(ENABLE);
- 333  0114 a601          	ld	a,#1
- 334  0116 cd0000        	call	_I2C_GeneralCallCmd
- 336                     ; 220 	I2C_GenerateSTOP(ENABLE);
- 338  0119 a601          	ld	a,#1
- 339  011b cd0000        	call	_I2C_GenerateSTOP
- 342  011e               L54:
- 343                     ; 223 	while ( I2C_CheckEvent(I2C_EVENT_SLAVE_GENERALCALLADDRESS_MATCHED)!= SUCCESS );
- 345  011e ae1200        	ldw	x,#4608
- 346  0121 cd0000        	call	_I2C_CheckEvent
- 348  0124 a101          	cp	a,#1
- 349  0126 26f6          	jrne	L54
- 350                     ; 224 	received = I2C_ReceiveData();
- 352  0128 cd0000        	call	_I2C_ReceiveData
- 354  012b b708          	ld	_received,a
- 356  012d               L55:
- 357                     ; 225 	while ( I2C_CheckEvent(I2C_EVENT_SLAVE_BYTE_RECEIVED)!= SUCCESS);
- 359  012d ae0240        	ldw	x,#576
- 360  0130 cd0000        	call	_I2C_CheckEvent
- 362  0133 a101          	cp	a,#1
- 363  0135 26f6          	jrne	L55
- 364                     ; 226 	received2 = I2C_ReceiveData();
- 366  0137 cd0000        	call	_I2C_ReceiveData
- 368  013a b709          	ld	_received2,a
- 369                     ; 227 	I2C_GeneralCallCmd(DISABLE);
- 371  013c 4f            	clr	a
- 372  013d cd0000        	call	_I2C_GeneralCallCmd
- 374                     ; 228 	LED_SetColor_Int(20, 20, 80, FALSE);
- 376  0140 4b00          	push	#0
- 377  0142 4b50          	push	#80
- 378  0144 ae1414        	ldw	x,#5140
- 379  0147 ad6f          	call	_LED_SetColor_Int
- 381  0149 85            	popw	x
- 382                     ; 231 	I2C_Configuration();
- 384  014a ad37          	call	_I2C_Configuration
- 386                     ; 232 	LED_SetColor_Int(0, 0, 100, FALSE);
- 388  014c 4b00          	push	#0
- 389  014e 4b64          	push	#100
- 390  0150 5f            	clrw	x
- 391  0151 ad65          	call	_LED_SetColor_Int
- 393  0153 85            	popw	x
- 394                     ; 234 	GPIO_Init(TRIGGER_PORT,  TRIGGER_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
- 396  0154 4bc0          	push	#192
- 397  0156 4b04          	push	#4
- 398  0158 ae5000        	ldw	x,#20480
- 399  015b cd0000        	call	_GPIO_Init
- 401  015e 85            	popw	x
- 402                     ; 235 	LED_SetColor_Int(0, 0, 0, FALSE);
- 404  015f 4b00          	push	#0
- 405  0161 4b00          	push	#0
- 406  0163 5f            	clrw	x
- 407  0164 ad52          	call	_LED_SetColor_Int
- 409  0166 85            	popw	x
- 410                     ; 237   enableInterrupts();	
- 413  0167 9a            rim
- 416  0168               L76:
- 417                     ; 240 		while ( I2C_CheckEvent(I2C_EVENT_SLAVE_TRANSMITTER_ADDRESS_MATCHED)!= SUCCESS );
- 419  0168 ae0682        	ldw	x,#1666
- 420  016b cd0000        	call	_I2C_CheckEvent
- 422  016e a101          	cp	a,#1
- 423  0170 26f6          	jrne	L76
- 424                     ; 241 		I2C_SendData(received2);
- 426  0172 b609          	ld	a,_received2
- 427  0174 cd0000        	call	_I2C_SendData
- 430  0177               L57:
- 431                     ; 242 		while ( I2C_CheckEvent(I2C_EVENT_SLAVE_BYTE_TRANSMITTED)!= SUCCESS);
- 433  0177 ae0684        	ldw	x,#1668
- 434  017a cd0000        	call	_I2C_CheckEvent
- 436  017d a101          	cp	a,#1
- 437  017f 26f6          	jrne	L57
- 439  0181 20e5          	jra	L76
- 466                     ; 246 void I2C_Configuration(void) {
- 467                     	switch	.text
- 468  0183               _I2C_Configuration:
- 472                     ; 247 	I2C_DeInit();
- 474  0183 cd0000        	call	_I2C_DeInit
- 476                     ; 248   I2C_Init(I2C_MAX_STANDARD_FREQ,
- 476                     ; 249      (received2<<1),// Self address 
- 476                     ; 250      I2C_DUTYCYCLE_2, 
- 476                     ; 251      I2C_ACK_CURR,
- 476                     ; 252      I2C_ADDMODE_7BIT, 
- 476                     ; 253      I2C_MAX_INPUT_FREQ
- 476                     ; 254   );
- 478  0186 4b10          	push	#16
- 479  0188 4b00          	push	#0
- 480  018a 4b01          	push	#1
- 481  018c 4b00          	push	#0
- 482  018e b609          	ld	a,_received2
- 483  0190 5f            	clrw	x
- 484  0191 97            	ld	xl,a
- 485  0192 58            	sllw	x
- 486  0193 89            	pushw	x
- 487  0194 ae86a0        	ldw	x,#34464
- 488  0197 89            	pushw	x
- 489  0198 ae0001        	ldw	x,#1
- 490  019b 89            	pushw	x
- 491  019c cd0000        	call	_I2C_Init
- 493  019f 5b0a          	addw	sp,#10
- 494                     ; 255 	I2C_ITConfig((I2C_IT_TypeDef)(I2C_IT_EVT | I2C_IT_BUF),
- 494                     ; 256 	DISABLE);
- 496  01a1 ae0600        	ldw	x,#1536
- 497  01a4 cd0000        	call	_I2C_ITConfig
- 499                     ; 259 }
- 502  01a7 81            	ret
- 555                     ; 270 void LED_SetColor(u8 r, u8 g, u8 b) {
- 556                     	switch	.text
- 557  01a8               _LED_SetColor:
- 559  01a8 89            	pushw	x
- 560       00000000      OFST:	set	0
- 563                     ; 271 	LED_SetColor_Int(r, g, b, TRUE);
- 565  01a9 4b01          	push	#1
- 566  01ab 7b06          	ld	a,(OFST+6,sp)
- 567  01ad 88            	push	a
- 568  01ae 9f            	ld	a,xl
- 569  01af 97            	ld	xl,a
- 570  01b0 7b03          	ld	a,(OFST+3,sp)
- 571  01b2 95            	ld	xh,a
- 572  01b3 ad03          	call	_LED_SetColor_Int
- 574  01b5 85            	popw	x
- 575                     ; 272 }
- 578  01b6 85            	popw	x
- 579  01b7 81            	ret
- 879                     ; 275 void LED_SetColor_Int(u8 r, u8 g, u8 b, bool changeInterrupts) {
- 880                     	switch	.text
- 881  01b8               _LED_SetColor_Int:
- 883  01b8 89            	pushw	x
- 884  01b9 5206          	subw	sp,#6
- 885       00000006      OFST:	set	6
- 888                     ; 276 	r = r > 100 ? 100 : r;
- 890  01bb 7b07          	ld	a,(OFST+1,sp)
- 891  01bd a165          	cp	a,#101
- 892  01bf 2504          	jrult	L41
- 893  01c1 a664          	ld	a,#100
- 894  01c3 2002          	jra	L61
- 895  01c5               L41:
- 896  01c5 7b07          	ld	a,(OFST+1,sp)
- 897  01c7               L61:
- 898  01c7 6b07          	ld	(OFST+1,sp),a
- 899                     ; 277 	g = g > 100 ? 100 : g;
- 901  01c9 7b08          	ld	a,(OFST+2,sp)
- 902  01cb a165          	cp	a,#101
- 903  01cd 2504          	jrult	L02
- 904  01cf a664          	ld	a,#100
- 905  01d1 2002          	jra	L22
- 906  01d3               L02:
- 907  01d3 7b08          	ld	a,(OFST+2,sp)
- 908  01d5               L22:
- 909  01d5 6b08          	ld	(OFST+2,sp),a
- 910                     ; 278 	b = b > 100 ? 100 : b;
- 912  01d7 7b0b          	ld	a,(OFST+5,sp)
- 913  01d9 a165          	cp	a,#101
- 914  01db 2504          	jrult	L42
- 915  01dd a664          	ld	a,#100
- 916  01df 2002          	jra	L62
- 917  01e1               L42:
- 918  01e1 7b0b          	ld	a,(OFST+5,sp)
- 919  01e3               L62:
- 920  01e3 6b0b          	ld	(OFST+5,sp),a
- 921                     ; 279 	if (changeInterrupts) disableInterrupts();
- 923  01e5 0d0c          	tnz	(OFST+6,sp)
- 924  01e7 2701          	jreq	L303
- 928  01e9 9b            sim
- 930  01ea               L303:
- 931                     ; 262 	int i = 0;
- 935                     ; 263 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
- 937  01ea 72135000      	bres	20480,#1
- 938                     ; 265 	for (i = 1280; i >= 0; i--) {
- 940  01ee ae0500        	ldw	x,#1280
- 941  01f1 1f05          	ldw	(OFST-1,sp),x
- 942  01f3               L503:
- 943                     ; 266 		nop();
- 946  01f3 9d            nop
- 948                     ; 265 	for (i = 1280; i >= 0; i--) {
- 951  01f4 1e05          	ldw	x,(OFST-1,sp)
- 952  01f6 1d0001        	subw	x,#1
- 953  01f9 1f05          	ldw	(OFST-1,sp),x
- 956  01fb 9c            	rvf
- 957  01fc 1e05          	ldw	x,(OFST-1,sp)
- 958  01fe 2ef3          	jrsge	L503
- 959                     ; 281 	LED_SendByte(g);
- 962  0200 7b08          	ld	a,(OFST+2,sp)
- 963  0202 6b04          	ld	(OFST-2,sp),a
- 964                     ; 111 	int i = 0;
- 966                     ; 113 	for (i = 7; i >= 0; i--) {
- 968  0204 ae0007        	ldw	x,#7
- 969  0207 1f05          	ldw	(OFST-1,sp),x
- 970  0209               L313:
- 971                     ; 114 		bool bit = (1<<i & data);
- 973  0209 7b04          	ld	a,(OFST-2,sp)
- 974  020b 5f            	clrw	x
- 975  020c 97            	ld	xl,a
- 976  020d 1f01          	ldw	(OFST-5,sp),x
- 977  020f ae0001        	ldw	x,#1
- 978  0212 7b06          	ld	a,(OFST+0,sp)
- 979  0214 4d            	tnz	a
- 980  0215 2704          	jreq	L03
- 981  0217               L23:
- 982  0217 58            	sllw	x
- 983  0218 4a            	dec	a
- 984  0219 26fc          	jrne	L23
- 985  021b               L03:
- 986  021b 01            	rrwa	x,a
- 987  021c 1402          	and	a,(OFST-4,sp)
- 988  021e 01            	rrwa	x,a
- 989  021f 1401          	and	a,(OFST-5,sp)
- 990  0221 01            	rrwa	x,a
- 991  0222 01            	rrwa	x,a
- 992  0223 6b03          	ld	(OFST-3,sp),a
- 993  0225 02            	rlwa	x,a
- 994                     ; 115 		if (bit != 0) {
- 996  0226 0d03          	tnz	(OFST-3,sp)
- 997  0228 271c          	jreq	L123
- 998                     ; 65 	LED_PORT->ODR |= (uint8_t)LED_PIN;
-1001  022a 72125000      	bset	20480,#1
-1002                     ; 66 	nop();
-1005  022e 9d            nop
-1007                     ; 67 	nop();
-1011  022f 9d            nop
-1013                     ; 68 	nop();
-1017  0230 9d            nop
-1019                     ; 69 	nop();
-1023  0231 9d            nop
-1025                     ; 70 	nop();
-1029  0232 9d            nop
-1031                     ; 71 	nop();
-1035  0233 9d            nop
-1037                     ; 72 	nop();
-1041  0234 9d            nop
-1043                     ; 73 	nop();
-1047  0235 9d            nop
-1049                     ; 74 	nop();
-1053  0236 9d            nop
-1055                     ; 75 	nop();
-1059  0237 9d            nop
-1061                     ; 76 	nop();
-1065  0238 9d            nop
-1067                     ; 77 	nop();
-1071  0239 9d            nop
-1073                     ; 78 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
-1076  023a 72135000      	bres	20480,#1
-1077                     ; 79 	nop();
-1080  023e 9d            nop
-1082                     ; 80 	nop();
-1086  023f 9d            nop
-1088                     ; 81 	nop();
-1092  0240 9d            nop
-1094                     ; 82 	nop();
-1098  0241 9d            nop
-1100                     ; 83 	nop();
-1104  0242 9d            nop
-1106                     ; 84 	nop();
-1110  0243 9d            nop
-1113  0244 201a          	jra	L323
-1114  0246               L123:
-1115                     ; 88 	LED_PORT->ODR |= (uint8_t)LED_PIN;
-1118  0246 72125000      	bset	20480,#1
-1119                     ; 89 	nop();
-1122  024a 9d            nop
-1124                     ; 90 	nop();
-1128  024b 9d            nop
-1130                     ; 91 	nop();
-1134  024c 9d            nop
-1136                     ; 92 	nop();
-1140  024d 9d            nop
-1142                     ; 93 	nop();
-1146  024e 9d            nop
-1148                     ; 94 	nop();
-1152  024f 9d            nop
-1154                     ; 95 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
-1157  0250 72135000      	bres	20480,#1
-1158                     ; 96 	nop();
-1161  0254 9d            nop
-1163                     ; 97 	nop();
-1167  0255 9d            nop
-1169                     ; 98 	nop();
-1173  0256 9d            nop
-1175                     ; 99 	nop();
-1179  0257 9d            nop
-1181                     ; 100 	nop();
-1185  0258 9d            nop
-1187                     ; 101 	nop();
-1191  0259 9d            nop
-1193                     ; 102 	nop();
-1197  025a 9d            nop
-1199                     ; 103 	nop();
-1203  025b 9d            nop
-1205                     ; 104 	nop();
-1209  025c 9d            nop
-1211                     ; 105 	nop();
-1215  025d 9d            nop
-1217                     ; 106 	nop();
-1221  025e 9d            nop
-1223                     ; 107 	nop();
-1227  025f 9d            nop
-1229  0260               L323:
-1230                     ; 113 	for (i = 7; i >= 0; i--) {
-1232  0260 1e05          	ldw	x,(OFST-1,sp)
-1233  0262 1d0001        	subw	x,#1
-1234  0265 1f05          	ldw	(OFST-1,sp),x
-1237  0267 9c            	rvf
-1238  0268 1e05          	ldw	x,(OFST-1,sp)
-1239  026a 2f02          	jrslt	L44
-1240  026c 209b          	jp	L313
-1241  026e               L44:
-1242                     ; 282 	LED_SendByte(r);
-1245  026e 7b07          	ld	a,(OFST+1,sp)
-1246  0270 6b04          	ld	(OFST-2,sp),a
-1247                     ; 111 	int i = 0;
-1249                     ; 113 	for (i = 7; i >= 0; i--) {
-1251  0272 ae0007        	ldw	x,#7
-1252  0275 1f05          	ldw	(OFST-1,sp),x
-1253  0277               L523:
-1254                     ; 114 		bool bit = (1<<i & data);
-1256  0277 7b04          	ld	a,(OFST-2,sp)
-1257  0279 5f            	clrw	x
-1258  027a 97            	ld	xl,a
-1259  027b 1f01          	ldw	(OFST-5,sp),x
-1260  027d ae0001        	ldw	x,#1
-1261  0280 7b06          	ld	a,(OFST+0,sp)
-1262  0282 4d            	tnz	a
-1263  0283 2704          	jreq	L43
-1264  0285               L63:
-1265  0285 58            	sllw	x
-1266  0286 4a            	dec	a
-1267  0287 26fc          	jrne	L63
-1268  0289               L43:
-1269  0289 01            	rrwa	x,a
-1270  028a 1402          	and	a,(OFST-4,sp)
-1271  028c 01            	rrwa	x,a
-1272  028d 1401          	and	a,(OFST-5,sp)
-1273  028f 01            	rrwa	x,a
-1274  0290 01            	rrwa	x,a
-1275  0291 6b03          	ld	(OFST-3,sp),a
-1276  0293 02            	rlwa	x,a
-1277                     ; 115 		if (bit != 0) {
-1279  0294 0d03          	tnz	(OFST-3,sp)
-1280  0296 271c          	jreq	L333
-1281                     ; 65 	LED_PORT->ODR |= (uint8_t)LED_PIN;
-1284  0298 72125000      	bset	20480,#1
-1285                     ; 66 	nop();
-1288  029c 9d            nop
-1290                     ; 67 	nop();
-1294  029d 9d            nop
-1296                     ; 68 	nop();
-1300  029e 9d            nop
-1302                     ; 69 	nop();
-1306  029f 9d            nop
-1308                     ; 70 	nop();
-1312  02a0 9d            nop
-1314                     ; 71 	nop();
-1318  02a1 9d            nop
-1320                     ; 72 	nop();
-1324  02a2 9d            nop
-1326                     ; 73 	nop();
-1330  02a3 9d            nop
-1332                     ; 74 	nop();
-1336  02a4 9d            nop
-1338                     ; 75 	nop();
-1342  02a5 9d            nop
-1344                     ; 76 	nop();
-1348  02a6 9d            nop
-1350                     ; 77 	nop();
-1354  02a7 9d            nop
-1356                     ; 78 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
-1359  02a8 72135000      	bres	20480,#1
-1360                     ; 79 	nop();
-1363  02ac 9d            nop
-1365                     ; 80 	nop();
-1369  02ad 9d            nop
-1371                     ; 81 	nop();
-1375  02ae 9d            nop
-1377                     ; 82 	nop();
-1381  02af 9d            nop
-1383                     ; 83 	nop();
-1387  02b0 9d            nop
-1389                     ; 84 	nop();
-1393  02b1 9d            nop
-1396  02b2 201a          	jra	L533
-1397  02b4               L333:
-1398                     ; 88 	LED_PORT->ODR |= (uint8_t)LED_PIN;
-1401  02b4 72125000      	bset	20480,#1
-1402                     ; 89 	nop();
-1405  02b8 9d            nop
-1407                     ; 90 	nop();
-1411  02b9 9d            nop
-1413                     ; 91 	nop();
-1417  02ba 9d            nop
-1419                     ; 92 	nop();
-1423  02bb 9d            nop
-1425                     ; 93 	nop();
-1429  02bc 9d            nop
-1431                     ; 94 	nop();
-1435  02bd 9d            nop
-1437                     ; 95 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
-1440  02be 72135000      	bres	20480,#1
-1441                     ; 96 	nop();
-1444  02c2 9d            nop
-1446                     ; 97 	nop();
-1450  02c3 9d            nop
-1452                     ; 98 	nop();
-1456  02c4 9d            nop
-1458                     ; 99 	nop();
-1462  02c5 9d            nop
-1464                     ; 100 	nop();
-1468  02c6 9d            nop
-1470                     ; 101 	nop();
-1474  02c7 9d            nop
-1476                     ; 102 	nop();
-1480  02c8 9d            nop
-1482                     ; 103 	nop();
-1486  02c9 9d            nop
-1488                     ; 104 	nop();
-1492  02ca 9d            nop
-1494                     ; 105 	nop();
-1498  02cb 9d            nop
-1500                     ; 106 	nop();
-1504  02cc 9d            nop
-1506                     ; 107 	nop();
-1510  02cd 9d            nop
-1512  02ce               L533:
-1513                     ; 113 	for (i = 7; i >= 0; i--) {
-1515  02ce 1e05          	ldw	x,(OFST-1,sp)
-1516  02d0 1d0001        	subw	x,#1
-1517  02d3 1f05          	ldw	(OFST-1,sp),x
-1520  02d5 9c            	rvf
-1521  02d6 1e05          	ldw	x,(OFST-1,sp)
-1522  02d8 2f02          	jrslt	L64
-1523  02da 209b          	jp	L523
-1524  02dc               L64:
-1525                     ; 283 	LED_SendByte(b);
-1528  02dc 7b0b          	ld	a,(OFST+5,sp)
-1529  02de 6b04          	ld	(OFST-2,sp),a
-1530                     ; 111 	int i = 0;
-1532                     ; 113 	for (i = 7; i >= 0; i--) {
-1534  02e0 ae0007        	ldw	x,#7
-1535  02e3 1f05          	ldw	(OFST-1,sp),x
-1536  02e5               L733:
-1537                     ; 114 		bool bit = (1<<i & data);
-1539  02e5 7b04          	ld	a,(OFST-2,sp)
-1540  02e7 5f            	clrw	x
-1541  02e8 97            	ld	xl,a
-1542  02e9 1f01          	ldw	(OFST-5,sp),x
-1543  02eb ae0001        	ldw	x,#1
-1544  02ee 7b06          	ld	a,(OFST+0,sp)
-1545  02f0 4d            	tnz	a
-1546  02f1 2704          	jreq	L04
-1547  02f3               L24:
-1548  02f3 58            	sllw	x
-1549  02f4 4a            	dec	a
-1550  02f5 26fc          	jrne	L24
-1551  02f7               L04:
-1552  02f7 01            	rrwa	x,a
-1553  02f8 1402          	and	a,(OFST-4,sp)
-1554  02fa 01            	rrwa	x,a
-1555  02fb 1401          	and	a,(OFST-5,sp)
-1556  02fd 01            	rrwa	x,a
-1557  02fe 01            	rrwa	x,a
-1558  02ff 6b03          	ld	(OFST-3,sp),a
-1559  0301 02            	rlwa	x,a
-1560                     ; 115 		if (bit != 0) {
-1562  0302 0d03          	tnz	(OFST-3,sp)
-1563  0304 271c          	jreq	L543
-1564                     ; 65 	LED_PORT->ODR |= (uint8_t)LED_PIN;
-1567  0306 72125000      	bset	20480,#1
-1568                     ; 66 	nop();
-1571  030a 9d            nop
-1573                     ; 67 	nop();
-1577  030b 9d            nop
-1579                     ; 68 	nop();
-1583  030c 9d            nop
-1585                     ; 69 	nop();
-1589  030d 9d            nop
-1591                     ; 70 	nop();
-1595  030e 9d            nop
-1597                     ; 71 	nop();
-1601  030f 9d            nop
-1603                     ; 72 	nop();
-1607  0310 9d            nop
-1609                     ; 73 	nop();
-1613  0311 9d            nop
-1615                     ; 74 	nop();
-1619  0312 9d            nop
-1621                     ; 75 	nop();
-1625  0313 9d            nop
-1627                     ; 76 	nop();
-1631  0314 9d            nop
-1633                     ; 77 	nop();
-1637  0315 9d            nop
-1639                     ; 78 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
-1642  0316 72135000      	bres	20480,#1
-1643                     ; 79 	nop();
-1646  031a 9d            nop
-1648                     ; 80 	nop();
-1652  031b 9d            nop
-1654                     ; 81 	nop();
-1658  031c 9d            nop
-1660                     ; 82 	nop();
-1664  031d 9d            nop
-1666                     ; 83 	nop();
-1670  031e 9d            nop
-1672                     ; 84 	nop();
-1676  031f 9d            nop
-1679  0320 201a          	jra	L743
-1680  0322               L543:
-1681                     ; 88 	LED_PORT->ODR |= (uint8_t)LED_PIN;
-1684  0322 72125000      	bset	20480,#1
-1685                     ; 89 	nop();
-1688  0326 9d            nop
-1690                     ; 90 	nop();
-1694  0327 9d            nop
-1696                     ; 91 	nop();
-1700  0328 9d            nop
-1702                     ; 92 	nop();
-1706  0329 9d            nop
-1708                     ; 93 	nop();
-1712  032a 9d            nop
-1714                     ; 94 	nop();
-1718  032b 9d            nop
-1720                     ; 95 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
-1723  032c 72135000      	bres	20480,#1
-1724                     ; 96 	nop();
-1727  0330 9d            nop
-1729                     ; 97 	nop();
-1733  0331 9d            nop
-1735                     ; 98 	nop();
-1739  0332 9d            nop
-1741                     ; 99 	nop();
-1745  0333 9d            nop
-1747                     ; 100 	nop();
-1751  0334 9d            nop
-1753                     ; 101 	nop();
-1757  0335 9d            nop
-1759                     ; 102 	nop();
-1763  0336 9d            nop
-1765                     ; 103 	nop();
-1769  0337 9d            nop
-1771                     ; 104 	nop();
-1775  0338 9d            nop
-1777                     ; 105 	nop();
-1781  0339 9d            nop
-1783                     ; 106 	nop();
-1787  033a 9d            nop
-1789                     ; 107 	nop();
-1793  033b 9d            nop
-1795  033c               L743:
-1796                     ; 113 	for (i = 7; i >= 0; i--) {
-1798  033c 1e05          	ldw	x,(OFST-1,sp)
-1799  033e 1d0001        	subw	x,#1
-1800  0341 1f05          	ldw	(OFST-1,sp),x
-1803  0343 9c            	rvf
-1804  0344 1e05          	ldw	x,(OFST-1,sp)
-1805  0346 2f02          	jrslt	L05
-1806  0348 209b          	jp	L733
-1807  034a               L05:
-1808                     ; 262 	int i = 0;
-1811                     ; 263 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
-1813  034a 72135000      	bres	20480,#1
-1814                     ; 265 	for (i = 1280; i >= 0; i--) {
-1816  034e ae0500        	ldw	x,#1280
-1817  0351 1f05          	ldw	(OFST-1,sp),x
-1818  0353               L153:
-1819                     ; 266 		nop();
-1822  0353 9d            nop
-1824                     ; 265 	for (i = 1280; i >= 0; i--) {
-1827  0354 1e05          	ldw	x,(OFST-1,sp)
-1828  0356 1d0001        	subw	x,#1
-1829  0359 1f05          	ldw	(OFST-1,sp),x
-1832  035b 9c            	rvf
-1833  035c 1e05          	ldw	x,(OFST-1,sp)
-1834  035e 2ef3          	jrsge	L153
-1835                     ; 285 	if (changeInterrupts) enableInterrupts();
-1837  0360 0d0c          	tnz	(OFST+6,sp)
-1838  0362 2701          	jreq	L753
-1842  0364 9a            rim
-1844  0365               L753:
-1845                     ; 290 }
-1849  0365 5b08          	addw	sp,#8
-1850  0367 81            	ret
-1877                     ; 292 void TIMER_Configuration(void)
-1877                     ; 293 {
-1878                     	switch	.text
-1879  0368               _TIMER_Configuration:
-1883                     ; 294   TIM4_DeInit();
-1885  0368 cd0000        	call	_TIM4_DeInit
-1887                     ; 297   TIM4_TimeBaseInit(TIM4_PRESCALER_128, 0x7F );
-1889  036b ae077f        	ldw	x,#1919
-1890  036e cd0000        	call	_TIM4_TimeBaseInit
-1892                     ; 300   TIM4_ITConfig(TIM4_IT_UPDATE, DISABLE);
-1894  0371 ae0100        	ldw	x,#256
-1895  0374 cd0000        	call	_TIM4_ITConfig
-1897                     ; 301 }
-1900  0377 81            	ret
-1939                     ; 303 void I2C_SendPacket(u8 data) {
-1940                     	switch	.text
-1941  0378               _I2C_SendPacket:
-1945                     ; 304 	I2C_GenerateSTART(ENABLE);	
-1947  0378 a601          	ld	a,#1
-1948  037a cd0000        	call	_I2C_GenerateSTART
-1951  037d               L114:
-1952                     ; 305 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT) ) {}
-1954  037d ae0301        	ldw	x,#769
-1955  0380 cd0000        	call	_I2C_CheckEvent
-1957  0383 4d            	tnz	a
-1958  0384 27f7          	jreq	L114
-1959                     ; 307 	I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
-1961  0386 ae1000        	ldw	x,#4096
-1962  0389 cd0000        	call	_I2C_Send7bitAddress
-1965  038c               L714:
-1966                     ; 309 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) ) {}
-1968  038c ae0782        	ldw	x,#1922
-1969  038f cd0000        	call	_I2C_CheckEvent
-1971  0392 4d            	tnz	a
-1972  0393 27f7          	jreq	L714
-1973                     ; 311 	I2C_SendData(12);
-1975  0395 a60c          	ld	a,#12
-1976  0397 cd0000        	call	_I2C_SendData
-1979  039a               L524:
-1980                     ; 312 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS ) {}
-1982  039a ae0784        	ldw	x,#1924
-1983  039d cd0000        	call	_I2C_CheckEvent
-1985  03a0 a101          	cp	a,#1
-1986  03a2 26f6          	jrne	L524
-1987                     ; 313 	I2C_SendData(0x01);
-1989  03a4 a601          	ld	a,#1
-1990  03a6 cd0000        	call	_I2C_SendData
-1993  03a9               L334:
-1994                     ; 314 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED)!= SUCCESS ) {}
-1996  03a9 ae0784        	ldw	x,#1924
-1997  03ac cd0000        	call	_I2C_CheckEvent
-1999  03af a101          	cp	a,#1
-2000  03b1 26f6          	jrne	L334
-2001                     ; 315 	I2C_SendData(20);
-2003  03b3 a614          	ld	a,#20
-2004  03b5 cd0000        	call	_I2C_SendData
-2007  03b8               L144:
-2008                     ; 316 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS) {}
-2010  03b8 ae0784        	ldw	x,#1924
-2011  03bb cd0000        	call	_I2C_CheckEvent
-2013  03be a101          	cp	a,#1
-2014  03c0 26f6          	jrne	L144
-2015                     ; 317 	I2C_GenerateSTOP(ENABLE);
-2017  03c2 a601          	ld	a,#1
-2018  03c4 cd0000        	call	_I2C_GenerateSTOP
-2020                     ; 318 }
-2023  03c7 81            	ret
-2058                     ; 331 void assert_failed(u8* file, u32 line)
-2058                     ; 332 {
-2059                     	switch	.text
-2060  03c8               _assert_failed:
-2064  03c8               L364:
-2065  03c8 20fe          	jra	L364
-2200                     	xdef	_I2C_SendPacket
-2201                     	xdef	_main
-2202                     	xdef	_LED_SetColor
-2203                     	xdef	_LED_SetColor_Int
-2204                     	xdef	_TIMER_Configuration
-2205                     	xdef	_I2C_Configuration
-2206                     	xdef	_ping_received
-2207                     	xdef	_received2
-2208                     	xdef	_received
-2209                     	xdef	_velocity
-2210                     	switch	.ubsct
-2211  0000               _TxBuffer:
-2212  0000 000000000000  	ds.b	7
-2213                     	xdef	_TxBuffer
-2214                     	xdef	_next_case
-2215                     	xdef	_NumOfBytes
-2216                     	xdef	_i
-2217                     	xdef	_PeriodNumber
-2218  0007               _Counter:
-2219  0007 00            	ds.b	1
-2220                     	xdef	_Counter
-2221                     	xdef	_button_state
-2222                     	xdef	_previous_button_state
-2223                     	xdef	_User_Key_Pressed
-2224                     	xdef	_assert_failed
-2225                     	xref	_TIM4_ITConfig
-2226                     	xref	_TIM4_TimeBaseInit
-2227                     	xref	_TIM4_DeInit
-2228                     	xref	_I2C_CheckEvent
-2229                     	xref	_I2C_SendData
-2230                     	xref	_I2C_Send7bitAddress
-2231                     	xref	_I2C_ReceiveData
-2232                     	xref	_I2C_ITConfig
-2233                     	xref	_I2C_GenerateSTOP
-2234                     	xref	_I2C_GenerateSTART
-2235                     	xref	_I2C_GeneralCallCmd
-2236                     	xref	_I2C_Init
-2237                     	xref	_I2C_DeInit
-2238                     	xref	_GPIO_WriteLow
-2239                     	xref	_GPIO_WriteHigh
-2240                     	xref	_GPIO_Init
-2241                     	xref	_EXTI_SetExtIntSensitivity
-2242                     	xref	_CLK_SYSCLKConfig
-2243                     	xref	_CLK_HSIPrescalerConfig
-2244                     	xref	_CLK_PeripheralClockConfig
-2245                     	xref	_CLK_FastHaltWakeUpCmd
-2246                     	xref	_CLK_HSICmd
-2247                     	xref	_CLK_DeInit
-2267                     	end
+  93                     ; 155 void main(void)
+  93                     ; 156 {
+  95                     	switch	.text
+  96  0000               _main:
+ 100                     ; 158 	GPIO_Init(TRIGGER_PORT, TRIGGER_PIN, GPIO_MODE_OUT_PP_HIGH_SLOW);
+ 102  0000 4bd0          	push	#208
+ 103  0002 4b04          	push	#4
+ 104  0004 ae5000        	ldw	x,#20480
+ 105  0007 cd0000        	call	_GPIO_Init
+ 107  000a 85            	popw	x
+ 108                     ; 159 	GPIO_WriteHigh(TRIGGER_PORT,TRIGGER_PIN);
+ 110  000b 4b04          	push	#4
+ 111  000d ae5000        	ldw	x,#20480
+ 112  0010 cd0000        	call	_GPIO_WriteHigh
+ 114  0013 84            	pop	a
+ 115                     ; 160 	GPIO_WriteLow(TRIGGER_PORT,TRIGGER_PIN);
+ 117  0014 4b04          	push	#4
+ 118  0016 ae5000        	ldw	x,#20480
+ 119  0019 cd0000        	call	_GPIO_WriteLow
+ 121  001c 84            	pop	a
+ 122                     ; 161 	GPIO_WriteHigh(TRIGGER_PORT,TRIGGER_PIN);
+ 124  001d 4b04          	push	#4
+ 125  001f ae5000        	ldw	x,#20480
+ 126  0022 cd0000        	call	_GPIO_WriteHigh
+ 128  0025 84            	pop	a
+ 129                     ; 164 	CLK_DeInit();  
+ 131  0026 cd0000        	call	_CLK_DeInit
+ 133                     ; 165   CLK_HSICmd(ENABLE);
+ 135  0029 a601          	ld	a,#1
+ 136  002b cd0000        	call	_CLK_HSICmd
+ 138                     ; 166   CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+ 140  002e 4f            	clr	a
+ 141  002f cd0000        	call	_CLK_HSIPrescalerConfig
+ 143                     ; 167   CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
+ 145  0032 a680          	ld	a,#128
+ 146  0034 cd0000        	call	_CLK_SYSCLKConfig
+ 148                     ; 170 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, DISABLE);
+ 150  0037 ae0100        	ldw	x,#256
+ 151  003a cd0000        	call	_CLK_PeripheralClockConfig
+ 153                     ; 171 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART1, DISABLE);
+ 155  003d ae0300        	ldw	x,#768
+ 156  0040 cd0000        	call	_CLK_PeripheralClockConfig
+ 158                     ; 172 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART2, DISABLE);
+ 160  0043 ae0300        	ldw	x,#768
+ 161  0046 cd0000        	call	_CLK_PeripheralClockConfig
+ 163                     ; 173 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART3, DISABLE);
+ 165  0049 ae0300        	ldw	x,#768
+ 166  004c cd0000        	call	_CLK_PeripheralClockConfig
+ 168                     ; 174 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER6, DISABLE);
+ 170  004f ae0400        	ldw	x,#1024
+ 171  0052 cd0000        	call	_CLK_PeripheralClockConfig
+ 173                     ; 175 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER5, DISABLE);
+ 175  0055 ae0500        	ldw	x,#1280
+ 176  0058 cd0000        	call	_CLK_PeripheralClockConfig
+ 178                     ; 176 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER3, DISABLE);
+ 180  005b ae0600        	ldw	x,#1536
+ 181  005e cd0000        	call	_CLK_PeripheralClockConfig
+ 183                     ; 177 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER2, DISABLE);
+ 185  0061 ae0500        	ldw	x,#1280
+ 186  0064 cd0000        	call	_CLK_PeripheralClockConfig
+ 188                     ; 178 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, DISABLE);
+ 190  0067 ae0700        	ldw	x,#1792
+ 191  006a cd0000        	call	_CLK_PeripheralClockConfig
+ 193                     ; 179 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_ADC, DISABLE);
+ 195  006d ae1300        	ldw	x,#4864
+ 196  0070 cd0000        	call	_CLK_PeripheralClockConfig
+ 198                     ; 180 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, DISABLE);
+ 200  0073 ae1200        	ldw	x,#4608
+ 201  0076 cd0000        	call	_CLK_PeripheralClockConfig
+ 203                     ; 181 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_CAN, DISABLE);
+ 205  0079 ae1700        	ldw	x,#5888
+ 206  007c cd0000        	call	_CLK_PeripheralClockConfig
+ 208                     ; 182 	CLK_FastHaltWakeUpCmd(DISABLE);
+ 210  007f 4f            	clr	a
+ 211  0080 cd0000        	call	_CLK_FastHaltWakeUpCmd
+ 213                     ; 188 	GPIO_Init(BUTTON_PORT, TOP_BUTTON, GPIO_MODE_IN_PU_IT);
+ 215  0083 4b60          	push	#96
+ 216  0085 4b20          	push	#32
+ 217  0087 ae500a        	ldw	x,#20490
+ 218  008a cd0000        	call	_GPIO_Init
+ 220  008d 85            	popw	x
+ 221                     ; 189 	GPIO_Init(BUTTON_PORT, BOTTOM_BUTTON, GPIO_MODE_IN_PU_IT);
+ 223  008e 4b60          	push	#96
+ 224  0090 4b08          	push	#8
+ 225  0092 ae500a        	ldw	x,#20490
+ 226  0095 cd0000        	call	_GPIO_Init
+ 228  0098 85            	popw	x
+ 229                     ; 195 	EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOC, EXTI_SENSITIVITY_FALL_ONLY);
+ 231  0099 ae0202        	ldw	x,#514
+ 232  009c cd0000        	call	_EXTI_SetExtIntSensitivity
+ 234                     ; 198   GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_LOW_FAST);
+ 236  009f 4be0          	push	#224
+ 237  00a1 4b02          	push	#2
+ 238  00a3 ae5000        	ldw	x,#20480
+ 239  00a6 cd0000        	call	_GPIO_Init
+ 241  00a9 85            	popw	x
+ 242                     ; 200 	LED_SetColor_Int(100, 0, 0, FALSE);
+ 244  00aa 4b00          	push	#0
+ 245  00ac 4b00          	push	#0
+ 246  00ae ae6400        	ldw	x,#25600
+ 247  00b1 cd019f        	call	_LED_SetColor_Int
+ 249  00b4 85            	popw	x
+ 250                     ; 201   TIMER_Configuration();
+ 252  00b5 cd034f        	call	_TIMER_Configuration
+ 254                     ; 202 	I2C_Configuration();
+ 256  00b8 cd016a        	call	_I2C_Configuration
+ 258                     ; 203 	LED_SetColor_Int(100, 100, 0, FALSE);
+ 260  00bb 4b00          	push	#0
+ 261  00bd 4b00          	push	#0
+ 262  00bf ae6464        	ldw	x,#25700
+ 263  00c2 cd019f        	call	_LED_SetColor_Int
+ 265  00c5 85            	popw	x
+ 266                     ; 206 	I2C_GenerateSTART(ENABLE);
+ 268  00c6 a601          	ld	a,#1
+ 269  00c8 cd0000        	call	_I2C_GenerateSTART
+ 272  00cb               L32:
+ 273                     ; 207 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT) ) {}
+ 275  00cb ae0301        	ldw	x,#769
+ 276  00ce cd0000        	call	_I2C_CheckEvent
+ 278  00d1 4d            	tnz	a
+ 279  00d2 27f7          	jreq	L32
+ 280                     ; 208 	LED_SetColor_Int(80, 80, 20, FALSE);
+ 282  00d4 4b00          	push	#0
+ 283  00d6 4b14          	push	#20
+ 284  00d8 ae5050        	ldw	x,#20560
+ 285  00db cd019f        	call	_LED_SetColor_Int
+ 287  00de 85            	popw	x
+ 288                     ; 210 	I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
+ 290  00df ae1000        	ldw	x,#4096
+ 291  00e2 cd0000        	call	_I2C_Send7bitAddress
+ 294  00e5               L13:
+ 295                     ; 211 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED)!= SUCCESS ) {}
+ 297  00e5 ae0782        	ldw	x,#1922
+ 298  00e8 cd0000        	call	_I2C_CheckEvent
+ 300  00eb a101          	cp	a,#1
+ 301  00ed 26f6          	jrne	L13
+ 302                     ; 212 	LED_SetColor_Int(60, 60, 40, FALSE);
+ 304  00ef 4b00          	push	#0
+ 305  00f1 4b28          	push	#40
+ 306  00f3 ae3c3c        	ldw	x,#15420
+ 307  00f6 cd019f        	call	_LED_SetColor_Int
+ 309  00f9 85            	popw	x
+ 310                     ; 215 	I2C_SendData(0x01);
+ 312  00fa a601          	ld	a,#1
+ 313  00fc cd0000        	call	_I2C_SendData
+ 316  00ff               L73:
+ 317                     ; 216 	while (I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED)!= SUCCESS);
+ 319  00ff ae0784        	ldw	x,#1924
+ 320  0102 cd0000        	call	_I2C_CheckEvent
+ 322  0105 a101          	cp	a,#1
+ 323  0107 26f6          	jrne	L73
+ 324                     ; 217 	LED_SetColor_Int(40, 40, 60, FALSE);
+ 326  0109 4b00          	push	#0
+ 327  010b 4b3c          	push	#60
+ 328  010d ae2828        	ldw	x,#10280
+ 329  0110 cd019f        	call	_LED_SetColor_Int
+ 331  0113 85            	popw	x
+ 332                     ; 219 	I2C_GeneralCallCmd(ENABLE);
+ 334  0114 a601          	ld	a,#1
+ 335  0116 cd0000        	call	_I2C_GeneralCallCmd
+ 337                     ; 220 	I2C_GenerateSTOP(ENABLE);
+ 339  0119 a601          	ld	a,#1
+ 340  011b cd0000        	call	_I2C_GenerateSTOP
+ 343  011e               L54:
+ 344                     ; 223 	while ( I2C_CheckEvent(I2C_EVENT_SLAVE_GENERALCALLADDRESS_MATCHED)!= SUCCESS );
+ 346  011e ae1200        	ldw	x,#4608
+ 347  0121 cd0000        	call	_I2C_CheckEvent
+ 349  0124 a101          	cp	a,#1
+ 350  0126 26f6          	jrne	L54
+ 351                     ; 224 	received = I2C_ReceiveData();
+ 353  0128 cd0000        	call	_I2C_ReceiveData
+ 355  012b b708          	ld	_received,a
+ 357  012d               L55:
+ 358                     ; 225 	while ( I2C_CheckEvent(I2C_EVENT_SLAVE_BYTE_RECEIVED)!= SUCCESS);
+ 360  012d ae0240        	ldw	x,#576
+ 361  0130 cd0000        	call	_I2C_CheckEvent
+ 363  0133 a101          	cp	a,#1
+ 364  0135 26f6          	jrne	L55
+ 365                     ; 226 	received2 = I2C_ReceiveData();
+ 367  0137 cd0000        	call	_I2C_ReceiveData
+ 369  013a b709          	ld	_received2,a
+ 370                     ; 227 	I2C_GeneralCallCmd(DISABLE);
+ 372  013c 4f            	clr	a
+ 373  013d cd0000        	call	_I2C_GeneralCallCmd
+ 375                     ; 228 	LED_SetColor_Int(20, 20, 80, FALSE);
+ 377  0140 4b00          	push	#0
+ 378  0142 4b50          	push	#80
+ 379  0144 ae1414        	ldw	x,#5140
+ 380  0147 ad56          	call	_LED_SetColor_Int
+ 382  0149 85            	popw	x
+ 383                     ; 231 	I2C_Configuration();
+ 385  014a ad1e          	call	_I2C_Configuration
+ 387                     ; 232 	LED_SetColor_Int(0, 0, 100, FALSE);
+ 389  014c 4b00          	push	#0
+ 390  014e 4b64          	push	#100
+ 391  0150 5f            	clrw	x
+ 392  0151 ad4c          	call	_LED_SetColor_Int
+ 394  0153 85            	popw	x
+ 395                     ; 234 	GPIO_Init(TRIGGER_PORT,  TRIGGER_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+ 397  0154 4bc0          	push	#192
+ 398  0156 4b04          	push	#4
+ 399  0158 ae5000        	ldw	x,#20480
+ 400  015b cd0000        	call	_GPIO_Init
+ 402  015e 85            	popw	x
+ 403                     ; 235 	LED_SetColor_Int(0, 0, 0, FALSE);
+ 405  015f 4b00          	push	#0
+ 406  0161 4b00          	push	#0
+ 407  0163 5f            	clrw	x
+ 408  0164 ad39          	call	_LED_SetColor_Int
+ 410  0166 85            	popw	x
+ 411                     ; 237   enableInterrupts();
+ 414  0167 9a            rim
+ 416                     ; 238 	wfi();
+ 420  0168 8f            wfi
+ 422                     ; 245 }
+ 426  0169 81            	ret
+ 453                     ; 247 void I2C_Configuration(void) {
+ 454                     	switch	.text
+ 455  016a               _I2C_Configuration:
+ 459                     ; 248 	I2C_DeInit();
+ 461  016a cd0000        	call	_I2C_DeInit
+ 463                     ; 249   I2C_Init(I2C_MAX_STANDARD_FREQ,
+ 463                     ; 250      (received2<<1),// Self address 
+ 463                     ; 251      I2C_DUTYCYCLE_2, 
+ 463                     ; 252      I2C_ACK_CURR,
+ 463                     ; 253      I2C_ADDMODE_7BIT, 
+ 463                     ; 254      I2C_MAX_INPUT_FREQ
+ 463                     ; 255   );
+ 465  016d 4b10          	push	#16
+ 466  016f 4b00          	push	#0
+ 467  0171 4b01          	push	#1
+ 468  0173 4b00          	push	#0
+ 469  0175 b609          	ld	a,_received2
+ 470  0177 5f            	clrw	x
+ 471  0178 97            	ld	xl,a
+ 472  0179 58            	sllw	x
+ 473  017a 89            	pushw	x
+ 474  017b ae86a0        	ldw	x,#34464
+ 475  017e 89            	pushw	x
+ 476  017f ae0001        	ldw	x,#1
+ 477  0182 89            	pushw	x
+ 478  0183 cd0000        	call	_I2C_Init
+ 480  0186 5b0a          	addw	sp,#10
+ 481                     ; 256 	I2C_ITConfig((I2C_IT_TypeDef)(I2C_IT_EVT | I2C_IT_BUF),
+ 481                     ; 257 	DISABLE);
+ 483  0188 ae0600        	ldw	x,#1536
+ 484  018b cd0000        	call	_I2C_ITConfig
+ 486                     ; 260 }
+ 489  018e 81            	ret
+ 542                     ; 271 void LED_SetColor(u8 r, u8 g, u8 b) {
+ 543                     	switch	.text
+ 544  018f               _LED_SetColor:
+ 546  018f 89            	pushw	x
+ 547       00000000      OFST:	set	0
+ 550                     ; 272 	LED_SetColor_Int(r, g, b, TRUE);
+ 552  0190 4b01          	push	#1
+ 553  0192 7b06          	ld	a,(OFST+6,sp)
+ 554  0194 88            	push	a
+ 555  0195 9f            	ld	a,xl
+ 556  0196 97            	ld	xl,a
+ 557  0197 7b03          	ld	a,(OFST+3,sp)
+ 558  0199 95            	ld	xh,a
+ 559  019a ad03          	call	_LED_SetColor_Int
+ 561  019c 85            	popw	x
+ 562                     ; 273 }
+ 565  019d 85            	popw	x
+ 566  019e 81            	ret
+ 866                     ; 276 void LED_SetColor_Int(u8 r, u8 g, u8 b, bool changeInterrupts) {
+ 867                     	switch	.text
+ 868  019f               _LED_SetColor_Int:
+ 870  019f 89            	pushw	x
+ 871  01a0 5206          	subw	sp,#6
+ 872       00000006      OFST:	set	6
+ 875                     ; 277 	r = r > 100 ? 100 : r;
+ 877  01a2 7b07          	ld	a,(OFST+1,sp)
+ 878  01a4 a165          	cp	a,#101
+ 879  01a6 2504          	jrult	L41
+ 880  01a8 a664          	ld	a,#100
+ 881  01aa 2002          	jra	L61
+ 882  01ac               L41:
+ 883  01ac 7b07          	ld	a,(OFST+1,sp)
+ 884  01ae               L61:
+ 885  01ae 6b07          	ld	(OFST+1,sp),a
+ 886                     ; 278 	g = g > 100 ? 100 : g;
+ 888  01b0 7b08          	ld	a,(OFST+2,sp)
+ 889  01b2 a165          	cp	a,#101
+ 890  01b4 2504          	jrult	L02
+ 891  01b6 a664          	ld	a,#100
+ 892  01b8 2002          	jra	L22
+ 893  01ba               L02:
+ 894  01ba 7b08          	ld	a,(OFST+2,sp)
+ 895  01bc               L22:
+ 896  01bc 6b08          	ld	(OFST+2,sp),a
+ 897                     ; 279 	b = b > 100 ? 100 : b;
+ 899  01be 7b0b          	ld	a,(OFST+5,sp)
+ 900  01c0 a165          	cp	a,#101
+ 901  01c2 2504          	jrult	L42
+ 902  01c4 a664          	ld	a,#100
+ 903  01c6 2002          	jra	L62
+ 904  01c8               L42:
+ 905  01c8 7b0b          	ld	a,(OFST+5,sp)
+ 906  01ca               L62:
+ 907  01ca 6b0b          	ld	(OFST+5,sp),a
+ 908                     ; 280 	if (changeInterrupts) disableInterrupts();
+ 910  01cc 0d0c          	tnz	(OFST+6,sp)
+ 911  01ce 2701          	jreq	L362
+ 915  01d0 9b            sim
+ 917  01d1               L362:
+ 918                     ; 263 	int i = 0;
+ 922                     ; 264 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
+ 924  01d1 72135000      	bres	20480,#1
+ 925                     ; 266 	for (i = 1280; i >= 0; i--) {
+ 927  01d5 ae0500        	ldw	x,#1280
+ 928  01d8 1f05          	ldw	(OFST-1,sp),x
+ 929  01da               L562:
+ 930                     ; 267 		nop();
+ 933  01da 9d            nop
+ 935                     ; 266 	for (i = 1280; i >= 0; i--) {
+ 938  01db 1e05          	ldw	x,(OFST-1,sp)
+ 939  01dd 1d0001        	subw	x,#1
+ 940  01e0 1f05          	ldw	(OFST-1,sp),x
+ 943  01e2 9c            	rvf
+ 944  01e3 1e05          	ldw	x,(OFST-1,sp)
+ 945  01e5 2ef3          	jrsge	L562
+ 946                     ; 282 	LED_SendByte(g);
+ 949  01e7 7b08          	ld	a,(OFST+2,sp)
+ 950  01e9 6b04          	ld	(OFST-2,sp),a
+ 951                     ; 111 	int i = 0;
+ 953                     ; 113 	for (i = 7; i >= 0; i--) {
+ 955  01eb ae0007        	ldw	x,#7
+ 956  01ee 1f05          	ldw	(OFST-1,sp),x
+ 957  01f0               L372:
+ 958                     ; 114 		bool bit = (1<<i & data);
+ 960  01f0 7b04          	ld	a,(OFST-2,sp)
+ 961  01f2 5f            	clrw	x
+ 962  01f3 97            	ld	xl,a
+ 963  01f4 1f01          	ldw	(OFST-5,sp),x
+ 964  01f6 ae0001        	ldw	x,#1
+ 965  01f9 7b06          	ld	a,(OFST+0,sp)
+ 966  01fb 4d            	tnz	a
+ 967  01fc 2704          	jreq	L03
+ 968  01fe               L23:
+ 969  01fe 58            	sllw	x
+ 970  01ff 4a            	dec	a
+ 971  0200 26fc          	jrne	L23
+ 972  0202               L03:
+ 973  0202 01            	rrwa	x,a
+ 974  0203 1402          	and	a,(OFST-4,sp)
+ 975  0205 01            	rrwa	x,a
+ 976  0206 1401          	and	a,(OFST-5,sp)
+ 977  0208 01            	rrwa	x,a
+ 978  0209 01            	rrwa	x,a
+ 979  020a 6b03          	ld	(OFST-3,sp),a
+ 980  020c 02            	rlwa	x,a
+ 981                     ; 115 		if (bit != 0) {
+ 983  020d 0d03          	tnz	(OFST-3,sp)
+ 984  020f 271c          	jreq	L103
+ 985                     ; 65 	LED_PORT->ODR |= (uint8_t)LED_PIN;
+ 988  0211 72125000      	bset	20480,#1
+ 989                     ; 66 	nop();
+ 992  0215 9d            nop
+ 994                     ; 67 	nop();
+ 998  0216 9d            nop
+1000                     ; 68 	nop();
+1004  0217 9d            nop
+1006                     ; 69 	nop();
+1010  0218 9d            nop
+1012                     ; 70 	nop();
+1016  0219 9d            nop
+1018                     ; 71 	nop();
+1022  021a 9d            nop
+1024                     ; 72 	nop();
+1028  021b 9d            nop
+1030                     ; 73 	nop();
+1034  021c 9d            nop
+1036                     ; 74 	nop();
+1040  021d 9d            nop
+1042                     ; 75 	nop();
+1046  021e 9d            nop
+1048                     ; 76 	nop();
+1052  021f 9d            nop
+1054                     ; 77 	nop();
+1058  0220 9d            nop
+1060                     ; 78 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
+1063  0221 72135000      	bres	20480,#1
+1064                     ; 79 	nop();
+1067  0225 9d            nop
+1069                     ; 80 	nop();
+1073  0226 9d            nop
+1075                     ; 81 	nop();
+1079  0227 9d            nop
+1081                     ; 82 	nop();
+1085  0228 9d            nop
+1087                     ; 83 	nop();
+1091  0229 9d            nop
+1093                     ; 84 	nop();
+1097  022a 9d            nop
+1100  022b 201a          	jra	L303
+1101  022d               L103:
+1102                     ; 88 	LED_PORT->ODR |= (uint8_t)LED_PIN;
+1105  022d 72125000      	bset	20480,#1
+1106                     ; 89 	nop();
+1109  0231 9d            nop
+1111                     ; 90 	nop();
+1115  0232 9d            nop
+1117                     ; 91 	nop();
+1121  0233 9d            nop
+1123                     ; 92 	nop();
+1127  0234 9d            nop
+1129                     ; 93 	nop();
+1133  0235 9d            nop
+1135                     ; 94 	nop();
+1139  0236 9d            nop
+1141                     ; 95 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
+1144  0237 72135000      	bres	20480,#1
+1145                     ; 96 	nop();
+1148  023b 9d            nop
+1150                     ; 97 	nop();
+1154  023c 9d            nop
+1156                     ; 98 	nop();
+1160  023d 9d            nop
+1162                     ; 99 	nop();
+1166  023e 9d            nop
+1168                     ; 100 	nop();
+1172  023f 9d            nop
+1174                     ; 101 	nop();
+1178  0240 9d            nop
+1180                     ; 102 	nop();
+1184  0241 9d            nop
+1186                     ; 103 	nop();
+1190  0242 9d            nop
+1192                     ; 104 	nop();
+1196  0243 9d            nop
+1198                     ; 105 	nop();
+1202  0244 9d            nop
+1204                     ; 106 	nop();
+1208  0245 9d            nop
+1210                     ; 107 	nop();
+1214  0246 9d            nop
+1216  0247               L303:
+1217                     ; 113 	for (i = 7; i >= 0; i--) {
+1219  0247 1e05          	ldw	x,(OFST-1,sp)
+1220  0249 1d0001        	subw	x,#1
+1221  024c 1f05          	ldw	(OFST-1,sp),x
+1224  024e 9c            	rvf
+1225  024f 1e05          	ldw	x,(OFST-1,sp)
+1226  0251 2f02          	jrslt	L44
+1227  0253 209b          	jp	L372
+1228  0255               L44:
+1229                     ; 283 	LED_SendByte(r);
+1232  0255 7b07          	ld	a,(OFST+1,sp)
+1233  0257 6b04          	ld	(OFST-2,sp),a
+1234                     ; 111 	int i = 0;
+1236                     ; 113 	for (i = 7; i >= 0; i--) {
+1238  0259 ae0007        	ldw	x,#7
+1239  025c 1f05          	ldw	(OFST-1,sp),x
+1240  025e               L503:
+1241                     ; 114 		bool bit = (1<<i & data);
+1243  025e 7b04          	ld	a,(OFST-2,sp)
+1244  0260 5f            	clrw	x
+1245  0261 97            	ld	xl,a
+1246  0262 1f01          	ldw	(OFST-5,sp),x
+1247  0264 ae0001        	ldw	x,#1
+1248  0267 7b06          	ld	a,(OFST+0,sp)
+1249  0269 4d            	tnz	a
+1250  026a 2704          	jreq	L43
+1251  026c               L63:
+1252  026c 58            	sllw	x
+1253  026d 4a            	dec	a
+1254  026e 26fc          	jrne	L63
+1255  0270               L43:
+1256  0270 01            	rrwa	x,a
+1257  0271 1402          	and	a,(OFST-4,sp)
+1258  0273 01            	rrwa	x,a
+1259  0274 1401          	and	a,(OFST-5,sp)
+1260  0276 01            	rrwa	x,a
+1261  0277 01            	rrwa	x,a
+1262  0278 6b03          	ld	(OFST-3,sp),a
+1263  027a 02            	rlwa	x,a
+1264                     ; 115 		if (bit != 0) {
+1266  027b 0d03          	tnz	(OFST-3,sp)
+1267  027d 271c          	jreq	L313
+1268                     ; 65 	LED_PORT->ODR |= (uint8_t)LED_PIN;
+1271  027f 72125000      	bset	20480,#1
+1272                     ; 66 	nop();
+1275  0283 9d            nop
+1277                     ; 67 	nop();
+1281  0284 9d            nop
+1283                     ; 68 	nop();
+1287  0285 9d            nop
+1289                     ; 69 	nop();
+1293  0286 9d            nop
+1295                     ; 70 	nop();
+1299  0287 9d            nop
+1301                     ; 71 	nop();
+1305  0288 9d            nop
+1307                     ; 72 	nop();
+1311  0289 9d            nop
+1313                     ; 73 	nop();
+1317  028a 9d            nop
+1319                     ; 74 	nop();
+1323  028b 9d            nop
+1325                     ; 75 	nop();
+1329  028c 9d            nop
+1331                     ; 76 	nop();
+1335  028d 9d            nop
+1337                     ; 77 	nop();
+1341  028e 9d            nop
+1343                     ; 78 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
+1346  028f 72135000      	bres	20480,#1
+1347                     ; 79 	nop();
+1350  0293 9d            nop
+1352                     ; 80 	nop();
+1356  0294 9d            nop
+1358                     ; 81 	nop();
+1362  0295 9d            nop
+1364                     ; 82 	nop();
+1368  0296 9d            nop
+1370                     ; 83 	nop();
+1374  0297 9d            nop
+1376                     ; 84 	nop();
+1380  0298 9d            nop
+1383  0299 201a          	jra	L513
+1384  029b               L313:
+1385                     ; 88 	LED_PORT->ODR |= (uint8_t)LED_PIN;
+1388  029b 72125000      	bset	20480,#1
+1389                     ; 89 	nop();
+1392  029f 9d            nop
+1394                     ; 90 	nop();
+1398  02a0 9d            nop
+1400                     ; 91 	nop();
+1404  02a1 9d            nop
+1406                     ; 92 	nop();
+1410  02a2 9d            nop
+1412                     ; 93 	nop();
+1416  02a3 9d            nop
+1418                     ; 94 	nop();
+1422  02a4 9d            nop
+1424                     ; 95 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
+1427  02a5 72135000      	bres	20480,#1
+1428                     ; 96 	nop();
+1431  02a9 9d            nop
+1433                     ; 97 	nop();
+1437  02aa 9d            nop
+1439                     ; 98 	nop();
+1443  02ab 9d            nop
+1445                     ; 99 	nop();
+1449  02ac 9d            nop
+1451                     ; 100 	nop();
+1455  02ad 9d            nop
+1457                     ; 101 	nop();
+1461  02ae 9d            nop
+1463                     ; 102 	nop();
+1467  02af 9d            nop
+1469                     ; 103 	nop();
+1473  02b0 9d            nop
+1475                     ; 104 	nop();
+1479  02b1 9d            nop
+1481                     ; 105 	nop();
+1485  02b2 9d            nop
+1487                     ; 106 	nop();
+1491  02b3 9d            nop
+1493                     ; 107 	nop();
+1497  02b4 9d            nop
+1499  02b5               L513:
+1500                     ; 113 	for (i = 7; i >= 0; i--) {
+1502  02b5 1e05          	ldw	x,(OFST-1,sp)
+1503  02b7 1d0001        	subw	x,#1
+1504  02ba 1f05          	ldw	(OFST-1,sp),x
+1507  02bc 9c            	rvf
+1508  02bd 1e05          	ldw	x,(OFST-1,sp)
+1509  02bf 2f02          	jrslt	L64
+1510  02c1 209b          	jp	L503
+1511  02c3               L64:
+1512                     ; 284 	LED_SendByte(b);
+1515  02c3 7b0b          	ld	a,(OFST+5,sp)
+1516  02c5 6b04          	ld	(OFST-2,sp),a
+1517                     ; 111 	int i = 0;
+1519                     ; 113 	for (i = 7; i >= 0; i--) {
+1521  02c7 ae0007        	ldw	x,#7
+1522  02ca 1f05          	ldw	(OFST-1,sp),x
+1523  02cc               L713:
+1524                     ; 114 		bool bit = (1<<i & data);
+1526  02cc 7b04          	ld	a,(OFST-2,sp)
+1527  02ce 5f            	clrw	x
+1528  02cf 97            	ld	xl,a
+1529  02d0 1f01          	ldw	(OFST-5,sp),x
+1530  02d2 ae0001        	ldw	x,#1
+1531  02d5 7b06          	ld	a,(OFST+0,sp)
+1532  02d7 4d            	tnz	a
+1533  02d8 2704          	jreq	L04
+1534  02da               L24:
+1535  02da 58            	sllw	x
+1536  02db 4a            	dec	a
+1537  02dc 26fc          	jrne	L24
+1538  02de               L04:
+1539  02de 01            	rrwa	x,a
+1540  02df 1402          	and	a,(OFST-4,sp)
+1541  02e1 01            	rrwa	x,a
+1542  02e2 1401          	and	a,(OFST-5,sp)
+1543  02e4 01            	rrwa	x,a
+1544  02e5 01            	rrwa	x,a
+1545  02e6 6b03          	ld	(OFST-3,sp),a
+1546  02e8 02            	rlwa	x,a
+1547                     ; 115 		if (bit != 0) {
+1549  02e9 0d03          	tnz	(OFST-3,sp)
+1550  02eb 271c          	jreq	L523
+1551                     ; 65 	LED_PORT->ODR |= (uint8_t)LED_PIN;
+1554  02ed 72125000      	bset	20480,#1
+1555                     ; 66 	nop();
+1558  02f1 9d            nop
+1560                     ; 67 	nop();
+1564  02f2 9d            nop
+1566                     ; 68 	nop();
+1570  02f3 9d            nop
+1572                     ; 69 	nop();
+1576  02f4 9d            nop
+1578                     ; 70 	nop();
+1582  02f5 9d            nop
+1584                     ; 71 	nop();
+1588  02f6 9d            nop
+1590                     ; 72 	nop();
+1594  02f7 9d            nop
+1596                     ; 73 	nop();
+1600  02f8 9d            nop
+1602                     ; 74 	nop();
+1606  02f9 9d            nop
+1608                     ; 75 	nop();
+1612  02fa 9d            nop
+1614                     ; 76 	nop();
+1618  02fb 9d            nop
+1620                     ; 77 	nop();
+1624  02fc 9d            nop
+1626                     ; 78 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
+1629  02fd 72135000      	bres	20480,#1
+1630                     ; 79 	nop();
+1633  0301 9d            nop
+1635                     ; 80 	nop();
+1639  0302 9d            nop
+1641                     ; 81 	nop();
+1645  0303 9d            nop
+1647                     ; 82 	nop();
+1651  0304 9d            nop
+1653                     ; 83 	nop();
+1657  0305 9d            nop
+1659                     ; 84 	nop();
+1663  0306 9d            nop
+1666  0307 201a          	jra	L723
+1667  0309               L523:
+1668                     ; 88 	LED_PORT->ODR |= (uint8_t)LED_PIN;
+1671  0309 72125000      	bset	20480,#1
+1672                     ; 89 	nop();
+1675  030d 9d            nop
+1677                     ; 90 	nop();
+1681  030e 9d            nop
+1683                     ; 91 	nop();
+1687  030f 9d            nop
+1689                     ; 92 	nop();
+1693  0310 9d            nop
+1695                     ; 93 	nop();
+1699  0311 9d            nop
+1701                     ; 94 	nop();
+1705  0312 9d            nop
+1707                     ; 95 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
+1710  0313 72135000      	bres	20480,#1
+1711                     ; 96 	nop();
+1714  0317 9d            nop
+1716                     ; 97 	nop();
+1720  0318 9d            nop
+1722                     ; 98 	nop();
+1726  0319 9d            nop
+1728                     ; 99 	nop();
+1732  031a 9d            nop
+1734                     ; 100 	nop();
+1738  031b 9d            nop
+1740                     ; 101 	nop();
+1744  031c 9d            nop
+1746                     ; 102 	nop();
+1750  031d 9d            nop
+1752                     ; 103 	nop();
+1756  031e 9d            nop
+1758                     ; 104 	nop();
+1762  031f 9d            nop
+1764                     ; 105 	nop();
+1768  0320 9d            nop
+1770                     ; 106 	nop();
+1774  0321 9d            nop
+1776                     ; 107 	nop();
+1780  0322 9d            nop
+1782  0323               L723:
+1783                     ; 113 	for (i = 7; i >= 0; i--) {
+1785  0323 1e05          	ldw	x,(OFST-1,sp)
+1786  0325 1d0001        	subw	x,#1
+1787  0328 1f05          	ldw	(OFST-1,sp),x
+1790  032a 9c            	rvf
+1791  032b 1e05          	ldw	x,(OFST-1,sp)
+1792  032d 2f02          	jrslt	L05
+1793  032f 209b          	jp	L713
+1794  0331               L05:
+1795                     ; 263 	int i = 0;
+1798                     ; 264 	LED_PORT->ODR &= (uint8_t)(~LED_PIN);
+1800  0331 72135000      	bres	20480,#1
+1801                     ; 266 	for (i = 1280; i >= 0; i--) {
+1803  0335 ae0500        	ldw	x,#1280
+1804  0338 1f05          	ldw	(OFST-1,sp),x
+1805  033a               L133:
+1806                     ; 267 		nop();
+1809  033a 9d            nop
+1811                     ; 266 	for (i = 1280; i >= 0; i--) {
+1814  033b 1e05          	ldw	x,(OFST-1,sp)
+1815  033d 1d0001        	subw	x,#1
+1816  0340 1f05          	ldw	(OFST-1,sp),x
+1819  0342 9c            	rvf
+1820  0343 1e05          	ldw	x,(OFST-1,sp)
+1821  0345 2ef3          	jrsge	L133
+1822                     ; 286 	if (changeInterrupts) enableInterrupts();
+1824  0347 0d0c          	tnz	(OFST+6,sp)
+1825  0349 2701          	jreq	L733
+1829  034b 9a            rim
+1831  034c               L733:
+1832                     ; 291 }
+1836  034c 5b08          	addw	sp,#8
+1837  034e 81            	ret
+1864                     ; 293 void TIMER_Configuration(void)
+1864                     ; 294 {
+1865                     	switch	.text
+1866  034f               _TIMER_Configuration:
+1870                     ; 295   TIM4_DeInit();
+1872  034f cd0000        	call	_TIM4_DeInit
+1874                     ; 298   TIM4_TimeBaseInit(TIM4_PRESCALER_128, 0x7F );
+1876  0352 ae077f        	ldw	x,#1919
+1877  0355 cd0000        	call	_TIM4_TimeBaseInit
+1879                     ; 301   TIM4_ITConfig(TIM4_IT_UPDATE, DISABLE);
+1881  0358 ae0100        	ldw	x,#256
+1882  035b cd0000        	call	_TIM4_ITConfig
+1884                     ; 302 }
+1887  035e 81            	ret
+1927                     ; 304 void I2C_SendPacket(u8 data) {
+1928                     	switch	.text
+1929  035f               _I2C_SendPacket:
+1931  035f 88            	push	a
+1932       00000000      OFST:	set	0
+1935                     ; 305 	I2C_GenerateSTART(ENABLE);	
+1937  0360 a601          	ld	a,#1
+1938  0362 cd0000        	call	_I2C_GenerateSTART
+1941  0365               L173:
+1942                     ; 306 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT) ) {}
+1944  0365 ae0301        	ldw	x,#769
+1945  0368 cd0000        	call	_I2C_CheckEvent
+1947  036b 4d            	tnz	a
+1948  036c 27f7          	jreq	L173
+1949                     ; 308 	I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
+1951  036e ae1000        	ldw	x,#4096
+1952  0371 cd0000        	call	_I2C_Send7bitAddress
+1955  0374               L773:
+1956                     ; 310 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) ) {}
+1958  0374 ae0782        	ldw	x,#1922
+1959  0377 cd0000        	call	_I2C_CheckEvent
+1961  037a 4d            	tnz	a
+1962  037b 27f7          	jreq	L773
+1963                     ; 312 	I2C_SendData(received2);
+1965  037d b609          	ld	a,_received2
+1966  037f cd0000        	call	_I2C_SendData
+1969  0382               L504:
+1970                     ; 313 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS ) {}
+1972  0382 ae0784        	ldw	x,#1924
+1973  0385 cd0000        	call	_I2C_CheckEvent
+1975  0388 a101          	cp	a,#1
+1976  038a 26f6          	jrne	L504
+1977                     ; 314 	I2C_SendData(0x01);
+1979  038c a601          	ld	a,#1
+1980  038e cd0000        	call	_I2C_SendData
+1983  0391               L314:
+1984                     ; 315 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED)!= SUCCESS ) {}
+1986  0391 ae0784        	ldw	x,#1924
+1987  0394 cd0000        	call	_I2C_CheckEvent
+1989  0397 a101          	cp	a,#1
+1990  0399 26f6          	jrne	L314
+1991                     ; 316 	I2C_SendData(data);
+1993  039b 7b01          	ld	a,(OFST+1,sp)
+1994  039d cd0000        	call	_I2C_SendData
+1997  03a0               L124:
+1998                     ; 317 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS) {}
+2000  03a0 ae0784        	ldw	x,#1924
+2001  03a3 cd0000        	call	_I2C_CheckEvent
+2003  03a6 a101          	cp	a,#1
+2004  03a8 26f6          	jrne	L124
+2005                     ; 318 	I2C_GenerateSTOP(ENABLE);
+2007  03aa a601          	ld	a,#1
+2008  03ac cd0000        	call	_I2C_GenerateSTOP
+2010                     ; 319 }
+2013  03af 84            	pop	a
+2014  03b0 81            	ret
+2049                     ; 332 void assert_failed(u8* file, u32 line)
+2049                     ; 333 {
+2050                     	switch	.text
+2051  03b1               _assert_failed:
+2055  03b1               L344:
+2056  03b1 20fe          	jra	L344
+2191                     	xdef	_I2C_SendPacket
+2192                     	xdef	_main
+2193                     	xdef	_LED_SetColor
+2194                     	xdef	_LED_SetColor_Int
+2195                     	xdef	_TIMER_Configuration
+2196                     	xdef	_I2C_Configuration
+2197                     	xdef	_ping_received
+2198                     	xdef	_received2
+2199                     	xdef	_received
+2200                     	xdef	_velocity
+2201                     	switch	.ubsct
+2202  0000               _TxBuffer:
+2203  0000 000000000000  	ds.b	7
+2204                     	xdef	_TxBuffer
+2205                     	xdef	_next_case
+2206                     	xdef	_NumOfBytes
+2207                     	xdef	_i
+2208                     	xdef	_PeriodNumber
+2209  0007               _Counter:
+2210  0007 00            	ds.b	1
+2211                     	xdef	_Counter
+2212                     	xdef	_button_state
+2213                     	xdef	_previous_button_state
+2214                     	xdef	_User_Key_Pressed
+2215                     	xdef	_assert_failed
+2216                     	xref	_TIM4_ITConfig
+2217                     	xref	_TIM4_TimeBaseInit
+2218                     	xref	_TIM4_DeInit
+2219                     	xref	_I2C_CheckEvent
+2220                     	xref	_I2C_SendData
+2221                     	xref	_I2C_Send7bitAddress
+2222                     	xref	_I2C_ReceiveData
+2223                     	xref	_I2C_ITConfig
+2224                     	xref	_I2C_GenerateSTOP
+2225                     	xref	_I2C_GenerateSTART
+2226                     	xref	_I2C_GeneralCallCmd
+2227                     	xref	_I2C_Init
+2228                     	xref	_I2C_DeInit
+2229                     	xref	_GPIO_WriteLow
+2230                     	xref	_GPIO_WriteHigh
+2231                     	xref	_GPIO_Init
+2232                     	xref	_EXTI_SetExtIntSensitivity
+2233                     	xref	_CLK_SYSCLKConfig
+2234                     	xref	_CLK_HSIPrescalerConfig
+2235                     	xref	_CLK_PeripheralClockConfig
+2236                     	xref	_CLK_FastHaltWakeUpCmd
+2237                     	xref	_CLK_HSICmd
+2238                     	xref	_CLK_DeInit
+2258                     	end

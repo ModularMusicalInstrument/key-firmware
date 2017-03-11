@@ -39,6 +39,7 @@ extern volatile u8 button_state;
 extern volatile u8 previous_button_state;
 extern u8 Counter;
 extern u8 PeriodNumber;
+u16 stopDelay = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -153,7 +154,29 @@ INTERRUPT_HANDLER(EXTI_PORTC_IRQHandler, 5)
 		if (top_pressed && bottom_pressed) {
 		  // Transmit I2C data
 			velocity = TIM4_GetCounter();
-			I2C_SendPacket(1);
+			
+				I2C_SendPacket(0x45);
+				for(stopDelay = 900000; stopDelay > 0; stopDelay--){
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop(); nop(); nop(); nop(); nop();
+					nop();
+				}
+				I2C_SendPacket(0);
 	  }
 		
 		TIM4_Cmd(DISABLE);
