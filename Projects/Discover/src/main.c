@@ -254,7 +254,7 @@ void I2C_Configuration(void) {
      I2C_MAX_INPUT_FREQ
   );
 	I2C_ITConfig((I2C_IT_TypeDef)(I2C_IT_EVT | I2C_IT_BUF),
-	DISABLE);
+	ENABLE);
   //I2C_AcknowledgeConfig(I2C_ACK_CURR);
 
 }
@@ -318,6 +318,9 @@ void I2C_SendPacket(u8 data) {
 	I2C_GenerateSTOP(ENABLE);
 }
 
+void Core_Ping_Reply(){
+
+}
 
 #ifdef USE_FULL_ASSERT
 

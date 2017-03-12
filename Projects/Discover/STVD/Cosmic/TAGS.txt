@@ -687,6 +687,8 @@ CSSR	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	502;"	member	struc
 ChgBit	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2677;"	macro
 ClrBit	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2675;"	macro
 Config	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2189;"	member	union:__anon25::__anon26	typeref:struct:__anon25::__anon26::__anon32
+Core_Ping_Reply	..\..\src\main.c	321;"	function
+Core_Ping_Reply	..\..\src\stm8s_it.c	49;"	prototype	file:	signature:(void)
 Counter	..\..\src\main.c	44;"	variable
 DB0RH	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	284;"	member	struct:ADC1_struct
 DB0RL	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	285;"	member	struct:ADC1_struct
@@ -1228,7 +1230,7 @@ INTERRUPT_HANDLER	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2645;
 INTERRUPT_HANDLER_TRAP	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2634;"	macro
 INTERRUPT_HANDLER_TRAP	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2639;"	macro
 INTERRUPT_HANDLER_TRAP	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2648;"	macro
-INTERRUPT_HANDLER_TRAP	..\..\src\stm8s_it.c	71;"	function
+INTERRUPT_HANDLER_TRAP	..\..\src\stm8s_it.c	72;"	function
 IN_RAM	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	159;"	macro
 IN_RAM	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	161;"	macro
 IN_RAM	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	163;"	macro
@@ -2928,7 +2930,7 @@ __STM8S_WWDG_H	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_wwdg.h	24;
 _stext	..\..\inc\stm8s_it.h	36;"	prototype	signature:(void)
 _vectab	..\..\src\stm8_interrupt_vector.c	15;"	variable
 assert_failed	..\..\inc\stm8s_conf.h	101;"	prototype	signature:(uint8_t* file, uint32_t line)
-assert_failed	..\..\src\main.c	333;"	function	signature:(u8* file, u32 line)
+assert_failed	..\..\src\main.c	335;"	function	signature:(u8* file, u32 line)
 assert_param	..\..\inc\stm8s_conf.h	103;"	macro
 assert_param	..\..\inc\stm8s_conf.h	99;"	macro
 bool	..\..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	219;"	typedef	typeref:enum:__anon21

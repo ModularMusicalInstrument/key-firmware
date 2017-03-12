@@ -46,6 +46,7 @@ u16 stopDelay = 0;
 /* Public functions ----------------------------------------------------------*/
 
 extern void I2C_SendPacket(u8 data);
+extern void Core_Ping_Reply(void);
 
 #ifdef _COSMIC_
 /**
@@ -409,43 +410,48 @@ INTERRUPT_HANDLER(I2C_IRQHandler, 19)
 	
 	
 	int x = 1 + 1;
-
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_WAKEUPFROMHALT) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_OVERRUNUNDERRUN) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ACKNOWLEDGEFAILURE) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ARBITRATIONLOSS ) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_BUSERROR ) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_TXEMPTY ) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_STOPDETECTION ) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_HEADERSENT ) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_RXNOTEMPTY ) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_TRANSFERFINISHED ) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ADDRESSSENTMATCHED ) == SET ) {
-  x = x + 1;
-}
-if ( I2C_GetITStatus( I2C_ITPENDINGBIT_STARTDETECTION ) == SET ) {
-  x = x + 1;
-}
+	
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_WAKEUPFROMHALT) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_OVERRUNUNDERRUN) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ACKNOWLEDGEFAILURE) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ARBITRATIONLOSS ) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_BUSERROR ) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_TXEMPTY ) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_STOPDETECTION ) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_HEADERSENT ) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_RXNOTEMPTY ) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_TRANSFERFINISHED ) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ADDRESSSENTMATCHED ) == SET ) {
+		x = x + 1;
+	}
+	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_STARTDETECTION ) == SET ) {
+		x = x + 1;
+	}
+	
+	if ( I2C_CheckEvent(I2C_EVENT_SLAVE_TRANSMITTER_ADDRESS_MATCHED)== SUCCESS ){
+	I2C_SendData(0x7B);
+	while ( I2C_CheckEvent(I2C_EVENT_SLAVE_BYTE_TRANSMITTED)!= SUCCESS);
+	}
 }
 
 #if defined(STM8S105) || defined(STM8S005) ||  defined (STM8AF626x)

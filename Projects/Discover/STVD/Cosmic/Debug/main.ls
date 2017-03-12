@@ -268,8 +268,8 @@
  478  0183 cd0000        	call	_I2C_Init
  480  0186 5b0a          	addw	sp,#10
  481                     ; 256 	I2C_ITConfig((I2C_IT_TypeDef)(I2C_IT_EVT | I2C_IT_BUF),
- 481                     ; 257 	DISABLE);
- 483  0188 ae0600        	ldw	x,#1536
+ 481                     ; 257 	ENABLE);
+ 483  0188 ae0601        	ldw	x,#1537
  484  018b cd0000        	call	_I2C_ITConfig
  486                     ; 260 }
  489  018e 81            	ret
@@ -817,58 +817,64 @@
 2010                     ; 319 }
 2013  03af 84            	pop	a
 2014  03b0 81            	ret
-2049                     ; 332 void assert_failed(u8* file, u32 line)
-2049                     ; 333 {
-2050                     	switch	.text
-2051  03b1               _assert_failed:
-2055  03b1               L344:
-2056  03b1 20fe          	jra	L344
-2191                     	xdef	_I2C_SendPacket
-2192                     	xdef	_main
-2193                     	xdef	_LED_SetColor
-2194                     	xdef	_LED_SetColor_Int
-2195                     	xdef	_TIMER_Configuration
-2196                     	xdef	_I2C_Configuration
-2197                     	xdef	_ping_received
-2198                     	xdef	_received2
-2199                     	xdef	_received
-2200                     	xdef	_velocity
-2201                     	switch	.ubsct
-2202  0000               _TxBuffer:
-2203  0000 000000000000  	ds.b	7
-2204                     	xdef	_TxBuffer
-2205                     	xdef	_next_case
-2206                     	xdef	_NumOfBytes
-2207                     	xdef	_i
-2208                     	xdef	_PeriodNumber
-2209  0007               _Counter:
-2210  0007 00            	ds.b	1
-2211                     	xdef	_Counter
-2212                     	xdef	_button_state
-2213                     	xdef	_previous_button_state
-2214                     	xdef	_User_Key_Pressed
-2215                     	xdef	_assert_failed
-2216                     	xref	_TIM4_ITConfig
-2217                     	xref	_TIM4_TimeBaseInit
-2218                     	xref	_TIM4_DeInit
-2219                     	xref	_I2C_CheckEvent
-2220                     	xref	_I2C_SendData
-2221                     	xref	_I2C_Send7bitAddress
-2222                     	xref	_I2C_ReceiveData
-2223                     	xref	_I2C_ITConfig
-2224                     	xref	_I2C_GenerateSTOP
-2225                     	xref	_I2C_GenerateSTART
-2226                     	xref	_I2C_GeneralCallCmd
-2227                     	xref	_I2C_Init
-2228                     	xref	_I2C_DeInit
-2229                     	xref	_GPIO_WriteLow
-2230                     	xref	_GPIO_WriteHigh
-2231                     	xref	_GPIO_Init
-2232                     	xref	_EXTI_SetExtIntSensitivity
-2233                     	xref	_CLK_SYSCLKConfig
-2234                     	xref	_CLK_HSIPrescalerConfig
-2235                     	xref	_CLK_PeripheralClockConfig
-2236                     	xref	_CLK_FastHaltWakeUpCmd
-2237                     	xref	_CLK_HSICmd
-2238                     	xref	_CLK_DeInit
-2258                     	end
+2037                     ; 321 void Core_Ping_Reply(){
+2038                     	switch	.text
+2039  03b1               _Core_Ping_Reply:
+2043                     ; 323 }
+2046  03b1 81            	ret
+2081                     ; 335 void assert_failed(u8* file, u32 line)
+2081                     ; 336 {
+2082                     	switch	.text
+2083  03b2               _assert_failed:
+2087  03b2               L354:
+2088  03b2 20fe          	jra	L354
+2223                     	xdef	_Core_Ping_Reply
+2224                     	xdef	_I2C_SendPacket
+2225                     	xdef	_main
+2226                     	xdef	_LED_SetColor
+2227                     	xdef	_LED_SetColor_Int
+2228                     	xdef	_TIMER_Configuration
+2229                     	xdef	_I2C_Configuration
+2230                     	xdef	_ping_received
+2231                     	xdef	_received2
+2232                     	xdef	_received
+2233                     	xdef	_velocity
+2234                     	switch	.ubsct
+2235  0000               _TxBuffer:
+2236  0000 000000000000  	ds.b	7
+2237                     	xdef	_TxBuffer
+2238                     	xdef	_next_case
+2239                     	xdef	_NumOfBytes
+2240                     	xdef	_i
+2241                     	xdef	_PeriodNumber
+2242  0007               _Counter:
+2243  0007 00            	ds.b	1
+2244                     	xdef	_Counter
+2245                     	xdef	_button_state
+2246                     	xdef	_previous_button_state
+2247                     	xdef	_User_Key_Pressed
+2248                     	xdef	_assert_failed
+2249                     	xref	_TIM4_ITConfig
+2250                     	xref	_TIM4_TimeBaseInit
+2251                     	xref	_TIM4_DeInit
+2252                     	xref	_I2C_CheckEvent
+2253                     	xref	_I2C_SendData
+2254                     	xref	_I2C_Send7bitAddress
+2255                     	xref	_I2C_ReceiveData
+2256                     	xref	_I2C_ITConfig
+2257                     	xref	_I2C_GenerateSTOP
+2258                     	xref	_I2C_GenerateSTART
+2259                     	xref	_I2C_GeneralCallCmd
+2260                     	xref	_I2C_Init
+2261                     	xref	_I2C_DeInit
+2262                     	xref	_GPIO_WriteLow
+2263                     	xref	_GPIO_WriteHigh
+2264                     	xref	_GPIO_Init
+2265                     	xref	_EXTI_SetExtIntSensitivity
+2266                     	xref	_CLK_SYSCLKConfig
+2267                     	xref	_CLK_HSIPrescalerConfig
+2268                     	xref	_CLK_PeripheralClockConfig
+2269                     	xref	_CLK_FastHaltWakeUpCmd
+2270                     	xref	_CLK_HSICmd
+2271                     	xref	_CLK_DeInit
+2291                     	end
