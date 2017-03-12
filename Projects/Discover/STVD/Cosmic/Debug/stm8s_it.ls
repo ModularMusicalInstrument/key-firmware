@@ -314,243 +314,231 @@
 1346  00ff               f_UART1_RX_IRQHandler:
 1350                     ; 397 }
 1353  00ff 80            	iret
-1389                     ; 405 INTERRUPT_HANDLER(I2C_IRQHandler, 19)
-1389                     ; 406 {
-1390                     	switch	.text
-1391  0100               f_I2C_IRQHandler:
-1393  0100 8a            	push	cc
-1394  0101 84            	pop	a
-1395  0102 a4bf          	and	a,#191
-1396  0104 88            	push	a
-1397  0105 86            	pop	cc
-1398       00000002      OFST:	set	2
-1399  0106 3b0002        	push	c_x+2
-1400  0109 be00          	ldw	x,c_x
-1401  010b 89            	pushw	x
-1402  010c 3b0002        	push	c_y+2
-1403  010f be00          	ldw	x,c_y
-1404  0111 89            	pushw	x
-1405  0112 89            	pushw	x
-1408                     ; 412 	int x = 1 + 1;
-1410  0113 ae0002        	ldw	x,#2
-1411  0116 1f01          	ldw	(OFST-1,sp),x
-1412                     ; 414 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_WAKEUPFROMHALT) == SET ) {
-1414  0118 ae2220        	ldw	x,#8736
-1415  011b cd0000        	call	_I2C_GetITStatus
-1417  011e a101          	cp	a,#1
-1418  0120 2607          	jrne	L103
-1419                     ; 415 		x = x + 1;
-1421  0122 1e01          	ldw	x,(OFST-1,sp)
-1422  0124 1c0001        	addw	x,#1
-1423  0127 1f01          	ldw	(OFST-1,sp),x
-1424  0129               L103:
-1425                     ; 417 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_OVERRUNUNDERRUN) == SET ) {
-1427  0129 ae2108        	ldw	x,#8456
-1428  012c cd0000        	call	_I2C_GetITStatus
-1430  012f a101          	cp	a,#1
-1431  0131 2607          	jrne	L303
-1432                     ; 418 		x = x + 1;
-1434  0133 1e01          	ldw	x,(OFST-1,sp)
-1435  0135 1c0001        	addw	x,#1
-1436  0138 1f01          	ldw	(OFST-1,sp),x
-1437  013a               L303:
-1438                     ; 420 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ACKNOWLEDGEFAILURE) == SET ) {
-1440  013a ae2104        	ldw	x,#8452
-1441  013d cd0000        	call	_I2C_GetITStatus
-1443  0140 a101          	cp	a,#1
-1444  0142 2607          	jrne	L503
-1445                     ; 421 		x = x + 1;
-1447  0144 1e01          	ldw	x,(OFST-1,sp)
-1448  0146 1c0001        	addw	x,#1
-1449  0149 1f01          	ldw	(OFST-1,sp),x
-1450  014b               L503:
-1451                     ; 423 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ARBITRATIONLOSS ) == SET ) {
-1453  014b ae2102        	ldw	x,#8450
-1454  014e cd0000        	call	_I2C_GetITStatus
-1456  0151 a101          	cp	a,#1
-1457  0153 2607          	jrne	L703
-1458                     ; 424 		x = x + 1;
-1460  0155 1e01          	ldw	x,(OFST-1,sp)
-1461  0157 1c0001        	addw	x,#1
-1462  015a 1f01          	ldw	(OFST-1,sp),x
-1463  015c               L703:
-1464                     ; 426 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_BUSERROR ) == SET ) {
-1466  015c ae2101        	ldw	x,#8449
-1467  015f cd0000        	call	_I2C_GetITStatus
-1469  0162 a101          	cp	a,#1
-1470  0164 2607          	jrne	L113
-1471                     ; 427 		x = x + 1;
-1473  0166 1e01          	ldw	x,(OFST-1,sp)
-1474  0168 1c0001        	addw	x,#1
-1475  016b 1f01          	ldw	(OFST-1,sp),x
-1476  016d               L113:
-1477                     ; 429 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_TXEMPTY ) == SET ) {
-1479  016d ae1680        	ldw	x,#5760
-1480  0170 cd0000        	call	_I2C_GetITStatus
-1482  0173 a101          	cp	a,#1
-1483  0175 2607          	jrne	L313
-1484                     ; 430 		x = x + 1;
-1486  0177 1e01          	ldw	x,(OFST-1,sp)
-1487  0179 1c0001        	addw	x,#1
-1488  017c 1f01          	ldw	(OFST-1,sp),x
-1489  017e               L313:
-1490                     ; 432 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_STOPDETECTION ) == SET ) {
-1492  017e ae1210        	ldw	x,#4624
-1493  0181 cd0000        	call	_I2C_GetITStatus
-1495  0184 a101          	cp	a,#1
-1496  0186 2607          	jrne	L513
-1497                     ; 433 		x = x + 1;
-1499  0188 1e01          	ldw	x,(OFST-1,sp)
-1500  018a 1c0001        	addw	x,#1
-1501  018d 1f01          	ldw	(OFST-1,sp),x
-1502  018f               L513:
-1503                     ; 435 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_HEADERSENT ) == SET ) {
-1505  018f ae1208        	ldw	x,#4616
-1506  0192 cd0000        	call	_I2C_GetITStatus
-1508  0195 a101          	cp	a,#1
-1509  0197 2607          	jrne	L713
-1510                     ; 436 		x = x + 1;
-1512  0199 1e01          	ldw	x,(OFST-1,sp)
-1513  019b 1c0001        	addw	x,#1
-1514  019e 1f01          	ldw	(OFST-1,sp),x
-1515  01a0               L713:
-1516                     ; 438 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_RXNOTEMPTY ) == SET ) {
-1518  01a0 ae1640        	ldw	x,#5696
-1519  01a3 cd0000        	call	_I2C_GetITStatus
-1521  01a6 a101          	cp	a,#1
-1522  01a8 2607          	jrne	L123
-1523                     ; 439 		x = x + 1;
-1525  01aa 1e01          	ldw	x,(OFST-1,sp)
-1526  01ac 1c0001        	addw	x,#1
-1527  01af 1f01          	ldw	(OFST-1,sp),x
-1528  01b1               L123:
-1529                     ; 441 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_TRANSFERFINISHED ) == SET ) {
-1531  01b1 ae1204        	ldw	x,#4612
-1532  01b4 cd0000        	call	_I2C_GetITStatus
-1534  01b7 a101          	cp	a,#1
-1535  01b9 2607          	jrne	L323
-1536                     ; 442 		x = x + 1;
-1538  01bb 1e01          	ldw	x,(OFST-1,sp)
-1539  01bd 1c0001        	addw	x,#1
-1540  01c0 1f01          	ldw	(OFST-1,sp),x
-1541  01c2               L323:
-1542                     ; 444 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ADDRESSSENTMATCHED ) == SET ) {
-1544  01c2 ae1202        	ldw	x,#4610
-1545  01c5 cd0000        	call	_I2C_GetITStatus
-1547  01c8 a101          	cp	a,#1
-1548  01ca 2607          	jrne	L523
-1549                     ; 445 		x = x + 1;
-1551  01cc 1e01          	ldw	x,(OFST-1,sp)
-1552  01ce 1c0001        	addw	x,#1
-1553  01d1 1f01          	ldw	(OFST-1,sp),x
-1554  01d3               L523:
-1555                     ; 447 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_STARTDETECTION ) == SET ) {
-1557  01d3 ae1201        	ldw	x,#4609
-1558  01d6 cd0000        	call	_I2C_GetITStatus
-1560  01d9 a101          	cp	a,#1
-1561  01db 2607          	jrne	L723
-1562                     ; 448 		x = x + 1;
-1564  01dd 1e01          	ldw	x,(OFST-1,sp)
-1565  01df 1c0001        	addw	x,#1
-1566  01e2 1f01          	ldw	(OFST-1,sp),x
-1567  01e4               L723:
-1568                     ; 451 	if ( I2C_CheckEvent(I2C_EVENT_SLAVE_TRANSMITTER_ADDRESS_MATCHED)== SUCCESS ){
-1570  01e4 ae0682        	ldw	x,#1666
-1571  01e7 cd0000        	call	_I2C_CheckEvent
-1573  01ea a101          	cp	a,#1
-1574  01ec 260f          	jrne	L133
-1575                     ; 452 	I2C_SendData(0x7B);
-1577  01ee a67b          	ld	a,#123
-1578  01f0 cd0000        	call	_I2C_SendData
-1581  01f3               L533:
-1582                     ; 453 	while ( I2C_CheckEvent(I2C_EVENT_SLAVE_BYTE_TRANSMITTED)!= SUCCESS);
-1584  01f3 ae0684        	ldw	x,#1668
-1585  01f6 cd0000        	call	_I2C_CheckEvent
-1587  01f9 a101          	cp	a,#1
-1588  01fb 26f6          	jrne	L533
-1589  01fd               L133:
-1590                     ; 455 }
-1593  01fd 5b02          	addw	sp,#2
-1594  01ff 85            	popw	x
-1595  0200 bf00          	ldw	c_y,x
-1596  0202 320002        	pop	c_y+2
-1597  0205 85            	popw	x
-1598  0206 bf00          	ldw	c_x,x
-1599  0208 320002        	pop	c_x+2
-1600  020b 80            	iret
-1622                     ; 529 INTERRUPT_HANDLER(ADC1_IRQHandler, 22)
-1622                     ; 530 {
-1623                     	switch	.text
-1624  020c               f_ADC1_IRQHandler:
-1628                     ; 534 }
-1631  020c 80            	iret
-1656                     ; 555 INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
-1656                     ; 556 {
-1657                     	switch	.text
-1658  020d               f_TIM4_UPD_OVF_IRQHandler:
-1660  020d 8a            	push	cc
-1661  020e 84            	pop	a
-1662  020f a4bf          	and	a,#191
-1663  0211 88            	push	a
-1664  0212 86            	pop	cc
-1665  0213 3b0002        	push	c_x+2
-1666  0216 be00          	ldw	x,c_x
-1667  0218 89            	pushw	x
-1668  0219 3b0002        	push	c_y+2
-1669  021c be00          	ldw	x,c_y
-1670  021e 89            	pushw	x
-1673                     ; 560   Counter++;
-1675  021f 3c00          	inc	_Counter
-1676                     ; 561   TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
-1678  0221 a601          	ld	a,#1
-1679  0223 cd0000        	call	_TIM4_ClearITPendingBit
-1681                     ; 563 }
-1684  0226 85            	popw	x
-1685  0227 bf00          	ldw	c_y,x
-1686  0229 320002        	pop	c_y+2
-1687  022c 85            	popw	x
-1688  022d bf00          	ldw	c_x,x
-1689  022f 320002        	pop	c_x+2
-1690  0232 80            	iret
-1713                     ; 571 INTERRUPT_HANDLER(EEPROM_EEC_IRQHandler, 24)
-1713                     ; 572 {
-1714                     	switch	.text
-1715  0233               f_EEPROM_EEC_IRQHandler:
-1719                     ; 576 }
-1722  0233 80            	iret
-1745                     	xref	_I2C_SendPacket
-1746                     	xdef	_stopDelay
-1747                     	xref.b	_Counter
-1748                     	xref.b	_previous_button_state
-1749                     	xref.b	_button_state
-1750                     	xdef	f_EEPROM_EEC_IRQHandler
-1751                     	xdef	f_TIM4_UPD_OVF_IRQHandler
-1752                     	xdef	f_ADC1_IRQHandler
-1753                     	xdef	f_I2C_IRQHandler
-1754                     	xdef	f_UART1_RX_IRQHandler
-1755                     	xdef	f_UART1_TX_IRQHandler
-1756                     	xdef	f_TIM2_CAP_COM_IRQHandler
-1757                     	xdef	f_TIM2_UPD_OVF_BRK_IRQHandler
-1758                     	xdef	f_TIM1_UPD_OVF_TRG_BRK_IRQHandler
-1759                     	xdef	f_TIM1_CAP_COM_IRQHandler
-1760                     	xdef	f_SPI_IRQHandler
-1761                     	xdef	f_EXTI_PORTE_IRQHandler
-1762                     	xdef	f_EXTI_PORTD_IRQHandler
-1763                     	xdef	f_EXTI_PORTC_IRQHandler
-1764                     	xdef	f_EXTI_PORTB_IRQHandler
-1765                     	xdef	f_EXTI_PORTA_IRQHandler
-1766                     	xdef	f_CLK_IRQHandler
-1767                     	xdef	f_AWU_IRQHandler
-1768                     	xdef	f_TLI_IRQHandler
-1769                     	xdef	f_TRAP_IRQHandler
-1770                     	xdef	f_NonHandledInterrupt
-1771                     	xref	_TIM4_ClearITPendingBit
-1772                     	xref	_TIM4_GetCounter
-1773                     	xref	_TIM4_SetCounter
-1774                     	xref	_TIM4_Cmd
-1775                     	xref	_I2C_GetITStatus
-1776                     	xref	_I2C_CheckEvent
-1777                     	xref	_I2C_SendData
-1778                     	xref.b	c_x
-1779                     	xref.b	c_y
-1798                     	end
+1388                     ; 405 INTERRUPT_HANDLER(I2C_IRQHandler, 19)
+1388                     ; 406 {
+1389                     	switch	.text
+1390  0100               f_I2C_IRQHandler:
+1392  0100 8a            	push	cc
+1393  0101 84            	pop	a
+1394  0102 a4bf          	and	a,#191
+1395  0104 88            	push	a
+1396  0105 86            	pop	cc
+1397       00000002      OFST:	set	2
+1398  0106 3b0002        	push	c_x+2
+1399  0109 be00          	ldw	x,c_x
+1400  010b 89            	pushw	x
+1401  010c 3b0002        	push	c_y+2
+1402  010f be00          	ldw	x,c_y
+1403  0111 89            	pushw	x
+1404  0112 89            	pushw	x
+1407                     ; 412 	int x = 1 + 1;
+1409  0113 ae0002        	ldw	x,#2
+1410  0116 1f01          	ldw	(OFST-1,sp),x
+1411                     ; 414 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_WAKEUPFROMHALT) == SET ) {
+1413  0118 ae2220        	ldw	x,#8736
+1414  011b cd0000        	call	_I2C_GetITStatus
+1416  011e a101          	cp	a,#1
+1417  0120 2607          	jrne	L103
+1418                     ; 415 		x = x + 1;
+1420  0122 1e01          	ldw	x,(OFST-1,sp)
+1421  0124 1c0001        	addw	x,#1
+1422  0127 1f01          	ldw	(OFST-1,sp),x
+1423  0129               L103:
+1424                     ; 417 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_OVERRUNUNDERRUN) == SET ) {
+1426  0129 ae2108        	ldw	x,#8456
+1427  012c cd0000        	call	_I2C_GetITStatus
+1429  012f a101          	cp	a,#1
+1430  0131 2607          	jrne	L303
+1431                     ; 418 		x = x + 1;
+1433  0133 1e01          	ldw	x,(OFST-1,sp)
+1434  0135 1c0001        	addw	x,#1
+1435  0138 1f01          	ldw	(OFST-1,sp),x
+1436  013a               L303:
+1437                     ; 420 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ACKNOWLEDGEFAILURE) == SET ) {
+1439  013a ae2104        	ldw	x,#8452
+1440  013d cd0000        	call	_I2C_GetITStatus
+1442  0140 a101          	cp	a,#1
+1443  0142 2607          	jrne	L503
+1444                     ; 421 		x = x + 1;
+1446  0144 1e01          	ldw	x,(OFST-1,sp)
+1447  0146 1c0001        	addw	x,#1
+1448  0149 1f01          	ldw	(OFST-1,sp),x
+1449  014b               L503:
+1450                     ; 423 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ARBITRATIONLOSS ) == SET ) {
+1452  014b ae2102        	ldw	x,#8450
+1453  014e cd0000        	call	_I2C_GetITStatus
+1455  0151 a101          	cp	a,#1
+1456  0153 2607          	jrne	L703
+1457                     ; 424 		x = x + 1;
+1459  0155 1e01          	ldw	x,(OFST-1,sp)
+1460  0157 1c0001        	addw	x,#1
+1461  015a 1f01          	ldw	(OFST-1,sp),x
+1462  015c               L703:
+1463                     ; 426 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_BUSERROR ) == SET ) {
+1465  015c ae2101        	ldw	x,#8449
+1466  015f cd0000        	call	_I2C_GetITStatus
+1468  0162 a101          	cp	a,#1
+1469  0164 2607          	jrne	L113
+1470                     ; 427 		x = x + 1;
+1472  0166 1e01          	ldw	x,(OFST-1,sp)
+1473  0168 1c0001        	addw	x,#1
+1474  016b 1f01          	ldw	(OFST-1,sp),x
+1475  016d               L113:
+1476                     ; 429 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_TXEMPTY ) == SET ) {
+1478  016d ae1680        	ldw	x,#5760
+1479  0170 cd0000        	call	_I2C_GetITStatus
+1481  0173 a101          	cp	a,#1
+1482  0175 2607          	jrne	L313
+1483                     ; 430 		x = x + 1;
+1485  0177 1e01          	ldw	x,(OFST-1,sp)
+1486  0179 1c0001        	addw	x,#1
+1487  017c 1f01          	ldw	(OFST-1,sp),x
+1488  017e               L313:
+1489                     ; 432 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_STOPDETECTION ) == SET ) {
+1491  017e ae1210        	ldw	x,#4624
+1492  0181 cd0000        	call	_I2C_GetITStatus
+1494  0184 a101          	cp	a,#1
+1495  0186 2607          	jrne	L513
+1496                     ; 433 		x = x + 1;
+1498  0188 1e01          	ldw	x,(OFST-1,sp)
+1499  018a 1c0001        	addw	x,#1
+1500  018d 1f01          	ldw	(OFST-1,sp),x
+1501  018f               L513:
+1502                     ; 435 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_HEADERSENT ) == SET ) {
+1504  018f ae1208        	ldw	x,#4616
+1505  0192 cd0000        	call	_I2C_GetITStatus
+1507  0195 a101          	cp	a,#1
+1508  0197 2607          	jrne	L713
+1509                     ; 436 		x = x + 1;
+1511  0199 1e01          	ldw	x,(OFST-1,sp)
+1512  019b 1c0001        	addw	x,#1
+1513  019e 1f01          	ldw	(OFST-1,sp),x
+1514  01a0               L713:
+1515                     ; 438 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_RXNOTEMPTY ) == SET ) {
+1517  01a0 ae1640        	ldw	x,#5696
+1518  01a3 cd0000        	call	_I2C_GetITStatus
+1520  01a6 a101          	cp	a,#1
+1521  01a8 2607          	jrne	L123
+1522                     ; 439 		x = x + 1;
+1524  01aa 1e01          	ldw	x,(OFST-1,sp)
+1525  01ac 1c0001        	addw	x,#1
+1526  01af 1f01          	ldw	(OFST-1,sp),x
+1527  01b1               L123:
+1528                     ; 441 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_TRANSFERFINISHED ) == SET ) {
+1530  01b1 ae1204        	ldw	x,#4612
+1531  01b4 cd0000        	call	_I2C_GetITStatus
+1533  01b7 a101          	cp	a,#1
+1534  01b9 2607          	jrne	L323
+1535                     ; 442 		x = x + 1;
+1537  01bb 1e01          	ldw	x,(OFST-1,sp)
+1538  01bd 1c0001        	addw	x,#1
+1539  01c0 1f01          	ldw	(OFST-1,sp),x
+1540  01c2               L323:
+1541                     ; 444 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_ADDRESSSENTMATCHED ) == SET ) {
+1543  01c2 ae1202        	ldw	x,#4610
+1544  01c5 cd0000        	call	_I2C_GetITStatus
+1546  01c8 a101          	cp	a,#1
+1547  01ca 2607          	jrne	L523
+1548                     ; 445 		x = x + 1;
+1550  01cc 1e01          	ldw	x,(OFST-1,sp)
+1551  01ce 1c0001        	addw	x,#1
+1552  01d1 1f01          	ldw	(OFST-1,sp),x
+1553  01d3               L523:
+1554                     ; 447 	if ( I2C_GetITStatus( I2C_ITPENDINGBIT_STARTDETECTION ) == SET ) {
+1556  01d3 ae1201        	ldw	x,#4609
+1557  01d6 cd0000        	call	_I2C_GetITStatus
+1559  01d9 a101          	cp	a,#1
+1560  01db 2607          	jrne	L723
+1561                     ; 448 		x = x + 1;
+1563  01dd 1e01          	ldw	x,(OFST-1,sp)
+1564  01df 1c0001        	addw	x,#1
+1565  01e2 1f01          	ldw	(OFST-1,sp),x
+1566  01e4               L723:
+1567                     ; 451 	if ( I2C_CheckEvent(I2C_EVENT_SLAVE_RECEIVER_ADDRESS_MATCHED)== SUCCESS ){
+1569  01e4 ae0202        	ldw	x,#514
+1570  01e7 cd0000        	call	_I2C_CheckEvent
+1572  01ea a101          	cp	a,#1
+1573                     ; 455 }
+1576  01ec 5b02          	addw	sp,#2
+1577  01ee 85            	popw	x
+1578  01ef bf00          	ldw	c_y,x
+1579  01f1 320002        	pop	c_y+2
+1580  01f4 85            	popw	x
+1581  01f5 bf00          	ldw	c_x,x
+1582  01f7 320002        	pop	c_x+2
+1583  01fa 80            	iret
+1605                     ; 529 INTERRUPT_HANDLER(ADC1_IRQHandler, 22)
+1605                     ; 530 {
+1606                     	switch	.text
+1607  01fb               f_ADC1_IRQHandler:
+1611                     ; 534 }
+1614  01fb 80            	iret
+1639                     ; 555 INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
+1639                     ; 556 {
+1640                     	switch	.text
+1641  01fc               f_TIM4_UPD_OVF_IRQHandler:
+1643  01fc 8a            	push	cc
+1644  01fd 84            	pop	a
+1645  01fe a4bf          	and	a,#191
+1646  0200 88            	push	a
+1647  0201 86            	pop	cc
+1648  0202 3b0002        	push	c_x+2
+1649  0205 be00          	ldw	x,c_x
+1650  0207 89            	pushw	x
+1651  0208 3b0002        	push	c_y+2
+1652  020b be00          	ldw	x,c_y
+1653  020d 89            	pushw	x
+1656                     ; 560   Counter++;
+1658  020e 3c00          	inc	_Counter
+1659                     ; 561   TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
+1661  0210 a601          	ld	a,#1
+1662  0212 cd0000        	call	_TIM4_ClearITPendingBit
+1664                     ; 563 }
+1667  0215 85            	popw	x
+1668  0216 bf00          	ldw	c_y,x
+1669  0218 320002        	pop	c_y+2
+1670  021b 85            	popw	x
+1671  021c bf00          	ldw	c_x,x
+1672  021e 320002        	pop	c_x+2
+1673  0221 80            	iret
+1696                     ; 571 INTERRUPT_HANDLER(EEPROM_EEC_IRQHandler, 24)
+1696                     ; 572 {
+1697                     	switch	.text
+1698  0222               f_EEPROM_EEC_IRQHandler:
+1702                     ; 576 }
+1705  0222 80            	iret
+1728                     	xref	_I2C_SendPacket
+1729                     	xdef	_stopDelay
+1730                     	xref.b	_Counter
+1731                     	xref.b	_previous_button_state
+1732                     	xref.b	_button_state
+1733                     	xdef	f_EEPROM_EEC_IRQHandler
+1734                     	xdef	f_TIM4_UPD_OVF_IRQHandler
+1735                     	xdef	f_ADC1_IRQHandler
+1736                     	xdef	f_I2C_IRQHandler
+1737                     	xdef	f_UART1_RX_IRQHandler
+1738                     	xdef	f_UART1_TX_IRQHandler
+1739                     	xdef	f_TIM2_CAP_COM_IRQHandler
+1740                     	xdef	f_TIM2_UPD_OVF_BRK_IRQHandler
+1741                     	xdef	f_TIM1_UPD_OVF_TRG_BRK_IRQHandler
+1742                     	xdef	f_TIM1_CAP_COM_IRQHandler
+1743                     	xdef	f_SPI_IRQHandler
+1744                     	xdef	f_EXTI_PORTE_IRQHandler
+1745                     	xdef	f_EXTI_PORTD_IRQHandler
+1746                     	xdef	f_EXTI_PORTC_IRQHandler
+1747                     	xdef	f_EXTI_PORTB_IRQHandler
+1748                     	xdef	f_EXTI_PORTA_IRQHandler
+1749                     	xdef	f_CLK_IRQHandler
+1750                     	xdef	f_AWU_IRQHandler
+1751                     	xdef	f_TLI_IRQHandler
+1752                     	xdef	f_TRAP_IRQHandler
+1753                     	xdef	f_NonHandledInterrupt
+1754                     	xref	_TIM4_ClearITPendingBit
+1755                     	xref	_TIM4_GetCounter
+1756                     	xref	_TIM4_SetCounter
+1757                     	xref	_TIM4_Cmd
+1758                     	xref	_I2C_GetITStatus
+1759                     	xref	_I2C_CheckEvent
+1760                     	xref.b	c_x
+1761                     	xref.b	c_y
+1780                     	end
