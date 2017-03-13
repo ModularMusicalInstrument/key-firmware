@@ -1,5 +1,5 @@
 
-Map of Debug\discover.sm8 from link file Debug\discover.lkf - Sun Mar 12 17:04:55 2017
+Map of Debug\discover.sm8 from link file Debug\discover.lkf - Mon Mar 13 07:27:54 2017
 
 
                                --------
@@ -7,17 +7,17 @@ Map of Debug\discover.sm8 from link file Debug\discover.lkf - Sun Mar 12 17:04:5
                                --------
 
 start 00008080 end 000081cc length   332 segment .const
-start 000081e1 end 00009e11 length  7216 segment .text
+start 000081e3 end 00009e1e length  7227 segment .text
 start 00004000 end 00004000 length     0 segment .eeprom
-start 00000000 end 0000000d length    13 segment .bsct, initialized
-start 000081d4 end 000081e1 length    13 segment .bsct, from
-start 0000000d end 0000001f length    18 segment .ubsct
-start 0000001f end 0000001f length     0 segment .bit
-start 0000001f end 0000001f length     0 segment .share
+start 00000000 end 0000000f length    15 segment .bsct, initialized
+start 000081d4 end 000081e3 length    15 segment .bsct, from
+start 0000000f end 00000019 length    10 segment .ubsct
+start 00000019 end 00000019 length     0 segment .bit
+start 00000019 end 00000019 length     0 segment .share
 start 00000100 end 00000100 length     0 segment .data
 start 00000100 end 00000100 length     0 segment .bss
 start 00000000 end 000006f5 length  1781 segment .info.
-start 00000000 end 0000550b length 21771 segment .debug
+start 00000000 end 00005593 length 21907 segment .debug
 start 00008000 end 00008080 length   128 segment .const
 start 000081cc end 000081d4 length     8 segment .init
 
@@ -27,112 +27,112 @@ start 000081cc end 000081d4 length     8 segment .init
                                -------
 
 C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8:
-start 000081e1 end 0000822c length    75 section .text
+start 000081e3 end 0000822e length    75 section .text
 start 00000100 end 00000100 length     0 section .bss
-start 0000000d end 0000000d length     0 section .ubsct
+start 0000000f end 0000000f length     0 section .ubsct
 start 00000000 end 00000030 length    48 section .info.
 
 Debug\stm8s_clk.o:
-start 0000822c end 0000890e length  1762 section .text
+start 0000822e end 00008910 length  1762 section .text
 start 00000000 end 0000166f length  5743 section .debug
 start 00000030 end 000000ae length   126 section .info.
 start 00008080 end 000080c9 length    73 section .const
 
 Debug\stm8s_it.o:
-start 0000890e end 00008b31 length   547 section .text
-start 00000000 end 00000002 length     2 section .bsct
-start 0000166f end 00001d83 length  1812 section .debug
+start 00008910 end 00008ae4 length   468 section .text
+start 00000000 end 00000004 length     4 section .bsct
+start 0000166f end 00001dbb length  1868 section .debug
 start 000000ae end 0000012b length   125 section .info.
 
 Debug\main.o:
-start 00008b31 end 00008ee5 length   948 section .text
-start 00000002 end 0000000d length    11 section .bsct
-start 0000000d end 00000015 length     8 section .ubsct
-start 00001d83 end 000023f4 length  1649 section .debug
+start 00008ae4 end 00008ef2 length  1038 section .text
+start 00000004 end 0000000f length    11 section .bsct
+start ******** end ******** length     0 section .ubsct *** removed ***
+start 00001dbb end 0000247c length  1729 section .debug
 start 0000012b end 000001a4 length   121 section .info.
 
 Debug\stm8s_i2c.o:
-start 00008ee5 end 000095f8 length  1811 section .text
-start 000023f4 end 00003995 length  5537 section .debug
+start 00008ef2 end 00009605 length  1811 section .text
+start 0000247c end 00003a1d length  5537 section .debug
 start 000001a4 end 00000222 length   126 section .info.
 start 000080c9 end 00008112 length    73 section .const
 
 Debug\stm8s_tim4.o:
-start 000095f8 end 000098bf length   711 section .text
-start 00003995 end 0000454c length  2999 section .debug
+start 00009605 end 000098cc length   711 section .text
+start 00003a1d end 000045d4 length  2999 section .debug
 start 00000222 end 000002a1 length   127 section .info.
 start 00008112 end 00008150 length    62 section .const
 
 Debug\stm8s_gpio.o:
-start 000098bf end 00009a1b length   348 section .text
-start 0000454c end 00004f56 length  2570 section .debug
+start 000098cc end 00009a28 length   348 section .text
+start 000045d4 end 00004fde length  2570 section .debug
 start 000002a1 end 00000320 length   127 section .info.
 start 00008150 end 0000818e length    62 section .const
 
 Debug\stm8s_exti.o:
-start 00009a1b end 00009b9e length   387 section .text
-start 00004f56 end 000053e5 length  1167 section .debug
+start 00009a28 end 00009bab length   387 section .text
+start 00004fde end 0000546d length  1167 section .debug
 start 00000320 end 0000039f length   127 section .info.
 start 0000818e end 000081cc length    62 section .const
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lcmp.o:
-start 00009b9e end 00009bbe length    32 section .text
+start 00009bab end 00009bcb length    32 section .text
 start 0000039f end 000003ce length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lmul.o:
-start 00009bbe end 00009c49 length   139 section .text
+start 00009bcb end 00009c56 length   139 section .text
 start 000003ce end 000003fd length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lreg.o:
-start 00000015 end 00000019 length     4 section .ubsct
+start 0000000f end 00000013 length     4 section .ubsct
 start 000003fd end 0000042c length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ltor.o:
-start 00009c49 end 00009c5b length    18 section .text
+start 00009c56 end 00009c68 length    18 section .text
 start 0000042c end 0000045b length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ludiv.o:
-start 00009c5b end 00009c6f length    20 section .text
+start 00009c68 end 00009c7c length    20 section .text
 start 0000045b end 0000048b length    48 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ldiv.o:
-start 00009c6f end 00009d5a length   235 section .text
+start 00009c7c end 00009d67 length   235 section .text
 start 0000048b end 000004ba length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lgneg.o:
-start 00009d5a end 00009d6d length    19 section .text
+start 00009d67 end 00009d7a length    19 section .text
 start 000004ba end 000004ea length    48 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lneg.o:
-start 00009d6d end 00009d82 length    21 section .text
+start 00009d7a end 00009d8f length    21 section .text
 start 000004ea end 00000519 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lzmp.o:
-start 00009d82 end 00009d95 length    19 section .text
+start 00009d8f end 00009da2 length    19 section .text
 start 00000519 end 00000548 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)rtol.o:
-start 00009d95 end 00009da7 length    18 section .text
+start 00009da2 end 00009db4 length    18 section .text
 start 00000548 end 00000577 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)sdivx.o:
-start 00009da7 end 00009dd2 length    43 section .text
+start 00009db4 end 00009ddf length    43 section .text
 start 00000577 end 000005a7 length    48 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)smul.o:
-start 00009dd2 end 00009e11 length    63 section .text
+start 00009ddf end 00009e1e length    63 section .text
 start 000005a7 end 000005d6 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)xreg.o:
-start 00000019 end 0000001c length     3 section .ubsct
+start 00000013 end 00000016 length     3 section .ubsct
 start 000005d6 end 00000605 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)yreg.o:
-start 0000001c end 0000001f length     3 section .ubsct
+start 00000016 end 00000019 length     3 section .ubsct
 start 00000605 end 00000634 length    47 section .info.
 
 Debug\stm8_interrupt_vector.o:
-start 000053e5 end 0000550b length   294 section .debug
+start 0000546d end 00005593 length   294 section .debug
 start 00000634 end 000006be length   138 section .info.
 start 00008000 end 00008080 length   128 section .const
 
@@ -149,7 +149,7 @@ _LED_SetColor                      >   17   (5)
 _LED_SetColor_Int                      12   (12)
 _TIMER_Configuration                   12   (2)
 _assert_failed                          6   (6)
-_main                              >   39   (2)
+_main                              >   45   (8)
 
 Debug\stm8s_clk.o:
 _CLK_AdjustHSICalibrationValue     >    9   (3)
@@ -160,7 +160,7 @@ _CLK_ClockSecuritySystemEnable     >    2   (2)
 _CLK_ClockSwitchCmd                >    9   (3)
 _CLK_ClockSwitchConfig             >   16   (10)
 _CLK_DeInit                             2   (2)
-_CLK_FastHaltWakeUpCmd                  9   (3)
+_CLK_FastHaltWakeUpCmd             >    9   (3)
 _CLK_GetClockFreq                  >   25   (11)
 _CLK_GetFlagStatus                 >   13   (7)
 _CLK_GetITStatus                   >   10   (4)
@@ -170,7 +170,7 @@ _CLK_HSICmd                             9   (3)
 _CLK_HSIPrescalerConfig                 9   (3)
 _CLK_ITConfig                      >   10   (4)
 _CLK_LSICmd                        >    9   (3)
-_CLK_PeripheralClockConfig             10   (4)
+_CLK_PeripheralClockConfig         >   10   (4)
 _CLK_SWIMConfig                    >    9   (3)
 _CLK_SYSCLKConfig                       9   (3)
 _CLK_SYSCLKEmergencyClear          >    2   (2)
@@ -234,7 +234,7 @@ f_TIM1_CAP_COM_IRQHandler          >    6   (6)
 f_TIM1_UPD_OVF_TRG_BRK_IRQHandler  >    6   (6)
 f_TIM2_CAP_COM_IRQHandler          >    6   (6)
 f_TIM2_UPD_OVF_BRK_IRQHandler      >    6   (6)
-f_TIM4_UPD_OVF_IRQHandler          >   21   (12)
+f_TIM4_UPD_OVF_IRQHandler          >   22   (13)
 f_TLI_IRQHandler                   >    6   (6)
 f_TRAP_IRQHandler                  >    6   (6)
 f_UART1_RX_IRQHandler              >    6   (6)
@@ -255,12 +255,12 @@ _TIM4_ITConfig                         10   (4)
 _TIM4_PrescalerConfig              >   10   (4)
 _TIM4_SelectOnePulseMode           >    9   (3)
 _TIM4_SetAutoreload                >    2   (2)
-_TIM4_SetCounter                        2   (2)
+_TIM4_SetCounter                   >    2   (2)
 _TIM4_TimeBaseInit                     10   (4)
 _TIM4_UpdateDisableConfig          >    9   (3)
 _TIM4_UpdateRequestConfig          >    9   (3)
 
-Stack size: 73
+Stack size: 79
 
 
                               ---------
@@ -286,236 +286,237 @@ Stack size: 73
   12 > _CLK_ClockSwitchConfig: (10)
   13      + _assert_failed --> 2
        
-  14 > _CLK_GetClockFreq: (11)
-
-  15 > _CLK_GetFlagStatus: (7)
-  16      + _assert_failed --> 2
+  14 > _CLK_FastHaltWakeUpCmd: (3)
+  15      + _assert_failed --> 2
        
-  17 > _CLK_GetITStatus: (4)
+  16 > _CLK_GetClockFreq: (11)
+
+  17 > _CLK_GetFlagStatus: (7)
   18      + _assert_failed --> 2
        
-  19 > _CLK_GetSYSCLKSource: (2)
-
-  20 > _CLK_HSECmd: (3)
-  21      + _assert_failed --> 2
+  19 > _CLK_GetITStatus: (4)
+  20      + _assert_failed --> 2
        
-  22 > _CLK_ITConfig: (4)
+  21 > _CLK_GetSYSCLKSource: (2)
+
+  22 > _CLK_HSECmd: (3)
   23      + _assert_failed --> 2
        
-  24 > _CLK_LSICmd: (3)
+  24 > _CLK_ITConfig: (4)
   25      + _assert_failed --> 2
        
-  26 > _CLK_SWIMConfig: (3)
+  26 > _CLK_LSICmd: (3)
   27      + _assert_failed --> 2
        
-  28 > _CLK_SYSCLKEmergencyClear: (2)
-
-  29 > _CLK_SlowActiveHaltWakeUpCmd: (3)
-  30      + _assert_failed --> 2
+  28 > _CLK_PeripheralClockConfig: (4)
+  29      + _assert_failed --> 2
        
-  31 > _Core_Ping_Reply: (2)
+  30 > _CLK_SWIMConfig: (3)
+  31      + _assert_failed --> 2
+       
+  32 > _CLK_SYSCLKEmergencyClear: (2)
 
-  32 > _EXTI_DeInit: (2)
-
-  33 > _EXTI_GetExtIntSensitivity: (4)
+  33 > _CLK_SlowActiveHaltWakeUpCmd: (3)
   34      + _assert_failed --> 2
        
-  35 > _EXTI_GetTLISensitivity: (3)
+  35 > _Core_Ping_Reply: (2)
 
-  36 > _EXTI_SetTLISensitivity: (3)
-  37      + _assert_failed --> 2
+  36 > _EXTI_DeInit: (2)
+
+  37 > _EXTI_GetExtIntSensitivity: (4)
+  38      + _assert_failed --> 2
        
-  38 > _GPIO_DeInit: (2)
+  39 > _EXTI_GetTLISensitivity: (3)
 
-  39 > _GPIO_ExternalPullUpConfig: (6)
-  40      + _assert_failed --> 2
+  40 > _EXTI_SetTLISensitivity: (3)
+  41      + _assert_failed --> 2
        
-  41 > _GPIO_ReadInputData: (2)
+  42 > _GPIO_DeInit: (2)
 
-  42 > _GPIO_ReadInputPin: (5)
-
-  43 > _GPIO_ReadOutputData: (2)
-
-  44 > _GPIO_Write: (5)
-
-  45 > _GPIO_WriteReverse: (5)
-
-  46 > _I2C_ClearFlag: (6)
-  47      + _assert_failed --> 2
+  43 > _GPIO_ExternalPullUpConfig: (6)
+  44      + _assert_failed --> 2
        
-  48 > _I2C_ClearITPendingBit: (6)
-  49      + _assert_failed --> 2
-       
-  50 > _I2C_Cmd: (3)
+  45 > _GPIO_ReadInputData: (2)
+
+  46 > _GPIO_ReadInputPin: (5)
+
+  47 > _GPIO_ReadOutputData: (2)
+
+  48 > _GPIO_Write: (5)
+
+  49 > _GPIO_WriteReverse: (5)
+
+  50 > _I2C_ClearFlag: (6)
   51      + _assert_failed --> 2
        
-  52 > _I2C_FastModeDutyCycleConfig: (3)
+  52 > _I2C_ClearITPendingBit: (6)
   53      + _assert_failed --> 2
        
-  54 > _I2C_GetFlagStatus: (6)
+  54 > _I2C_Cmd: (3)
   55      + _assert_failed --> 2
        
-  56 > _I2C_GetLastEvent: (8)
+  56 > _I2C_FastModeDutyCycleConfig: (3)
+  57      + _assert_failed --> 2
+       
+  58 > _I2C_GetFlagStatus: (6)
+  59      + _assert_failed --> 2
+       
+  60 > _I2C_GetLastEvent: (8)
 
-  57 > _I2C_SoftwareResetCmd: (3)
-  58      + _assert_failed --> 2
+  61 > _I2C_SoftwareResetCmd: (3)
+  62      + _assert_failed --> 2
        
-  59 > _I2C_StretchClockCmd: (3)
-  60      + _assert_failed --> 2
-       
-  61 > _LED_SetColor: (5)
-  62      + _LED_SetColor_Int: (12)
-       
-  63 > _TIM4_ARRPreloadConfig: (3)
+  63 > _I2C_StretchClockCmd: (3)
   64      + _assert_failed --> 2
        
-  65 > _TIM4_ClearFlag: (3)
-  66      + _assert_failed --> 2
+  65 > _LED_SetColor: (5)
+  66      + _LED_SetColor_Int: (12)
        
-  67 > _TIM4_GenerateEvent: (3)
+  67 > _TIM4_ARRPreloadConfig: (3)
   68      + _assert_failed --> 2
        
-  69 > _TIM4_GetFlagStatus: (4)
+  69 > _TIM4_ClearFlag: (3)
   70      + _assert_failed --> 2
        
-  71 > _TIM4_GetITStatus: (5)
+  71 > _TIM4_GenerateEvent: (3)
   72      + _assert_failed --> 2
        
-  73 > _TIM4_GetPrescaler: (2)
+  73 > _TIM4_GetFlagStatus: (4)
+  74      + _assert_failed --> 2
+       
+  75 > _TIM4_GetITStatus: (5)
+  76      + _assert_failed --> 2
+       
+  77 > _TIM4_GetPrescaler: (2)
 
-  74 > _TIM4_PrescalerConfig: (4)
-  75      + _assert_failed --> 2
+  78 > _TIM4_PrescalerConfig: (4)
+  79      + _assert_failed --> 2
        
-  76 > _TIM4_SelectOnePulseMode: (3)
-  77      + _assert_failed --> 2
+  80 > _TIM4_SelectOnePulseMode: (3)
+  81      + _assert_failed --> 2
        
-  78 > _TIM4_SetAutoreload: (2)
+  82 > _TIM4_SetAutoreload: (2)
 
-  79 > _TIM4_UpdateDisableConfig: (3)
-  80      + _assert_failed --> 2
-       
-  81 > _TIM4_UpdateRequestConfig: (3)
-  82      + _assert_failed --> 2
-       
-  83 > __stext: (0)
+  83 > _TIM4_SetCounter: (2)
 
-  84 > _main: (2)
-  85      + _CLK_DeInit: (2)
-  86      + _CLK_FastHaltWakeUpCmd: (3)
-  87      |    + _assert_failed --> 2
+  84 > _TIM4_UpdateDisableConfig: (3)
+  85      + _assert_failed --> 2
+       
+  86 > _TIM4_UpdateRequestConfig: (3)
+  87      + _assert_failed --> 2
+       
+  88 > __stext: (0)
+
+  89 > _main: (8)
+  90      + _CLK_DeInit: (2)
+  91      + _CLK_HSICmd: (3)
+  92      |    + _assert_failed --> 2
           | 
-  88      + _CLK_HSICmd: (3)
-  89      |    + _assert_failed --> 2
+  93      + _CLK_HSIPrescalerConfig: (3)
+  94      |    + _assert_failed --> 2
           | 
-  90      + _CLK_HSIPrescalerConfig: (3)
-  91      |    + _assert_failed --> 2
+  95      + _CLK_SYSCLKConfig: (3)
+  96      |    + _assert_failed --> 2
           | 
-  92      + _CLK_PeripheralClockConfig: (4)
-  93      |    + _assert_failed --> 2
+  97      + _EXTI_SetExtIntSensitivity: (4)
+  98      |    + _assert_failed --> 2
           | 
-  94      + _CLK_SYSCLKConfig: (3)
-  95      |    + _assert_failed --> 2
+  99      + _GPIO_Init: (6)
+ 100      |    + _assert_failed --> 2
           | 
-  96      + _EXTI_SetExtIntSensitivity: (4)
-  97      |    + _assert_failed --> 2
+ 101      + _GPIO_WriteHigh: (5)
+ 102      + _GPIO_WriteLow: (5)
+ 103      + _I2C_CheckEvent: (10)
+ 104      |    + _assert_failed --> 2
           | 
-  98      + _GPIO_Init: (6)
-  99      |    + _assert_failed --> 2
-          | 
- 100      + _GPIO_WriteHigh: (5)
- 101      + _GPIO_WriteLow: (5)
- 102      + _I2C_CheckEvent: (10)
- 103      |    + _assert_failed --> 2
-          | 
- 104      + _I2C_Configuration: (2)
- 105      |    + _I2C_DeInit: (2)
- 106      |    + _I2C_ITConfig: (4)
- 107      |    |    + _assert_failed --> 2
+ 105      + _I2C_Configuration: (2)
+ 106      |    + _I2C_DeInit: (2)
+ 107      |    + _I2C_ITConfig: (4)
+ 108      |    |    + _assert_failed --> 2
           |    | 
- 108      |    + _I2C_Init: (21)
- 109      |    |    + _I2C_AcknowledgeConfig: (3)
- 110      |    |    |    + _assert_failed --> 2
+ 109      |    + _I2C_Init: (21)
+ 110      |    |    + _I2C_AcknowledgeConfig: (3)
+ 111      |    |    |    + _assert_failed --> 2
           |    |    | 
- 111      |    |    + _assert_failed --> 2
+ 112      |    |    + _assert_failed --> 2
           |    | 
           | 
- 112      + _I2C_GeneralCallCmd: (3)
- 113      |    + _assert_failed --> 2
+ 113      + _I2C_GeneralCallCmd: (3)
+ 114      |    + _assert_failed --> 2
           | 
- 114      + _I2C_GenerateSTART: (3)
- 115      |    + _assert_failed --> 2
+ 115      + _I2C_GenerateSTART: (3)
+ 116      |    + _assert_failed --> 2
           | 
- 116      + _I2C_GenerateSTOP: (3)
- 117      |    + _assert_failed --> 2
+ 117      + _I2C_GenerateSTOP: (3)
+ 118      |    + _assert_failed --> 2
           | 
- 118      + _I2C_ReceiveData: (2)
- 119      + _I2C_Send7bitAddress: (4)
- 120      |    + _assert_failed --> 2
+ 119      + _I2C_ReceiveData: (2)
+ 120      + _I2C_Send7bitAddress: (4)
+ 121      |    + _assert_failed --> 2
           | 
- 121      + _I2C_SendData: (2)
- 122      + _LED_SetColor_Int --> 62
- 123      + _TIMER_Configuration: (2)
- 124      |    + _TIM4_DeInit: (2)
- 125      |    + _TIM4_ITConfig: (4)
- 126      |    |    + _assert_failed --> 2
+ 122      + _I2C_SendData: (2)
+ 123      + _LED_SetColor_Int --> 66
+ 124      + _TIMER_Configuration: (2)
+ 125      |    + _TIM4_DeInit: (2)
+ 126      |    + _TIM4_ITConfig: (4)
+ 127      |    |    + _assert_failed --> 2
           |    | 
- 127      |    + _TIM4_TimeBaseInit: (4)
- 128      |    |    + _assert_failed --> 2
+ 128      |    + _TIM4_TimeBaseInit: (4)
+ 129      |    |    + _assert_failed --> 2
           |    | 
           | 
        
- 129 > f_ADC1_IRQHandler: (6)
+ 130 > f_ADC1_IRQHandler: (6)
 
- 130 > f_AWU_IRQHandler: (6)
+ 131 > f_AWU_IRQHandler: (6)
 
- 131 > f_CLK_IRQHandler: (6)
+ 132 > f_CLK_IRQHandler: (6)
 
- 132 > f_EEPROM_EEC_IRQHandler: (6)
+ 133 > f_EEPROM_EEC_IRQHandler: (6)
 
- 133 > f_EXTI_PORTA_IRQHandler: (6)
+ 134 > f_EXTI_PORTA_IRQHandler: (6)
 
- 134 > f_EXTI_PORTB_IRQHandler: (6)
+ 135 > f_EXTI_PORTB_IRQHandler: (6)
 
- 135 > f_EXTI_PORTC_IRQHandler: (15)
- 136      + _I2C_SendPacket: (3)
- 137      |    + _I2C_CheckEvent --> 102
- 138      |    + _I2C_GenerateSTART --> 114
- 139      |    + _I2C_GenerateSTOP --> 116
- 140      |    + _I2C_Send7bitAddress --> 119
- 141      |    + _I2C_SendData --> 121
+ 136 > f_EXTI_PORTC_IRQHandler: (15)
+ 137      + _I2C_SendPacket: (3)
+ 138      |    + _I2C_CheckEvent --> 103
+ 139      |    + _I2C_GenerateSTART --> 115
+ 140      |    + _I2C_GenerateSTOP --> 117
+ 141      |    + _I2C_Send7bitAddress --> 120
+ 142      |    + _I2C_SendData --> 122
           | 
- 142      + _TIM4_Cmd: (3)
- 143      |    + _assert_failed --> 2
-          | 
- 144      + _TIM4_GetCounter: (2)
- 145      + _TIM4_SetCounter: (2)
-       
- 146 > f_EXTI_PORTD_IRQHandler: (6)
-
- 147 > f_EXTI_PORTE_IRQHandler: (6)
-
- 148 > f_I2C_IRQHandler: (14)
- 149      + _I2C_CheckEvent --> 102
- 150      + _I2C_GetITStatus: (8)
- 151      |    + _assert_failed --> 2
+ 143      + _TIM4_Cmd: (3)
+ 144      |    + _assert_failed --> 2
           | 
        
- 152 > f_NonHandledInterrupt: (6)
+ 145 > f_EXTI_PORTD_IRQHandler: (6)
 
- 153 > f_SPI_IRQHandler: (6)
+ 146 > f_EXTI_PORTE_IRQHandler: (6)
 
- 154 > f_TIM1_CAP_COM_IRQHandler: (6)
-
- 155 > f_TIM1_UPD_OVF_TRG_BRK_IRQHandler: (6)
-
- 156 > f_TIM2_CAP_COM_IRQHandler: (6)
-
- 157 > f_TIM2_UPD_OVF_BRK_IRQHandler: (6)
-
- 158 > f_TIM4_UPD_OVF_IRQHandler: (12)
- 159      + _TIM4_ClearITPendingBit: (3)
- 160      |    + _assert_failed --> 2
+ 147 > f_I2C_IRQHandler: (14)
+ 148      + _I2C_CheckEvent --> 103
+ 149      + _I2C_GetITStatus: (8)
+ 150      |    + _assert_failed --> 2
           | 
+       
+ 151 > f_NonHandledInterrupt: (6)
+
+ 152 > f_SPI_IRQHandler: (6)
+
+ 153 > f_TIM1_CAP_COM_IRQHandler: (6)
+
+ 154 > f_TIM1_UPD_OVF_TRG_BRK_IRQHandler: (6)
+
+ 155 > f_TIM2_CAP_COM_IRQHandler: (6)
+
+ 156 > f_TIM2_UPD_OVF_BRK_IRQHandler: (6)
+
+ 157 > f_TIM4_UPD_OVF_IRQHandler: (13)
+ 158      + _TIM4_ClearITPendingBit: (3)
+ 159      |    + _assert_failed --> 2
+          | 
+ 160      + _TIM4_GetCounter: (2)
        
  161 > f_TLI_IRQHandler: (6)
 
@@ -525,73 +526,67 @@ Stack size: 73
 
  164 > f_UART1_TX_IRQHandler: (6)
 
- 165   _CLK_DeInit --> 85
+ 165   _CLK_DeInit --> 90
 
- 166   _CLK_FastHaltWakeUpCmd --> 86
+ 166   _CLK_HSICmd --> 91
 
- 167   _CLK_HSICmd --> 88
+ 167   _CLK_HSIPrescalerConfig --> 93
 
- 168   _CLK_HSIPrescalerConfig --> 90
+ 168   _CLK_SYSCLKConfig --> 95
 
- 169   _CLK_PeripheralClockConfig --> 92
+ 169   _EXTI_SetExtIntSensitivity --> 97
 
- 170   _CLK_SYSCLKConfig --> 94
+ 170   _GPIO_Init --> 99
 
- 171   _EXTI_SetExtIntSensitivity --> 96
+ 171   _GPIO_WriteHigh --> 101
 
- 172   _GPIO_Init --> 98
+ 172   _GPIO_WriteLow --> 102
 
- 173   _GPIO_WriteHigh --> 100
+ 173   _I2C_AcknowledgeConfig --> 110
 
- 174   _GPIO_WriteLow --> 101
+ 174   _I2C_CheckEvent --> 103
 
- 175   _I2C_AcknowledgeConfig --> 109
+ 175   _I2C_Configuration --> 105
 
- 176   _I2C_CheckEvent --> 102
+ 176   _I2C_DeInit --> 106
 
- 177   _I2C_Configuration --> 104
+ 177   _I2C_GeneralCallCmd --> 113
 
- 178   _I2C_DeInit --> 105
+ 178   _I2C_GenerateSTART --> 115
 
- 179   _I2C_GeneralCallCmd --> 112
+ 179   _I2C_GenerateSTOP --> 117
 
- 180   _I2C_GenerateSTART --> 114
+ 180   _I2C_GetITStatus --> 149
 
- 181   _I2C_GenerateSTOP --> 116
+ 181   _I2C_ITConfig --> 107
 
- 182   _I2C_GetITStatus --> 150
+ 182   _I2C_Init --> 109
 
- 183   _I2C_ITConfig --> 106
+ 183   _I2C_ReceiveData --> 119
 
- 184   _I2C_Init --> 108
+ 184   _I2C_Send7bitAddress --> 120
 
- 185   _I2C_ReceiveData --> 118
+ 185   _I2C_SendData --> 122
 
- 186   _I2C_Send7bitAddress --> 119
+ 186   _I2C_SendPacket --> 137
 
- 187   _I2C_SendData --> 121
+ 187   _LED_SetColor_Int --> 66
 
- 188   _I2C_SendPacket --> 136
+ 188   _TIM4_ClearITPendingBit --> 158
 
- 189   _LED_SetColor_Int --> 62
+ 189   _TIM4_Cmd --> 143
 
- 190   _TIM4_ClearITPendingBit --> 159
+ 190   _TIM4_DeInit --> 125
 
- 191   _TIM4_Cmd --> 142
+ 191   _TIM4_GetCounter --> 160
 
- 192   _TIM4_DeInit --> 124
+ 192   _TIM4_ITConfig --> 126
 
- 193   _TIM4_GetCounter --> 144
+ 193   _TIM4_TimeBaseInit --> 128
 
- 194   _TIM4_ITConfig --> 125
+ 194   _TIMER_Configuration --> 124
 
- 195   _TIM4_SetCounter --> 145
-
- 196   _TIM4_TimeBaseInit --> 127
-
- 197   _TIMER_Configuration --> 123
-
- 198   _assert_failed --> 2
+ 195   _assert_failed --> 2
 
 
 
@@ -600,128 +595,123 @@ Stack size: 73
                                -------
 
 _CLKPrescTable                      00008084   defined in Debug\stm8s_clk.o section .const
-_CLK_AdjustHSICalibrationValue      000087b0   defined in Debug\stm8s_clk.o section .text
-_CLK_CCOCmd                         00008310   defined in Debug\stm8s_clk.o section .text
-_CLK_CCOConfig                      000085c6   defined in Debug\stm8s_clk.o section .text
-_CLK_ClearITPendingBit              000088e0   defined in Debug\stm8s_clk.o section .text
-_CLK_ClockSecuritySystemEnable      00008733   defined in Debug\stm8s_clk.o section .text
-_CLK_ClockSwitchCmd                 0000833b   defined in Debug\stm8s_clk.o section .text
-_CLK_ClockSwitchConfig              0000847f   defined in Debug\stm8s_clk.o section .text
-_CLK_DeInit                         0000822c   defined in Debug\stm8s_clk.o section .text
+_CLK_AdjustHSICalibrationValue      000087b2   defined in Debug\stm8s_clk.o section .text
+_CLK_CCOCmd                         00008312   defined in Debug\stm8s_clk.o section .text
+_CLK_CCOConfig                      000085c8   defined in Debug\stm8s_clk.o section .text
+_CLK_ClearITPendingBit              000088e2   defined in Debug\stm8s_clk.o section .text
+_CLK_ClockSecuritySystemEnable      00008735   defined in Debug\stm8s_clk.o section .text
+_CLK_ClockSwitchCmd                 0000833d   defined in Debug\stm8s_clk.o section .text
+_CLK_ClockSwitchConfig              00008481   defined in Debug\stm8s_clk.o section .text
+_CLK_DeInit                         0000822e   defined in Debug\stm8s_clk.o section .text
                                                used in Debug\main.o
-_CLK_FastHaltWakeUpCmd              00008264   defined in Debug\stm8s_clk.o section .text
+_CLK_FastHaltWakeUpCmd              00008266   defined in Debug\stm8s_clk.o section .text
+_CLK_GetClockFreq                   0000873e   defined in Debug\stm8s_clk.o section .text
+_CLK_GetFlagStatus                  000087f6   defined in Debug\stm8s_clk.o section .text
+_CLK_GetITStatus                    00008897   defined in Debug\stm8s_clk.o section .text
+_CLK_GetSYSCLKSource                0000873a   defined in Debug\stm8s_clk.o section .text
+_CLK_HSECmd                         00008291   defined in Debug\stm8s_clk.o section .text
+_CLK_HSICmd                         000082bc   defined in Debug\stm8s_clk.o section .text
                                                used in Debug\main.o
-_CLK_GetClockFreq                   0000873c   defined in Debug\stm8s_clk.o section .text
-_CLK_GetFlagStatus                  000087f4   defined in Debug\stm8s_clk.o section .text
-_CLK_GetITStatus                    00008895   defined in Debug\stm8s_clk.o section .text
-_CLK_GetSYSCLKSource                00008738   defined in Debug\stm8s_clk.o section .text
-_CLK_HSECmd                         0000828f   defined in Debug\stm8s_clk.o section .text
-_CLK_HSICmd                         000082ba   defined in Debug\stm8s_clk.o section .text
+_CLK_HSIPrescalerConfig             00008593   defined in Debug\stm8s_clk.o section .text
                                                used in Debug\main.o
-_CLK_HSIPrescalerConfig             00008591   defined in Debug\stm8s_clk.o section .text
+_CLK_ITConfig                       00008625   defined in Debug\stm8s_clk.o section .text
+_CLK_LSICmd                         000082e7   defined in Debug\stm8s_clk.o section .text
+_CLK_PeripheralClockConfig          00008393   defined in Debug\stm8s_clk.o section .text
+_CLK_SWIMConfig                     0000870a   defined in Debug\stm8s_clk.o section .text
+_CLK_SYSCLKConfig                   00008699   defined in Debug\stm8s_clk.o section .text
                                                used in Debug\main.o
-_CLK_ITConfig                       00008623   defined in Debug\stm8s_clk.o section .text
-_CLK_LSICmd                         000082e5   defined in Debug\stm8s_clk.o section .text
-_CLK_PeripheralClockConfig          00008391   defined in Debug\stm8s_clk.o section .text
+_CLK_SYSCLKEmergencyClear           000087f1   defined in Debug\stm8s_clk.o section .text
+_CLK_SlowActiveHaltWakeUpCmd        00008368   defined in Debug\stm8s_clk.o section .text
+_Core_Ping_Reply                    00008eef   defined in Debug\main.o section .text
+_Counter                            00000000   defined in Debug\stm8s_it.o section .bsct, initialized
+_EXTI_DeInit                        00009a28   defined in Debug\stm8s_exti.o section .text
+_EXTI_GetExtIntSensitivity          00009b28   defined in Debug\stm8s_exti.o section .text
+_EXTI_GetTLISensitivity             00009b9e   defined in Debug\stm8s_exti.o section .text
+_EXTI_SetExtIntSensitivity          00009a31   defined in Debug\stm8s_exti.o section .text
                                                used in Debug\main.o
-_CLK_SWIMConfig                     00008708   defined in Debug\stm8s_clk.o section .text
-_CLK_SYSCLKConfig                   00008697   defined in Debug\stm8s_clk.o section .text
+_EXTI_SetTLISensitivity             00009aff   defined in Debug\stm8s_exti.o section .text
+_GPIO_DeInit                        000098cc   defined in Debug\stm8s_gpio.o section .text
+_GPIO_ExternalPullUpConfig          000099da   defined in Debug\stm8s_gpio.o section .text
+_GPIO_Init                          000098d4   defined in Debug\stm8s_gpio.o section .text
                                                used in Debug\main.o
-_CLK_SYSCLKEmergencyClear           000087ef   defined in Debug\stm8s_clk.o section .text
-_CLK_SlowActiveHaltWakeUpCmd        00008366   defined in Debug\stm8s_clk.o section .text
-_Core_Ping_Reply                    00008ee2   defined in Debug\main.o section .text
-_Counter                            00000014   defined in Debug\main.o section .ubsct
-                                               used in Debug\stm8s_it.o
-_EXTI_DeInit                        00009a1b   defined in Debug\stm8s_exti.o section .text
-_EXTI_GetExtIntSensitivity          00009b1b   defined in Debug\stm8s_exti.o section .text
-_EXTI_GetTLISensitivity             00009b91   defined in Debug\stm8s_exti.o section .text
-_EXTI_SetExtIntSensitivity          00009a24   defined in Debug\stm8s_exti.o section .text
+_GPIO_ReadInputData                 000099d0   defined in Debug\stm8s_gpio.o section .text
+_GPIO_ReadInputPin                  000099d3   defined in Debug\stm8s_gpio.o section .text
+_GPIO_ReadOutputData                000099ce   defined in Debug\stm8s_gpio.o section .text
+_GPIO_Write                         000099b0   defined in Debug\stm8s_gpio.o section .text
+_GPIO_WriteHigh                     000099b8   defined in Debug\stm8s_gpio.o section .text
                                                used in Debug\main.o
-_EXTI_SetTLISensitivity             00009af2   defined in Debug\stm8s_exti.o section .text
-_GPIO_DeInit                        000098bf   defined in Debug\stm8s_gpio.o section .text
-_GPIO_ExternalPullUpConfig          000099cd   defined in Debug\stm8s_gpio.o section .text
-_GPIO_Init                          000098c7   defined in Debug\stm8s_gpio.o section .text
+_GPIO_WriteLow                      000099bf   defined in Debug\stm8s_gpio.o section .text
                                                used in Debug\main.o
-_GPIO_ReadInputData                 000099c3   defined in Debug\stm8s_gpio.o section .text
-_GPIO_ReadInputPin                  000099c6   defined in Debug\stm8s_gpio.o section .text
-_GPIO_ReadOutputData                000099c1   defined in Debug\stm8s_gpio.o section .text
-_GPIO_Write                         000099a3   defined in Debug\stm8s_gpio.o section .text
-_GPIO_WriteHigh                     000099ab   defined in Debug\stm8s_gpio.o section .text
-                                               used in Debug\main.o
-_GPIO_WriteLow                      000099b2   defined in Debug\stm8s_gpio.o section .text
-                                               used in Debug\main.o
-_GPIO_WriteReverse                  000099ba   defined in Debug\stm8s_gpio.o section .text
+_GPIO_WriteReverse                  000099c7   defined in Debug\stm8s_gpio.o section .text
 _HSIDivFactor                       00008080   defined in Debug\stm8s_clk.o section .const
-_I2C_AcknowledgeConfig              00009208   defined in Debug\stm8s_i2c.o section .text
-_I2C_CheckEvent                     0000932e   defined in Debug\stm8s_i2c.o section .text
+_I2C_AcknowledgeConfig              00009215   defined in Debug\stm8s_i2c.o section .text
+_I2C_CheckEvent                     0000933b   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\stm8s_it.o
                                                        Debug\main.o
-_I2C_ClearFlag                      000094d3   defined in Debug\stm8s_i2c.o section .text
-_I2C_ClearITPendingBit              000095b5   defined in Debug\stm8s_i2c.o section .text
-_I2C_Cmd                            00009106   defined in Debug\stm8s_i2c.o section .text
-_I2C_Configuration                  00008c9b   defined in Debug\main.o section .text
-_I2C_DeInit                         00008ee5   defined in Debug\stm8s_i2c.o section .text
+_I2C_ClearFlag                      000094e0   defined in Debug\stm8s_i2c.o section .text
+_I2C_ClearITPendingBit              000095c2   defined in Debug\stm8s_i2c.o section .text
+_I2C_Cmd                            00009113   defined in Debug\stm8s_i2c.o section .text
+_I2C_Configuration                  00008ca8   defined in Debug\main.o section .text
+_I2C_DeInit                         00008ef2   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\main.o
-_I2C_FastModeDutyCycleConfig        000092b4   defined in Debug\stm8s_i2c.o section .text
-_I2C_GeneralCallCmd                 00009131   defined in Debug\stm8s_i2c.o section .text
+_I2C_FastModeDutyCycleConfig        000092c1   defined in Debug\stm8s_i2c.o section .text
+_I2C_GeneralCallCmd                 0000913e   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\main.o
-_I2C_GenerateSTART                  0000915c   defined in Debug\stm8s_i2c.o section .text
+_I2C_GenerateSTART                  00009169   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\main.o
-_I2C_GenerateSTOP                   00009187   defined in Debug\stm8s_i2c.o section .text
+_I2C_GenerateSTOP                   00009194   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\main.o
-_I2C_GetFlagStatus                  00009435   defined in Debug\stm8s_i2c.o section .text
-_I2C_GetITStatus                    0000950b   defined in Debug\stm8s_i2c.o section .text
+_I2C_GetFlagStatus                  00009442   defined in Debug\stm8s_i2c.o section .text
+_I2C_GetITStatus                    00009518   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\stm8s_it.o
-_I2C_GetLastEvent                   00009402   defined in Debug\stm8s_i2c.o section .text
-_I2C_ITConfig                       00009247   defined in Debug\stm8s_i2c.o section .text
+_I2C_GetLastEvent                   0000940f   defined in Debug\stm8s_i2c.o section .text
+_I2C_ITConfig                       00009254   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\main.o
-_I2C_Init                           00008f0a   defined in Debug\stm8s_i2c.o section .text
+_I2C_Init                           00008f17   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\main.o
-_I2C_ReceiveData                    000092e1   defined in Debug\stm8s_i2c.o section .text
+_I2C_ReceiveData                    000092ee   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\main.o
-_I2C_Send7bitAddress                000092e5   defined in Debug\stm8s_i2c.o section .text
+_I2C_Send7bitAddress                000092f2   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\main.o
-_I2C_SendData                       0000932a   defined in Debug\stm8s_i2c.o section .text
+_I2C_SendData                       00009337   defined in Debug\stm8s_i2c.o section .text
                                                used in Debug\main.o
-_I2C_SendPacket                     00008e90   defined in Debug\main.o section .text
+_I2C_SendPacket                     00008e9d   defined in Debug\main.o section .text
                                                used in Debug\stm8s_it.o
-_I2C_SoftwareResetCmd               000091b2   defined in Debug\stm8s_i2c.o section .text
-_I2C_StretchClockCmd                000091dd   defined in Debug\stm8s_i2c.o section .text
-_LED_SetColor                       00008cc0   defined in Debug\main.o section .text
-_LED_SetColor_Int                   00008cd0   defined in Debug\main.o section .text
-_NumOfBytes                         00000007   defined in Debug\main.o section .bsct, initialized
-_PeriodNumber                       00000005   defined in Debug\main.o section .bsct, initialized
-_TIM4_ARRPreloadConfig              000097bd   defined in Debug\stm8s_tim4.o section .text
-_TIM4_ClearFlag                     00009843   defined in Debug\stm8s_tim4.o section .text
-_TIM4_ClearITPendingBit             0000989f   defined in Debug\stm8s_tim4.o section .text
+_I2C_SoftwareResetCmd               000091bf   defined in Debug\stm8s_i2c.o section .text
+_I2C_StretchClockCmd                000091ea   defined in Debug\stm8s_i2c.o section .text
+_LED_SetColor                       00008ccd   defined in Debug\main.o section .text
+_LED_SetColor_Int                   00008cdd   defined in Debug\main.o section .text
+_NumOfBytes                         00000009   defined in Debug\main.o section .bsct, initialized
+_TIM4_ARRPreloadConfig              000097ca   defined in Debug\stm8s_tim4.o section .text
+_TIM4_ClearFlag                     00009850   defined in Debug\stm8s_tim4.o section .text
+_TIM4_ClearITPendingBit             000098ac   defined in Debug\stm8s_tim4.o section .text
                                                used in Debug\stm8s_it.o
-_TIM4_Cmd                           00009658   defined in Debug\stm8s_tim4.o section .text
+_TIM4_Cmd                           00009665   defined in Debug\stm8s_tim4.o section .text
                                                used in Debug\stm8s_it.o
-_TIM4_DeInit                        000095f8   defined in Debug\stm8s_tim4.o section .text
+_TIM4_DeInit                        00009605   defined in Debug\stm8s_tim4.o section .text
                                                used in Debug\main.o
-_TIM4_GenerateEvent                 000097e8   defined in Debug\stm8s_tim4.o section .text
-_TIM4_GetCounter                    0000980f   defined in Debug\stm8s_tim4.o section .text
+_TIM4_GenerateEvent                 000097f5   defined in Debug\stm8s_tim4.o section .text
+_TIM4_GetCounter                    0000981c   defined in Debug\stm8s_tim4.o section .text
                                                used in Debug\stm8s_it.o
-_TIM4_GetFlagStatus                 00009817   defined in Debug\stm8s_tim4.o section .text
-_TIM4_GetITStatus                   00009863   defined in Debug\stm8s_tim4.o section .text
-_TIM4_GetPrescaler                  00009813   defined in Debug\stm8s_tim4.o section .text
-_TIM4_ITConfig                      00009683   defined in Debug\stm8s_tim4.o section .text
+_TIM4_GetFlagStatus                 00009824   defined in Debug\stm8s_tim4.o section .text
+_TIM4_GetITStatus                   00009870   defined in Debug\stm8s_tim4.o section .text
+_TIM4_GetPrescaler                  00009820   defined in Debug\stm8s_tim4.o section .text
+_TIM4_ITConfig                      00009690   defined in Debug\stm8s_tim4.o section .text
                                                used in Debug\main.o
-_TIM4_PrescalerConfig               00009753   defined in Debug\stm8s_tim4.o section .text
-_TIM4_SelectOnePulseMode            00009728   defined in Debug\stm8s_tim4.o section .text
-_TIM4_SetAutoreload                 0000980b   defined in Debug\stm8s_tim4.o section .text
-_TIM4_SetCounter                    00009807   defined in Debug\stm8s_tim4.o section .text
-                                               used in Debug\stm8s_it.o
-_TIM4_TimeBaseInit                  00009611   defined in Debug\stm8s_tim4.o section .text
+_TIM4_PrescalerConfig               00009760   defined in Debug\stm8s_tim4.o section .text
+_TIM4_SelectOnePulseMode            00009735   defined in Debug\stm8s_tim4.o section .text
+_TIM4_SetAutoreload                 00009818   defined in Debug\stm8s_tim4.o section .text
+_TIM4_SetCounter                    00009814   defined in Debug\stm8s_tim4.o section .text
+_TIM4_TimeBaseInit                  0000961e   defined in Debug\stm8s_tim4.o section .text
                                                used in Debug\main.o
-_TIM4_UpdateDisableConfig           000096d2   defined in Debug\stm8s_tim4.o section .text
-_TIM4_UpdateRequestConfig           000096fd   defined in Debug\stm8s_tim4.o section .text
-_TIMER_Configuration                00008e80   defined in Debug\main.o section .text
-_TxBuffer                           0000000d   defined in Debug\main.o section .ubsct
-_User_Key_Pressed                   00000002   defined in Debug\main.o section .bsct, initialized
+_TIM4_UpdateDisableConfig           000096df   defined in Debug\stm8s_tim4.o section .text
+_TIM4_UpdateRequestConfig           0000970a   defined in Debug\stm8s_tim4.o section .text
+_TIMER_Configuration                00008e8d   defined in Debug\main.o section .text
+_TxBuffer                           ********   *** removed from Debug\main.o ***
+_User_Key_Pressed                   00000004   defined in Debug\main.o section .bsct, initialized
 __endmem                            000001ff   defined in command file
                                                *** not used ***
-__endzp                             0000001f   defined in command file section .ubsct
+__endzp                             00000019   defined in command file section .ubsct
                                                used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
 __idesc__                           000081cc   defined in linker section .init
                                                used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
@@ -731,44 +721,46 @@ __stack                             000003ff   defined in command file
                                                used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
 __startmem                          00000100   defined in command file section .bss
                                                *** not used ***
-__stext                             000081e1   defined in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8 section .text
+__stext                             000081e3   defined in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8 section .text
                                                used in Debug\stm8_interrupt_vector.o
 __vectab                            00008000   defined in Debug\stm8_interrupt_vector.o section .const
-_assert_failed                      00008ee3   defined in Debug\main.o section .text
+_assert_failed                      00008ef0   defined in Debug\main.o section .text
                                                used in Debug\stm8s_clk.o
                                                        Debug\stm8s_i2c.o
                                                        Debug\stm8s_tim4.o
                                                        Debug\stm8s_gpio.o
                                                        Debug\stm8s_exti.o
-_button_state                       00000004   defined in Debug\main.o section .bsct, initialized
+_button_state                       00000006   defined in Debug\main.o section .bsct, initialized
                                                used in Debug\stm8s_it.o
-_exit                               0000822a   defined in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8 section .text
-_i                                  00000006   defined in Debug\main.o section .bsct, initialized
-_main                               00008b31   defined in Debug\main.o section .text
+_exit                               0000822c   defined in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8 section .text
+_i                                  00000008   defined in Debug\main.o section .bsct, initialized
+_main                               00008ae4   defined in Debug\main.o section .text
                                                used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
-_next_case                          00000008   defined in Debug\main.o section .bsct, initialized
-_ping_received                      0000000c   defined in Debug\main.o section .bsct, initialized
-_previous_button_state              00000003   defined in Debug\main.o section .bsct, initialized
+_next_case                          0000000a   defined in Debug\main.o section .bsct, initialized
+_note_playing                       00000007   defined in Debug\main.o section .bsct, initialized
                                                used in Debug\stm8s_it.o
-_received                           0000000a   defined in Debug\main.o section .bsct, initialized
-_received2                          0000000b   defined in Debug\main.o section .bsct, initialized
-_stopDelay                          00000000   defined in Debug\stm8s_it.o section .bsct, initialized
-_velocity                           00000009   defined in Debug\main.o section .bsct, initialized
-c_divsl                             00009c6f   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ldiv.o section .text
+_ping_received                      0000000e   defined in Debug\main.o section .bsct, initialized
+_previous_button_state              00000005   defined in Debug\main.o section .bsct, initialized
+                                               used in Debug\stm8s_it.o
+_received                           0000000c   defined in Debug\main.o section .bsct, initialized
+_received2                          0000000d   defined in Debug\main.o section .bsct, initialized
+_stopDelay                          00000002   defined in Debug\stm8s_it.o section .bsct, initialized
+_velocity                           0000000b   defined in Debug\main.o section .bsct, initialized
+c_divsl                             00009c7c   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ldiv.o section .text
                                                *** not used ***
-c_divul                             00009c86   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ldiv.o section .text
+c_divul                             00009c93   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ldiv.o section .text
                                                used in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ludiv.o
-c_lcmp                              00009b9e   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lcmp.o section .text
+c_lcmp                              00009bab   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lcmp.o section .text
                                                used in Debug\stm8s_i2c.o
-c_lgneg                             00009d5a   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lgneg.o section .text
+c_lgneg                             00009d67   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lgneg.o section .text
                                                used in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ldiv.o
-c_lmul                              00009bbe   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lmul.o section .text
+c_lmul                              00009bcb   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lmul.o section .text
                                                used in Debug\stm8s_i2c.o
-c_lmulc                             00009bc6   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lmul.o section .text
+c_lmulc                             00009bd3   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lmul.o section .text
                                                *** not used ***
-c_lneg                              00009d6d   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lneg.o section .text
+c_lneg                              00009d7a   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lneg.o section .text
                                                used in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ldiv.o
-c_lreg                              00000015   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lreg.o section .ubsct
+c_lreg                              0000000f   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lreg.o section .ubsct
                                                used in Debug\stm8s_clk.o
                                                        Debug\stm8s_i2c.o
                                                        (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lcmp.o
@@ -778,71 +770,71 @@ c_lreg                              00000015   defined in (C:\Program Files (x86
                                                        (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lneg.o
                                                        (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)rtol.o
                                                        (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)smul.o
-c_ltor                              00009c49   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ltor.o section .text
+c_ltor                              00009c56   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ltor.o section .text
                                                used in Debug\stm8s_clk.o
                                                        Debug\stm8s_i2c.o
-c_ludv                              00009c5b   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ludiv.o section .text
+c_ludv                              00009c68   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ludiv.o section .text
                                                used in Debug\stm8s_clk.o
                                                        Debug\stm8s_i2c.o
-c_lzmp                              00009d82   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lzmp.o section .text
+c_lzmp                              00009d8f   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lzmp.o section .text
                                                used in Debug\stm8s_i2c.o
-c_rtol                              00009d95   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)rtol.o section .text
+c_rtol                              00009da2   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)rtol.o section .text
                                                used in Debug\stm8s_clk.o
                                                        Debug\stm8s_i2c.o
-c_sdivx                             00009dad   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)sdivx.o section .text
+c_sdivx                             00009dba   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)sdivx.o section .text
                                                used in Debug\stm8s_i2c.o
-c_smodx                             00009da7   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)sdivx.o section .text
+c_smodx                             00009db4   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)sdivx.o section .text
                                                *** not used ***
-c_smul                              00009dd2   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)smul.o section .text
+c_smul                              00009ddf   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)smul.o section .text
                                                used in Debug\stm8s_i2c.o
-c_x                                 00000019   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)xreg.o section .ubsct
+c_x                                 00000013   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)xreg.o section .ubsct
                                                used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
                                                        Debug\stm8s_it.o
                                                        (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)lmul.o
                                                        (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)ldiv.o
                                                        (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)sdivx.o
-c_y                                 0000001c   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)yreg.o section .ubsct
+c_y                                 00000016   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)yreg.o section .ubsct
                                                used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
                                                        Debug\stm8s_it.o
-f_ADC1_IRQHandler                   00008b09   defined in Debug\stm8s_it.o section .text
+f_ADC1_IRQHandler                   00008ab0   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_AWU_IRQHandler                    00008911   defined in Debug\stm8s_it.o section .text
+f_AWU_IRQHandler                    00008913   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_CLK_IRQHandler                    00008912   defined in Debug\stm8s_it.o section .text
+f_CLK_IRQHandler                    00008914   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EEPROM_EEC_IRQHandler             00008b30   defined in Debug\stm8s_it.o section .text
+f_EEPROM_EEC_IRQHandler             00008ae3   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTA_IRQHandler             00008913   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTA_IRQHandler             00008915   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTB_IRQHandler             00008914   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTB_IRQHandler             00008916   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTC_IRQHandler             00008915   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTC_IRQHandler             00008917   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTD_IRQHandler             00008a05   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTD_IRQHandler             000089ac   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTE_IRQHandler             00008a06   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTE_IRQHandler             000089ad   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_I2C_IRQHandler                    00008a0e   defined in Debug\stm8s_it.o section .text
+f_I2C_IRQHandler                    000089b5   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_NonHandledInterrupt               0000890e   defined in Debug\stm8s_it.o section .text
+f_NonHandledInterrupt               00008910   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_SPI_IRQHandler                    00008a07   defined in Debug\stm8s_it.o section .text
+f_SPI_IRQHandler                    000089ae   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM1_CAP_COM_IRQHandler           00008a09   defined in Debug\stm8s_it.o section .text
+f_TIM1_CAP_COM_IRQHandler           000089b0   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM1_UPD_OVF_TRG_BRK_IRQHandler   00008a08   defined in Debug\stm8s_it.o section .text
+f_TIM1_UPD_OVF_TRG_BRK_IRQHandler   000089af   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM2_CAP_COM_IRQHandler           00008a0b   defined in Debug\stm8s_it.o section .text
+f_TIM2_CAP_COM_IRQHandler           000089b2   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM2_UPD_OVF_BRK_IRQHandler       00008a0a   defined in Debug\stm8s_it.o section .text
+f_TIM2_UPD_OVF_BRK_IRQHandler       000089b1   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM4_UPD_OVF_IRQHandler           00008b0a   defined in Debug\stm8s_it.o section .text
+f_TIM4_UPD_OVF_IRQHandler           00008ab1   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TLI_IRQHandler                    00008910   defined in Debug\stm8s_it.o section .text
+f_TLI_IRQHandler                    00008912   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TRAP_IRQHandler                   0000890f   defined in Debug\stm8s_it.o section .text
+f_TRAP_IRQHandler                   00008911   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_UART1_RX_IRQHandler               00008a0d   defined in Debug\stm8s_it.o section .text
+f_UART1_RX_IRQHandler               000089b4   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_UART1_TX_IRQHandler               00008a0c   defined in Debug\stm8s_it.o section .text
+f_UART1_TX_IRQHandler               000089b3   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o

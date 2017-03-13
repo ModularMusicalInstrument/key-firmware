@@ -11,9 +11,8 @@ Unlock protection before a programming cycle=0
 Count=0
 ProgramEvenIfBlank=0
 [PROGRAM MEMORY]
-Count=2
-File0=C:\Users\Gitesh\Desktop\STM8SVLDISCOVERY_Discover\Projects\Discover\STVD\Cosmic\Release\discover.s19
-File1=C:\workspace\key-firmware\Projects\Discover\STVD\Cosmic\Debug\discover.s19
+Count=1
+File0=C:\workspace\key-firmware\Projects\Discover\STVD\Cosmic\Debug\discover.s19
 ProgramEvenIfBlank=0
 [OPTION BYTE]
 Count=1

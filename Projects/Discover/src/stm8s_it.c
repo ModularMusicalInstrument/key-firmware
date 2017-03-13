@@ -37,8 +37,8 @@
 /* Private variables ---------------------------------------------------------*/
 extern volatile u8 button_state;
 extern volatile u8 previous_button_state;
-extern u8 Counter;
-extern u8 PeriodNumber;
+extern volatile bool note_playing;
+u16 Counter = 0;
 u16 stopDelay = 0;
 
 /* Private function prototypes -----------------------------------------------*/
@@ -149,39 +149,41 @@ INTERRUPT_HANDLER(EXTI_PORTC_IRQHandler, 5)
   */
 	const bool top_pressed = (GPIOC->IDR & TOP_BUTTON) == 0;
 	const bool bottom_pressed = (GPIOC->IDR & BOTTOM_BUTTON) == 0;
-	volatile u8 velocity = 0;
 	button_state = GPIOC->IDR;
 	if (button_state != previous_button_state) {
 		if (top_pressed && bottom_pressed) {
 		  // Transmit I2C data
-			velocity = TIM4_GetCounter();
+			const u8 velocity = Counter*2 > 127 ? 127 : (u8)(Counter * 2);
+			I2C_SendPacket(velocity);
+			/*for(stopDelay = 900000; stopDelay > 0; stopDelay--){
+				nop(); nop(); nop(); nop(); nop);
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop();
+			}*/
+			note_playing = TRUE;
 			
-				I2C_SendPacket(0x45);
-				for(stopDelay = 900000; stopDelay > 0; stopDelay--){
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop(); nop(); nop(); nop(); nop();
-					nop();
-				}
-				I2C_SendPacket(0);
-	  }
+			TIM4_Cmd(DISABLE);
+			Counter = 0;
+	  } else if (note_playing) {
+			I2C_SendPacket(0);
+			note_playing = FALSE;
+		}
 		
-		TIM4_Cmd(DISABLE);
-		TIM4_SetCounter(0);
 		
 		// Top is pressed, and bottom is not pressed
 		if (top_pressed && !bottom_pressed) {
@@ -557,6 +559,7 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
   /* In order to detect unexpected events during development,
   it is recommended to set a breakpoint on the following instruction.
   */
+	u8 v = TIM4_GetCounter();
   Counter++;
   TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
 

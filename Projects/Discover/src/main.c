@@ -40,9 +40,8 @@
 volatile bool User_Key_Pressed = 0;
 volatile u8 previous_button_state = 0b10101010;
 volatile u8 button_state = 0;
+volatile bool note_playing = FALSE;
 
-u8 Counter;
-u8 PeriodNumber = 0;
 u8 i = 0;
 volatile u8 NumOfBytes = 7;
 u8 next_case = 0;
@@ -154,20 +153,46 @@ void LED_SetColor(u8 r, u8 g, u8 b);
 	
 void main(void)
 {
-	// Configure PA2 (VCC-Next Trigger) as push-pull output, defaulting to LOW
-	GPIO_Init(TRIGGER_PORT, TRIGGER_PIN, GPIO_MODE_OUT_PP_HIGH_SLOW);
-	GPIO_WriteHigh(TRIGGER_PORT,TRIGGER_PIN);
-	GPIO_WriteLow(TRIGGER_PORT,TRIGGER_PIN);
-	GPIO_WriteHigh(TRIGGER_PORT,TRIGGER_PIN);
-	
+	int i, j, k;
+	u16 startDelay ;
 	//Enable HSI mode
 	CLK_DeInit();  
   CLK_HSICmd(ENABLE);
   CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
   CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
 	
+	// Configure LED pin as push-pull output, defaulting to the 'reset' code.
+  GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_LOW_FAST);
+	LED_SetColor_Int(30, 70, 100, FALSE);
+	
+	for(startDelay = 900000; startDelay > 0; startDelay--){
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop(); nop(); nop(); nop(); nop();
+				nop();
+			}
+	
+	// Configure PA2 (VCC-Next Trigger) as push-pull output, defaulting to HIGH
+	GPIO_Init(TRIGGER_PORT, TRIGGER_PIN, GPIO_MODE_OUT_PP_HIGH_SLOW);
+	GPIO_WriteHigh(TRIGGER_PORT, TRIGGER_PIN);
+	
+
 	//disabling unused pripherals
-	CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, DISABLE);
+	/*CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, DISABLE);
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART1, DISABLE);
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART2, DISABLE);
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART3, DISABLE);
@@ -180,7 +205,7 @@ void main(void)
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, DISABLE);
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_CAN, DISABLE);
 	CLK_FastHaltWakeUpCmd(DISABLE);
-	
+	*/
 	
 	
 	
@@ -192,12 +217,10 @@ void main(void)
 	/* Initialize the Interrupt sensitivity for key pcb buttons
 	We use EXTI_PORT_GPIOC
 	*/
-	EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOC, EXTI_SENSITIVITY_FALL_ONLY);
-	
-  // Configure LED pin as push-pull output, defaulting to the 'reset' code.
-  GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_LOW_FAST);
+	EXTI_SetExtIntSensitivity(EXTI_PORT_GPIOC, EXTI_SENSITIVITY_RISE_FALL);
 	
 	LED_SetColor_Int(100, 0, 0, FALSE);
+	
   TIMER_Configuration();
 	I2C_Configuration();
 	LED_SetColor_Int(100, 100, 0, FALSE);
@@ -230,11 +253,22 @@ void main(void)
 	//I2C Reconfigure with new address
 	I2C_Configuration();
 	LED_SetColor_Int(0, 0, 100, FALSE);
+	enableInterrupts();
 	
-	GPIO_Init(TRIGGER_PORT,  TRIGGER_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
+	GPIO_WriteLow(TRIGGER_PORT,  TRIGGER_PIN);
+	for (i = 500; i >= 0; i--) {
+		for (j = 1; j >= 0; j--) {
+		  for (k = 1; k >= 0; k--) {
+			  nop();nop();nop();nop();nop();
+			}
+		}
+	}       
+	GPIO_WriteHigh(TRIGGER_PORT,  TRIGGER_PIN);
+	
+	
 	LED_SetColor_Int(0, 0, 0, FALSE);
 	
-  enableInterrupts();
+  
 	wfi();
 	/*while (1) {
 	  //halt();
@@ -295,10 +329,10 @@ void TIMER_Configuration(void)
   TIM4_DeInit();
 
   /* Time base configuration */
-  TIM4_TimeBaseInit(TIM4_PRESCALER_128, 0x7F );
+  TIM4_TimeBaseInit(TIM4_PRESCALER_128, 124 );
 
   /* Disable TIM4 IT UPDATE */
-  TIM4_ITConfig(TIM4_IT_UPDATE, DISABLE);
+  TIM4_ITConfig(TIM4_IT_UPDATE, ENABLE);
 }
 
 void I2C_SendPacket(u8 data) {
