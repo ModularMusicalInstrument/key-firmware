@@ -50,6 +50,7 @@ volatile u8 velocity = 0;
 volatile uint8_t received = 14;
 volatile uint8_t received2 = 0x7c;
 volatile uint8_t ping_received = 0;
+volatile u8 nack_count = 0;
 //int _recieveddata;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -340,31 +341,25 @@ void I2C_SendPacket(u8 velocity) {
 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT) ) {}
 	
 	I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
-	while (!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) )
+	nack_count = 0;
+	while (!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED))
 	{
-		if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
+		if (nack_count > 10)
 		{
-				I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
+			return;
+		}
+		else if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
+		{
+			nack_count++;
+			I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
 		}
 	}
 
 	I2C_SendData(received2);
-	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS )
-	{
-		if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
-		{
-				I2C_SendData(received2);
-		}
-	}
+	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS ) {}
 	I2C_SendData(velocity);
-	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS)
-	{
-		if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
-		{
-				I2C_SendData(velocity);
-		}
-	}
-
+	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS) {}
+	
 	I2C_GenerateSTOP(ENABLE);
 }
 
