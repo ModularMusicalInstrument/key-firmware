@@ -880,115 +880,131 @@
 2554  03b5 cd0000        	call	_TIM4_ITConfig
 2556                     ; 336 }
 2559  03b8 81            	ret
-2599                     ; 338 void I2C_SendPacket(u8 data) {
-2600                     	switch	.text
-2601  03b9               _I2C_SendPacket:
-2603  03b9 88            	push	a
-2604       00000000      OFST:	set	0
-2607                     ; 339 	I2C_GenerateSTART(ENABLE);	
-2609  03ba a601          	ld	a,#1
-2610  03bc cd0000        	call	_I2C_GenerateSTART
-2613  03bf               L344:
-2614                     ; 340 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT) ) {}
-2616  03bf ae0301        	ldw	x,#769
-2617  03c2 cd0000        	call	_I2C_CheckEvent
-2619  03c5 4d            	tnz	a
-2620  03c6 27f7          	jreq	L344
-2621                     ; 342 	I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
-2623  03c8 ae1000        	ldw	x,#4096
-2624  03cb cd0000        	call	_I2C_Send7bitAddress
-2627  03ce               L154:
-2628                     ; 344 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) ) {}
-2630  03ce ae0782        	ldw	x,#1922
-2631  03d1 cd0000        	call	_I2C_CheckEvent
-2633  03d4 4d            	tnz	a
-2634  03d5 27f7          	jreq	L154
-2635                     ; 346 	I2C_SendData(received2);
-2637  03d7 b609          	ld	a,_received2
-2638  03d9 cd0000        	call	_I2C_SendData
-2641  03dc               L754:
-2642                     ; 347 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS ) {}
-2644  03dc ae0784        	ldw	x,#1924
-2645  03df cd0000        	call	_I2C_CheckEvent
-2647  03e2 a101          	cp	a,#1
-2648  03e4 26f6          	jrne	L754
-2649                     ; 348 	I2C_SendData(0x01);
-2651  03e6 a601          	ld	a,#1
-2652  03e8 cd0000        	call	_I2C_SendData
-2655  03eb               L564:
-2656                     ; 349 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED)!= SUCCESS ) {}
-2658  03eb ae0784        	ldw	x,#1924
-2659  03ee cd0000        	call	_I2C_CheckEvent
-2661  03f1 a101          	cp	a,#1
-2662  03f3 26f6          	jrne	L564
-2663                     ; 350 	I2C_SendData(data);
-2665  03f5 7b01          	ld	a,(OFST+1,sp)
-2666  03f7 cd0000        	call	_I2C_SendData
-2669  03fa               L374:
-2670                     ; 351 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS) {}
-2672  03fa ae0784        	ldw	x,#1924
-2673  03fd cd0000        	call	_I2C_CheckEvent
-2675  0400 a101          	cp	a,#1
-2676  0402 26f6          	jrne	L374
-2677                     ; 352 	I2C_GenerateSTOP(ENABLE);
-2679  0404 a601          	ld	a,#1
-2680  0406 cd0000        	call	_I2C_GenerateSTOP
-2682                     ; 353 }
-2685  0409 84            	pop	a
-2686  040a 81            	ret
-2709                     ; 355 void Core_Ping_Reply(){
-2710                     	switch	.text
-2711  040b               _Core_Ping_Reply:
-2715                     ; 357 }
-2718  040b 81            	ret
-2753                     ; 369 void assert_failed(u8* file, u32 line)
-2753                     ; 370 {
-2754                     	switch	.text
-2755  040c               _assert_failed:
-2759  040c               L525:
-2760  040c 20fe          	jra	L525
-2887                     	xdef	_Core_Ping_Reply
-2888                     	xdef	_I2C_SendPacket
-2889                     	xdef	_main
-2890                     	xdef	_LED_SetColor
-2891                     	xdef	_LED_SetColor_Int
-2892                     	xdef	_TIMER_Configuration
-2893                     	xdef	_I2C_Configuration
-2894                     	xdef	_ping_received
-2895                     	xdef	_received2
-2896                     	xdef	_received
-2897                     	xdef	_velocity
-2898                     	switch	.ubsct
-2899  0000               _TxBuffer:
-2900  0000 000000000000  	ds.b	7
-2901                     	xdef	_TxBuffer
-2902                     	xdef	_next_case
-2903                     	xdef	_NumOfBytes
-2904                     	xdef	_i
-2905                     	xdef	_note_playing
-2906                     	xdef	_button_state
-2907                     	xdef	_previous_button_state
-2908                     	xdef	_User_Key_Pressed
-2909                     	xdef	_assert_failed
-2910                     	xref	_TIM4_ITConfig
-2911                     	xref	_TIM4_TimeBaseInit
-2912                     	xref	_TIM4_DeInit
-2913                     	xref	_I2C_CheckEvent
-2914                     	xref	_I2C_SendData
-2915                     	xref	_I2C_Send7bitAddress
-2916                     	xref	_I2C_ReceiveData
-2917                     	xref	_I2C_ITConfig
-2918                     	xref	_I2C_GenerateSTOP
-2919                     	xref	_I2C_GenerateSTART
-2920                     	xref	_I2C_GeneralCallCmd
-2921                     	xref	_I2C_Init
-2922                     	xref	_I2C_DeInit
-2923                     	xref	_GPIO_WriteLow
-2924                     	xref	_GPIO_WriteHigh
-2925                     	xref	_GPIO_Init
-2926                     	xref	_EXTI_SetExtIntSensitivity
-2927                     	xref	_CLK_SYSCLKConfig
-2928                     	xref	_CLK_HSIPrescalerConfig
-2929                     	xref	_CLK_HSICmd
-2930                     	xref	_CLK_DeInit
-2950                     	end
+2600                     ; 338 void I2C_SendPacket(u8 velocity) {
+2601                     	switch	.text
+2602  03b9               _I2C_SendPacket:
+2604  03b9 88            	push	a
+2605       00000000      OFST:	set	0
+2608                     ; 339 	I2C_GenerateSTART(ENABLE);	
+2610  03ba a601          	ld	a,#1
+2611  03bc cd0000        	call	_I2C_GenerateSTART
+2614  03bf               L344:
+2615                     ; 340 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT) ) {}
+2617  03bf ae0301        	ldw	x,#769
+2618  03c2 cd0000        	call	_I2C_CheckEvent
+2620  03c5 4d            	tnz	a
+2621  03c6 27f7          	jreq	L344
+2622                     ; 342 	I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
+2624  03c8 ae1000        	ldw	x,#4096
+2625  03cb cd0000        	call	_I2C_Send7bitAddress
+2628  03ce 200f          	jra	L154
+2629  03d0               L744:
+2630                     ; 345 		if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
+2632  03d0 ae0204        	ldw	x,#516
+2633  03d3 cd0000        	call	_I2C_GetFlagStatus
+2635  03d6 4d            	tnz	a
+2636  03d7 2706          	jreq	L154
+2637                     ; 347 				I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
+2639  03d9 ae1000        	ldw	x,#4096
+2640  03dc cd0000        	call	_I2C_Send7bitAddress
+2642  03df               L154:
+2643                     ; 343 	while (!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) )
+2645  03df ae0782        	ldw	x,#1922
+2646  03e2 cd0000        	call	_I2C_CheckEvent
+2648  03e5 4d            	tnz	a
+2649  03e6 27e8          	jreq	L744
+2650                     ; 351 	I2C_SendData(received2);
+2652  03e8 b609          	ld	a,_received2
+2653  03ea cd0000        	call	_I2C_SendData
+2656  03ed 200e          	jra	L164
+2657  03ef               L754:
+2658                     ; 354 		if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
+2660  03ef ae0204        	ldw	x,#516
+2661  03f2 cd0000        	call	_I2C_GetFlagStatus
+2663  03f5 4d            	tnz	a
+2664  03f6 2705          	jreq	L164
+2665                     ; 356 				I2C_SendData(received2);
+2667  03f8 b609          	ld	a,_received2
+2668  03fa cd0000        	call	_I2C_SendData
+2670  03fd               L164:
+2671                     ; 352 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS )
+2673  03fd ae0784        	ldw	x,#1924
+2674  0400 cd0000        	call	_I2C_CheckEvent
+2676  0403 a101          	cp	a,#1
+2677  0405 26e8          	jrne	L754
+2678                     ; 359 	I2C_SendData(velocity);
+2680  0407 7b01          	ld	a,(OFST+1,sp)
+2681  0409 cd0000        	call	_I2C_SendData
+2684  040c 200e          	jra	L174
+2685  040e               L764:
+2686                     ; 362 		if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
+2688  040e ae0204        	ldw	x,#516
+2689  0411 cd0000        	call	_I2C_GetFlagStatus
+2691  0414 4d            	tnz	a
+2692  0415 2705          	jreq	L174
+2693                     ; 364 				I2C_SendData(velocity);
+2695  0417 7b01          	ld	a,(OFST+1,sp)
+2696  0419 cd0000        	call	_I2C_SendData
+2698  041c               L174:
+2699                     ; 360 	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS)
+2701  041c ae0784        	ldw	x,#1924
+2702  041f cd0000        	call	_I2C_CheckEvent
+2704  0422 a101          	cp	a,#1
+2705  0424 26e8          	jrne	L764
+2706                     ; 368 	I2C_GenerateSTOP(ENABLE);
+2708  0426 a601          	ld	a,#1
+2709  0428 cd0000        	call	_I2C_GenerateSTOP
+2711                     ; 369 }
+2714  042b 84            	pop	a
+2715  042c 81            	ret
+2750                     ; 381 void assert_failed(u8* file, u32 line)
+2750                     ; 382 {
+2751                     	switch	.text
+2752  042d               _assert_failed:
+2756  042d               L515:
+2757  042d 20fe          	jra	L515
+2884                     	xdef	_I2C_SendPacket
+2885                     	xdef	_main
+2886                     	xdef	_LED_SetColor
+2887                     	xdef	_LED_SetColor_Int
+2888                     	xdef	_TIMER_Configuration
+2889                     	xdef	_I2C_Configuration
+2890                     	xdef	_ping_received
+2891                     	xdef	_received2
+2892                     	xdef	_received
+2893                     	xdef	_velocity
+2894                     	switch	.ubsct
+2895  0000               _TxBuffer:
+2896  0000 000000000000  	ds.b	7
+2897                     	xdef	_TxBuffer
+2898                     	xdef	_next_case
+2899                     	xdef	_NumOfBytes
+2900                     	xdef	_i
+2901                     	xdef	_note_playing
+2902                     	xdef	_button_state
+2903                     	xdef	_previous_button_state
+2904                     	xdef	_User_Key_Pressed
+2905                     	xdef	_assert_failed
+2906                     	xref	_TIM4_ITConfig
+2907                     	xref	_TIM4_TimeBaseInit
+2908                     	xref	_TIM4_DeInit
+2909                     	xref	_I2C_GetFlagStatus
+2910                     	xref	_I2C_CheckEvent
+2911                     	xref	_I2C_SendData
+2912                     	xref	_I2C_Send7bitAddress
+2913                     	xref	_I2C_ReceiveData
+2914                     	xref	_I2C_ITConfig
+2915                     	xref	_I2C_GenerateSTOP
+2916                     	xref	_I2C_GenerateSTART
+2917                     	xref	_I2C_GeneralCallCmd
+2918                     	xref	_I2C_Init
+2919                     	xref	_I2C_DeInit
+2920                     	xref	_GPIO_WriteLow
+2921                     	xref	_GPIO_WriteHigh
+2922                     	xref	_GPIO_Init
+2923                     	xref	_EXTI_SetExtIntSensitivity
+2924                     	xref	_CLK_SYSCLKConfig
+2925                     	xref	_CLK_HSIPrescalerConfig
+2926                     	xref	_CLK_HSICmd
+2927                     	xref	_CLK_DeInit
+2947                     	end

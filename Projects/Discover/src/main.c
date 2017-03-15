@@ -335,25 +335,37 @@ void TIMER_Configuration(void)
   TIM4_ITConfig(TIM4_IT_UPDATE, ENABLE);
 }
 
-void I2C_SendPacket(u8 data) {
+void I2C_SendPacket(u8 velocity) {
 	I2C_GenerateSTART(ENABLE);	
 	while (! I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT) ) {}
 	
 	I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
-	
-	while (! I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) ) {}
+	while (!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) )
+	{
+		if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
+		{
+				I2C_Send7bitAddress((0x08<<1), I2C_DIRECTION_TX);
+		}
+	}
 
 	I2C_SendData(received2);
-	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS ) {}
-	I2C_SendData(0x01);
-	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED)!= SUCCESS ) {}
-	I2C_SendData(data);
-	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS) {}
+	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS )
+	{
+		if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
+		{
+				I2C_SendData(received2);
+		}
+	}
+	I2C_SendData(velocity);
+	while ( I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED) != SUCCESS)
+	{
+		if (I2C_GetFlagStatus(I2C_FLAG_ACKNOWLEDGEFAILURE))
+		{
+				I2C_SendData(velocity);
+		}
+	}
+
 	I2C_GenerateSTOP(ENABLE);
-}
-
-void Core_Ping_Reply(){
-
 }
 
 #ifdef USE_FULL_ASSERT
